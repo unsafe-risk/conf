@@ -9,11 +9,8 @@ import (
 )
 
 var testdata = `
-{
-	for (;;) {
-		let X:U64 = 1;
-		let config VAR_0:U64 = "Hello World";
-	}
+func AddOne(X:U64, Y:U64) VOID {
+
 }
 `
 

@@ -34,7 +34,7 @@ float_literal:
 
 whitespace: any " \t\r\n";
 
-function: 'f' 'n';
+function: 'f' 'u' 'n' 'c';
 let: 'l' 'e' 't';
 for: 'f' 'o' 'r';
 in: 'i' 'n';
@@ -50,6 +50,7 @@ inc: '+' '+';
 dec: '-' '-';
 
 colon: ':';
+comma: ',';
 assign: '=';
 semicolon: ';';
 
@@ -80,6 +81,22 @@ Declaration_Statement:
 
 Expression_Statement:
    Expression semicolon | semicolon;
+
+Function_Argument_List:
+   Function_Argument
+   | Function_Argument_List_Body;
+
+Function_Argument_List_Body:
+   Function_Argument comma
+   | Function_Argument_List_Body Function_Argument
+   | Function_Argument_List_Body Function_Argument comma;
+
+Function_Argument:
+   identifier colon identifier;
+
+Function_Statement:
+   function identifier lparen Function_Argument_List rparen identifier Statement
+   | function identifier lparen rparen identifier Statement;
 
 Empty_Statement:
    semicolon;
@@ -117,5 +134,6 @@ Statement:
    Empty_Statement
    | Simple_Statement
    | Compound_Statement
+   | Function_Statement
    | For;
 ```

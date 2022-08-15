@@ -138,29 +138,30 @@ const(
     T_0  // assign 
     T_1  // break 
     T_2  // colon 
-    T_3  // comment 
-    T_4  // config 
-    T_5  // continue 
-    T_6  // dec 
-    T_7  // else 
-    T_8  // float_literal 
-    T_9  // for 
-    T_10  // function 
-    T_11  // identifier 
-    T_12  // if 
-    T_13  // in 
-    T_14  // inc 
-    T_15  // integer_literal 
-    T_16  // lbrace 
-    T_17  // let 
-    T_18  // lparen 
-    T_19  // rbrace 
-    T_20  // return 
-    T_21  // rparen 
-    T_22  // semicolon 
-    T_23  // string_literal 
-    T_24  // while 
-    T_25  // whitespace 
+    T_3  // comma 
+    T_4  // comment 
+    T_5  // config 
+    T_6  // continue 
+    T_7  // dec 
+    T_8  // else 
+    T_9  // float_literal 
+    T_10  // for 
+    T_11  // function 
+    T_12  // identifier 
+    T_13  // if 
+    T_14  // in 
+    T_15  // inc 
+    T_16  // integer_literal 
+    T_17  // lbrace 
+    T_18  // let 
+    T_19  // lparen 
+    T_20  // rbrace 
+    T_21  // return 
+    T_22  // rparen 
+    T_23  // semicolon 
+    T_24  // string_literal 
+    T_25  // while 
+    T_26  // whitespace 
 )
 
 var TypeToString = []string{ 
@@ -192,6 +193,7 @@ var TypeToString = []string{
     "T_23",
     "T_24",
     "T_25",
+    "T_26",
 }
 
 var StringToType = map[string] Type { 
@@ -223,6 +225,7 @@ var StringToType = map[string] Type {
     "T_23" : T_23, 
     "T_24" : T_24, 
     "T_25" : T_25, 
+    "T_26" : T_26, 
 }
 
 var TypeToID = []string { 
@@ -231,6 +234,7 @@ var TypeToID = []string {
     "assign", 
     "break", 
     "colon", 
+    "comma", 
     "comment", 
     "config", 
     "continue", 
@@ -257,6 +261,7 @@ var TypeToID = []string {
 }
 
 var Suppress = []bool { 
+    false, 
     false, 
     false, 
     false, 
