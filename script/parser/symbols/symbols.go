@@ -23,6 +23,7 @@ const(
 	NT_For 
 	NT_GoGLL 
 	NT_IncDec_Expression 
+	NT_Literal_Expression 
 	NT_Simple_Statement 
 	NT_Statement 
 	NT_Statement_List 
@@ -95,6 +96,7 @@ var ntToString = []string {
 	"For", /* NT_For */
 	"GoGLL", /* NT_GoGLL */
 	"IncDec_Expression", /* NT_IncDec_Expression */
+	"Literal_Expression", /* NT_Literal_Expression */
 	"Simple_Statement", /* NT_Simple_Statement */
 	"Statement", /* NT_Statement */
 	"Statement_List", /* NT_Statement_List */ 
@@ -139,6 +141,7 @@ var stringNT = map[string]NT{
 	"For":NT_For,
 	"GoGLL":NT_GoGLL,
 	"IncDec_Expression":NT_IncDec_Expression,
+	"Literal_Expression":NT_Literal_Expression,
 	"Simple_Statement":NT_Simple_Statement,
 	"Statement":NT_Statement,
 	"Statement_List":NT_Statement_List,

@@ -31,7 +31,6 @@ float_literal:
       |'.' <any "0123456789">
    );
 
-identifier: letter {letter | number | '_'};
 
 whitespace: any " \t\r\n";
 
@@ -60,6 +59,8 @@ rparen: ')';
 lbrace: '{';
 rbrace: '}';
 
+identifier: upcase {letter | number | '_'};
+
 !comment: (
       '/' '/' {not "\n"}
       | '/' '*' {not "*"| '*' not "/" } '*' '/'
@@ -70,11 +71,12 @@ rbrace: '}';
 # Syntax
 
 ```
-Declaration_Statement:
-   let identifier colon identifier assign Expression semicolon;
-
 Assignment_Statement:
    identifier assign Expression semicolon;
+
+Declaration_Statement:
+   let identifier colon identifier assign Expression semicolon
+   | let config identifier colon identifier assign Expression semicolon;
 
 Expression_Statement:
    Expression semicolon | semicolon;
@@ -90,8 +92,14 @@ Simple_Statement:
 
 IncDec_Expression: identifier inc | identifier dec;
 
+Literal_Expression:
+   integer_literal
+   | float_literal
+   | string_literal;
+
 Expression:
-   IncDec_Expression;
+   IncDec_Expression
+   | Literal_Expression;
 
 For:
    for lparen Simple_Statement Expression_Statement Expression rparen Statement
@@ -106,7 +114,8 @@ Compound_Statement:
    | lbrace Statement_List rbrace;
 
 Statement:
-   Compound_Statement
+   Empty_Statement
    | Simple_Statement
+   | Compound_Statement
    | For;
 ```

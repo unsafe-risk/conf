@@ -32,10 +32,21 @@ const(
 	Declaration_Statement0R5
 	Declaration_Statement0R6
 	Declaration_Statement0R7
+	Declaration_Statement1R0
+	Declaration_Statement1R1
+	Declaration_Statement1R2
+	Declaration_Statement1R3
+	Declaration_Statement1R4
+	Declaration_Statement1R5
+	Declaration_Statement1R6
+	Declaration_Statement1R7
+	Declaration_Statement1R8
 	Empty_Statement0R0
 	Empty_Statement0R1
 	Expression0R0
 	Expression0R1
+	Expression1R0
+	Expression1R1
 	Expression_Statement0R0
 	Expression_Statement0R1
 	Expression_Statement0R2
@@ -64,6 +75,12 @@ const(
 	IncDec_Expression1R0
 	IncDec_Expression1R1
 	IncDec_Expression1R2
+	Literal_Expression0R0
+	Literal_Expression0R1
+	Literal_Expression1R0
+	Literal_Expression1R1
+	Literal_Expression2R0
+	Literal_Expression2R1
 	Simple_Statement0R0
 	Simple_Statement0R1
 	Simple_Statement1R0
@@ -78,6 +95,8 @@ const(
 	Statement1R1
 	Statement2R0
 	Statement2R1
+	Statement3R0
+	Statement3R1
 	Statement_List0R0
 	Statement_List0R1
 	Statement_List1R0
@@ -386,6 +405,132 @@ var slots = map[Label]*Slot{
 		}, 
 		Declaration_Statement0R7, 
 	},
+	Declaration_Statement1R0: {
+		symbols.NT_Declaration_Statement, 1, 0, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R0, 
+	},
+	Declaration_Statement1R1: {
+		symbols.NT_Declaration_Statement, 1, 1, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R1, 
+	},
+	Declaration_Statement1R2: {
+		symbols.NT_Declaration_Statement, 1, 2, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R2, 
+	},
+	Declaration_Statement1R3: {
+		symbols.NT_Declaration_Statement, 1, 3, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R3, 
+	},
+	Declaration_Statement1R4: {
+		symbols.NT_Declaration_Statement, 1, 4, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R4, 
+	},
+	Declaration_Statement1R5: {
+		symbols.NT_Declaration_Statement, 1, 5, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R5, 
+	},
+	Declaration_Statement1R6: {
+		symbols.NT_Declaration_Statement, 1, 6, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R6, 
+	},
+	Declaration_Statement1R7: {
+		symbols.NT_Declaration_Statement, 1, 7, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R7, 
+	},
+	Declaration_Statement1R8: {
+		symbols.NT_Declaration_Statement, 1, 8, 
+		symbols.Symbols{  
+			symbols.T_17, 
+			symbols.T_4, 
+			symbols.T_11, 
+			symbols.T_2, 
+			symbols.T_11, 
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_22,
+		}, 
+		Declaration_Statement1R8, 
+	},
 	Empty_Statement0R0: {
 		symbols.NT_Empty_Statement, 0, 0, 
 		symbols.Symbols{  
@@ -413,6 +558,20 @@ var slots = map[Label]*Slot{
 			symbols.NT_IncDec_Expression,
 		}, 
 		Expression0R1, 
+	},
+	Expression1R0: {
+		symbols.NT_Expression, 1, 0, 
+		symbols.Symbols{  
+			symbols.NT_Literal_Expression,
+		}, 
+		Expression1R0, 
+	},
+	Expression1R1: {
+		symbols.NT_Expression, 1, 1, 
+		symbols.Symbols{  
+			symbols.NT_Literal_Expression,
+		}, 
+		Expression1R1, 
 	},
 	Expression_Statement0R0: {
 		symbols.NT_Expression_Statement, 0, 0, 
@@ -702,6 +861,48 @@ var slots = map[Label]*Slot{
 		}, 
 		IncDec_Expression1R2, 
 	},
+	Literal_Expression0R0: {
+		symbols.NT_Literal_Expression, 0, 0, 
+		symbols.Symbols{  
+			symbols.T_15,
+		}, 
+		Literal_Expression0R0, 
+	},
+	Literal_Expression0R1: {
+		symbols.NT_Literal_Expression, 0, 1, 
+		symbols.Symbols{  
+			symbols.T_15,
+		}, 
+		Literal_Expression0R1, 
+	},
+	Literal_Expression1R0: {
+		symbols.NT_Literal_Expression, 1, 0, 
+		symbols.Symbols{  
+			symbols.T_8,
+		}, 
+		Literal_Expression1R0, 
+	},
+	Literal_Expression1R1: {
+		symbols.NT_Literal_Expression, 1, 1, 
+		symbols.Symbols{  
+			symbols.T_8,
+		}, 
+		Literal_Expression1R1, 
+	},
+	Literal_Expression2R0: {
+		symbols.NT_Literal_Expression, 2, 0, 
+		symbols.Symbols{  
+			symbols.T_23,
+		}, 
+		Literal_Expression2R0, 
+	},
+	Literal_Expression2R1: {
+		symbols.NT_Literal_Expression, 2, 1, 
+		symbols.Symbols{  
+			symbols.T_23,
+		}, 
+		Literal_Expression2R1, 
+	},
 	Simple_Statement0R0: {
 		symbols.NT_Simple_Statement, 0, 0, 
 		symbols.Symbols{  
@@ -761,14 +962,14 @@ var slots = map[Label]*Slot{
 	Statement0R0: {
 		symbols.NT_Statement, 0, 0, 
 		symbols.Symbols{  
-			symbols.NT_Compound_Statement,
+			symbols.NT_Empty_Statement,
 		}, 
 		Statement0R0, 
 	},
 	Statement0R1: {
 		symbols.NT_Statement, 0, 1, 
 		symbols.Symbols{  
-			symbols.NT_Compound_Statement,
+			symbols.NT_Empty_Statement,
 		}, 
 		Statement0R1, 
 	},
@@ -789,16 +990,30 @@ var slots = map[Label]*Slot{
 	Statement2R0: {
 		symbols.NT_Statement, 2, 0, 
 		symbols.Symbols{  
-			symbols.NT_For,
+			symbols.NT_Compound_Statement,
 		}, 
 		Statement2R0, 
 	},
 	Statement2R1: {
 		symbols.NT_Statement, 2, 1, 
 		symbols.Symbols{  
-			symbols.NT_For,
+			symbols.NT_Compound_Statement,
 		}, 
 		Statement2R1, 
+	},
+	Statement3R0: {
+		symbols.NT_Statement, 3, 0, 
+		symbols.Symbols{  
+			symbols.NT_For,
+		}, 
+		Statement3R0, 
+	},
+	Statement3R1: {
+		symbols.NT_Statement, 3, 1, 
+		symbols.Symbols{  
+			symbols.NT_For,
+		}, 
+		Statement3R1, 
 	},
 	Statement_List0R0: {
 		symbols.NT_Statement_List, 0, 0, 
@@ -861,10 +1076,21 @@ var slotIndex = map[Index]Label {
 	Index{ symbols.NT_Declaration_Statement,0,5 }: Declaration_Statement0R5,
 	Index{ symbols.NT_Declaration_Statement,0,6 }: Declaration_Statement0R6,
 	Index{ symbols.NT_Declaration_Statement,0,7 }: Declaration_Statement0R7,
+	Index{ symbols.NT_Declaration_Statement,1,0 }: Declaration_Statement1R0,
+	Index{ symbols.NT_Declaration_Statement,1,1 }: Declaration_Statement1R1,
+	Index{ symbols.NT_Declaration_Statement,1,2 }: Declaration_Statement1R2,
+	Index{ symbols.NT_Declaration_Statement,1,3 }: Declaration_Statement1R3,
+	Index{ symbols.NT_Declaration_Statement,1,4 }: Declaration_Statement1R4,
+	Index{ symbols.NT_Declaration_Statement,1,5 }: Declaration_Statement1R5,
+	Index{ symbols.NT_Declaration_Statement,1,6 }: Declaration_Statement1R6,
+	Index{ symbols.NT_Declaration_Statement,1,7 }: Declaration_Statement1R7,
+	Index{ symbols.NT_Declaration_Statement,1,8 }: Declaration_Statement1R8,
 	Index{ symbols.NT_Empty_Statement,0,0 }: Empty_Statement0R0,
 	Index{ symbols.NT_Empty_Statement,0,1 }: Empty_Statement0R1,
 	Index{ symbols.NT_Expression,0,0 }: Expression0R0,
 	Index{ symbols.NT_Expression,0,1 }: Expression0R1,
+	Index{ symbols.NT_Expression,1,0 }: Expression1R0,
+	Index{ symbols.NT_Expression,1,1 }: Expression1R1,
 	Index{ symbols.NT_Expression_Statement,0,0 }: Expression_Statement0R0,
 	Index{ symbols.NT_Expression_Statement,0,1 }: Expression_Statement0R1,
 	Index{ symbols.NT_Expression_Statement,0,2 }: Expression_Statement0R2,
@@ -893,6 +1119,12 @@ var slotIndex = map[Index]Label {
 	Index{ symbols.NT_IncDec_Expression,1,0 }: IncDec_Expression1R0,
 	Index{ symbols.NT_IncDec_Expression,1,1 }: IncDec_Expression1R1,
 	Index{ symbols.NT_IncDec_Expression,1,2 }: IncDec_Expression1R2,
+	Index{ symbols.NT_Literal_Expression,0,0 }: Literal_Expression0R0,
+	Index{ symbols.NT_Literal_Expression,0,1 }: Literal_Expression0R1,
+	Index{ symbols.NT_Literal_Expression,1,0 }: Literal_Expression1R0,
+	Index{ symbols.NT_Literal_Expression,1,1 }: Literal_Expression1R1,
+	Index{ symbols.NT_Literal_Expression,2,0 }: Literal_Expression2R0,
+	Index{ symbols.NT_Literal_Expression,2,1 }: Literal_Expression2R1,
 	Index{ symbols.NT_Simple_Statement,0,0 }: Simple_Statement0R0,
 	Index{ symbols.NT_Simple_Statement,0,1 }: Simple_Statement0R1,
 	Index{ symbols.NT_Simple_Statement,1,0 }: Simple_Statement1R0,
@@ -907,6 +1139,8 @@ var slotIndex = map[Index]Label {
 	Index{ symbols.NT_Statement,1,1 }: Statement1R1,
 	Index{ symbols.NT_Statement,2,0 }: Statement2R0,
 	Index{ symbols.NT_Statement,2,1 }: Statement2R1,
+	Index{ symbols.NT_Statement,3,0 }: Statement3R0,
+	Index{ symbols.NT_Statement,3,1 }: Statement3R1,
 	Index{ symbols.NT_Statement_List,0,0 }: Statement_List0R0,
 	Index{ symbols.NT_Statement_List,0,1 }: Statement_List0R1,
 	Index{ symbols.NT_Statement_List,1,0 }: Statement_List1R0,
@@ -916,16 +1150,17 @@ var slotIndex = map[Index]Label {
 
 var alternates = map[symbols.NT][]Label{ 
 	symbols.NT_GoGLL:[]Label{ GoGLL0R0 },
-	symbols.NT_Declaration_Statement:[]Label{ Declaration_Statement0R0 },
 	symbols.NT_Assignment_Statement:[]Label{ Assignment_Statement0R0 },
+	symbols.NT_Declaration_Statement:[]Label{ Declaration_Statement0R0,Declaration_Statement1R0 },
 	symbols.NT_Expression_Statement:[]Label{ Expression_Statement0R0,Expression_Statement1R0 },
 	symbols.NT_Empty_Statement:[]Label{ Empty_Statement0R0 },
 	symbols.NT_Simple_Statement:[]Label{ Simple_Statement0R0,Simple_Statement1R0,Simple_Statement2R0,Simple_Statement3R0 },
 	symbols.NT_IncDec_Expression:[]Label{ IncDec_Expression0R0,IncDec_Expression1R0 },
-	symbols.NT_Expression:[]Label{ Expression0R0 },
+	symbols.NT_Literal_Expression:[]Label{ Literal_Expression0R0,Literal_Expression1R0,Literal_Expression2R0 },
+	symbols.NT_Expression:[]Label{ Expression0R0,Expression1R0 },
 	symbols.NT_For:[]Label{ For0R0,For1R0 },
 	symbols.NT_Statement_List:[]Label{ Statement_List0R0,Statement_List1R0 },
 	symbols.NT_Compound_Statement:[]Label{ Compound_Statement0R0,Compound_Statement1R0 },
-	symbols.NT_Statement:[]Label{ Statement0R0,Statement1R0,Statement2R0 },
+	symbols.NT_Statement:[]Label{ Statement0R0,Statement1R0,Statement2R0,Statement3R0 },
 }
 
