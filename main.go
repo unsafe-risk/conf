@@ -13,6 +13,7 @@ var testdata = `
 func AddOne(x:u64) u64 {
 	return x + 1;
 }
+print(AddOne(1));
 `
 
 func Walk(b bsr.BSR, fn func(bsr.BSR)) {
