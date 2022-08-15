@@ -1158,36 +1158,36 @@ var slots = map[Label]*Slot{
 	Function_Call_Argument_List1R0: {
 		symbols.NT_Function_Call_Argument_List, 1, 0, 
 		symbols.Symbols{  
-			symbols.NT_Function_Call_Argument_List, 
+			symbols.NT_Expression, 
 			symbols.T_3, 
-			symbols.NT_Expression,
+			symbols.NT_Function_Call_Argument_List,
 		}, 
 		Function_Call_Argument_List1R0, 
 	},
 	Function_Call_Argument_List1R1: {
 		symbols.NT_Function_Call_Argument_List, 1, 1, 
 		symbols.Symbols{  
-			symbols.NT_Function_Call_Argument_List, 
+			symbols.NT_Expression, 
 			symbols.T_3, 
-			symbols.NT_Expression,
+			symbols.NT_Function_Call_Argument_List,
 		}, 
 		Function_Call_Argument_List1R1, 
 	},
 	Function_Call_Argument_List1R2: {
 		symbols.NT_Function_Call_Argument_List, 1, 2, 
 		symbols.Symbols{  
-			symbols.NT_Function_Call_Argument_List, 
+			symbols.NT_Expression, 
 			symbols.T_3, 
-			symbols.NT_Expression,
+			symbols.NT_Function_Call_Argument_List,
 		}, 
 		Function_Call_Argument_List1R2, 
 	},
 	Function_Call_Argument_List1R3: {
 		symbols.NT_Function_Call_Argument_List, 1, 3, 
 		symbols.Symbols{  
-			symbols.NT_Function_Call_Argument_List, 
+			symbols.NT_Expression, 
 			symbols.T_3, 
-			symbols.NT_Expression,
+			symbols.NT_Function_Call_Argument_List,
 		}, 
 		Function_Call_Argument_List1R3, 
 	},
@@ -2022,24 +2022,24 @@ var slots = map[Label]*Slot{
 	Statement_List1R0: {
 		symbols.NT_Statement_List, 1, 0, 
 		symbols.Symbols{  
-			symbols.NT_Statement_List, 
-			symbols.NT_Statement,
+			symbols.NT_Statement, 
+			symbols.NT_Statement_List,
 		}, 
 		Statement_List1R0, 
 	},
 	Statement_List1R1: {
 		symbols.NT_Statement_List, 1, 1, 
 		symbols.Symbols{  
-			symbols.NT_Statement_List, 
-			symbols.NT_Statement,
+			symbols.NT_Statement, 
+			symbols.NT_Statement_List,
 		}, 
 		Statement_List1R1, 
 	},
 	Statement_List1R2: {
 		symbols.NT_Statement_List, 1, 2, 
 		symbols.Symbols{  
-			symbols.NT_Statement_List, 
-			symbols.NT_Statement,
+			symbols.NT_Statement, 
+			symbols.NT_Statement_List,
 		}, 
 		Statement_List1R2, 
 	},

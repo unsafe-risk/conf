@@ -587,10 +587,10 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Function_Call_Argument_List0R0, p.cI, followSets[symbols.NT_Function_Call_Argument_List])
 			}
-		case slot.Function_Call_Argument_List1R0: // Function_Call_Argument_List : ∙Function_Call_Argument_List , Expression
+		case slot.Function_Call_Argument_List1R0: // Function_Call_Argument_List : ∙Expression , Function_Call_Argument_List
 
 			p.call(slot.Function_Call_Argument_List1R1, cU, p.cI)
-		case slot.Function_Call_Argument_List1R1: // Function_Call_Argument_List : Function_Call_Argument_List ∙, Expression
+		case slot.Function_Call_Argument_List1R1: // Function_Call_Argument_List : Expression ∙, Function_Call_Argument_List
 
 			if !p.testSelect(slot.Function_Call_Argument_List1R1) {
 				p.parseError(slot.Function_Call_Argument_List1R1, p.cI, first[slot.Function_Call_Argument_List1R1])
@@ -605,7 +605,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Function_Call_Argument_List1R3, cU, p.cI)
-		case slot.Function_Call_Argument_List1R3: // Function_Call_Argument_List : Function_Call_Argument_List , Expression ∙
+		case slot.Function_Call_Argument_List1R3: // Function_Call_Argument_List : Expression , Function_Call_Argument_List ∙
 
 			if p.follow(symbols.NT_Function_Call_Argument_List) {
 				p.rtn(symbols.NT_Function_Call_Argument_List, cU, p.cI)
@@ -1120,10 +1120,10 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Statement_List0R0, p.cI, followSets[symbols.NT_Statement_List])
 			}
-		case slot.Statement_List1R0: // Statement_List : ∙Statement_List Statement
+		case slot.Statement_List1R0: // Statement_List : ∙Statement Statement_List
 
 			p.call(slot.Statement_List1R1, cU, p.cI)
-		case slot.Statement_List1R1: // Statement_List : Statement_List ∙Statement
+		case slot.Statement_List1R1: // Statement_List : Statement ∙Statement_List
 
 			if !p.testSelect(slot.Statement_List1R1) {
 				p.parseError(slot.Statement_List1R1, p.cI, first[slot.Statement_List1R1])
@@ -1131,7 +1131,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Statement_List1R2, cU, p.cI)
-		case slot.Statement_List1R2: // Statement_List : Statement_List Statement ∙
+		case slot.Statement_List1R2: // Statement_List : Statement Statement_List ∙
 
 			if p.follow(symbols.NT_Statement_List) {
 				p.rtn(symbols.NT_Statement_List, cU, p.cI)
@@ -2043,9 +2043,8 @@ var first = []map[token.Type]string{
 	// Function_Call_Argument_List : Expression ∙
 	{
 		token.T_1: ")",
-		token.T_3: ",",
 	},
-	// Function_Call_Argument_List : ∙Function_Call_Argument_List , Expression
+	// Function_Call_Argument_List : ∙Expression , Function_Call_Argument_List
 	{
 		token.T_0:  "(",
 		token.T_2:  "++",
@@ -2055,11 +2054,11 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_20: "string_literal",
 	},
-	// Function_Call_Argument_List : Function_Call_Argument_List ∙, Expression
+	// Function_Call_Argument_List : Expression ∙, Function_Call_Argument_List
 	{
 		token.T_3: ",",
 	},
-	// Function_Call_Argument_List : Function_Call_Argument_List , ∙Expression
+	// Function_Call_Argument_List : Expression , ∙Function_Call_Argument_List
 	{
 		token.T_0:  "(",
 		token.T_2:  "++",
@@ -2069,10 +2068,9 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_20: "string_literal",
 	},
-	// Function_Call_Argument_List : Function_Call_Argument_List , Expression ∙
+	// Function_Call_Argument_List : Expression , Function_Call_Argument_List ∙
 	{
 		token.T_1: ")",
-		token.T_3: ",",
 	},
 	// Function_Call_Expression : ∙identifier ( Function_Call_Argument_List )
 	{
@@ -2855,23 +2853,9 @@ var first = []map[token.Type]string{
 	// Statement_List : Statement ∙
 	{
 		token.EOF:  "$",
-		token.T_0:  "(",
-		token.T_2:  "++",
-		token.T_4:  "--",
-		token.T_6:  ";",
-		token.T_11: "float_literal",
-		token.T_12: "for",
-		token.T_13: "func",
-		token.T_14: "identifier",
-		token.T_15: "if",
-		token.T_16: "integer_literal",
-		token.T_17: "let",
-		token.T_19: "return",
-		token.T_20: "string_literal",
-		token.T_21: "{",
 		token.T_22: "}",
 	},
-	// Statement_List : ∙Statement_List Statement
+	// Statement_List : ∙Statement Statement_List
 	{
 		token.T_0:  "(",
 		token.T_2:  "++",
@@ -2888,7 +2872,7 @@ var first = []map[token.Type]string{
 		token.T_20: "string_literal",
 		token.T_21: "{",
 	},
-	// Statement_List : Statement_List ∙Statement
+	// Statement_List : Statement ∙Statement_List
 	{
 		token.T_0:  "(",
 		token.T_2:  "++",
@@ -2905,23 +2889,9 @@ var first = []map[token.Type]string{
 		token.T_20: "string_literal",
 		token.T_21: "{",
 	},
-	// Statement_List : Statement_List Statement ∙
+	// Statement_List : Statement Statement_List ∙
 	{
 		token.EOF:  "$",
-		token.T_0:  "(",
-		token.T_2:  "++",
-		token.T_4:  "--",
-		token.T_6:  ";",
-		token.T_11: "float_literal",
-		token.T_12: "for",
-		token.T_13: "func",
-		token.T_14: "identifier",
-		token.T_15: "if",
-		token.T_16: "integer_literal",
-		token.T_17: "let",
-		token.T_19: "return",
-		token.T_20: "string_literal",
-		token.T_21: "{",
 		token.T_22: "}",
 	},
 }
@@ -3073,7 +3043,6 @@ var followSets = []map[token.Type]string{
 	// Function_Call_Argument_List
 	{
 		token.T_1: ")",
-		token.T_3: ",",
 	},
 	// Function_Call_Expression
 	{
@@ -3220,20 +3189,6 @@ var followSets = []map[token.Type]string{
 	// Statement_List
 	{
 		token.EOF:  "$",
-		token.T_0:  "(",
-		token.T_2:  "++",
-		token.T_4:  "--",
-		token.T_6:  ";",
-		token.T_11: "float_literal",
-		token.T_12: "for",
-		token.T_13: "func",
-		token.T_14: "identifier",
-		token.T_15: "if",
-		token.T_16: "integer_literal",
-		token.T_17: "let",
-		token.T_19: "return",
-		token.T_20: "string_literal",
-		token.T_21: "{",
 		token.T_22: "}",
 	},
 }

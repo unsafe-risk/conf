@@ -111,7 +111,7 @@ Operator: operator;
 
 Function_Call_Argument_List:
    Expression
-   | Function_Call_Argument_List "," Expression;
+   | Expression "," Function_Call_Argument_List;
 
 Function_Call_Expression:
    identifier "(" Function_Call_Argument_List ")" | identifier "(" ")";
@@ -130,7 +130,7 @@ For:
 
 Statement_List:
    Statement
-   | Statement_List Statement;
+   | Statement Statement_List;
 
 Compound_Statement:
    "{" "}"
