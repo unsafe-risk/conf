@@ -666,6 +666,38 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.IncDec_Expression1R0, p.cI, followSets[symbols.NT_IncDec_Expression])
 			}
+		case slot.IncDec_Expression2R0: // IncDec_Expression : ∙++ identifier
+
+			p.bsrSet.Add(slot.IncDec_Expression2R1, cU, p.cI, p.cI+1)
+			p.cI++
+			if !p.testSelect(slot.IncDec_Expression2R1) {
+				p.parseError(slot.IncDec_Expression2R1, p.cI, first[slot.IncDec_Expression2R1])
+				break
+			}
+
+			p.bsrSet.Add(slot.IncDec_Expression2R2, cU, p.cI, p.cI+1)
+			p.cI++
+			if p.follow(symbols.NT_IncDec_Expression) {
+				p.rtn(symbols.NT_IncDec_Expression, cU, p.cI)
+			} else {
+				p.parseError(slot.IncDec_Expression2R0, p.cI, followSets[symbols.NT_IncDec_Expression])
+			}
+		case slot.IncDec_Expression3R0: // IncDec_Expression : ∙-- identifier
+
+			p.bsrSet.Add(slot.IncDec_Expression3R1, cU, p.cI, p.cI+1)
+			p.cI++
+			if !p.testSelect(slot.IncDec_Expression3R1) {
+				p.parseError(slot.IncDec_Expression3R1, p.cI, first[slot.IncDec_Expression3R1])
+				break
+			}
+
+			p.bsrSet.Add(slot.IncDec_Expression3R2, cU, p.cI, p.cI+1)
+			p.cI++
+			if p.follow(symbols.NT_IncDec_Expression) {
+				p.rtn(symbols.NT_IncDec_Expression, cU, p.cI)
+			} else {
+				p.parseError(slot.IncDec_Expression3R0, p.cI, followSets[symbols.NT_IncDec_Expression])
+			}
 		case slot.Literal_Expression0R0: // Literal_Expression : ∙integer_literal
 
 			p.bsrSet.Add(slot.Literal_Expression0R1, cU, p.cI, p.cI+1)
@@ -1101,6 +1133,8 @@ var first = []map[token.Type]string{
 	},
 	// Assignment_Statement : identifier = ∙Expression ;
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
 		token.T_13: "integer_literal",
@@ -1113,6 +1147,8 @@ var first = []map[token.Type]string{
 	// Assignment_Statement : identifier = Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1136,6 +1172,8 @@ var first = []map[token.Type]string{
 	// Compound_Statement : { } ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1154,6 +1192,8 @@ var first = []map[token.Type]string{
 	},
 	// Compound_Statement : { ∙Statement_List }
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1172,6 +1212,8 @@ var first = []map[token.Type]string{
 	// Compound_Statement : { Statement_List } ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1206,6 +1248,8 @@ var first = []map[token.Type]string{
 	},
 	// Declaration_Statement : let identifier : identifier = ∙Expression ;
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
 		token.T_13: "integer_literal",
@@ -1218,6 +1262,8 @@ var first = []map[token.Type]string{
 	// Declaration_Statement : let identifier : identifier = Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1256,6 +1302,8 @@ var first = []map[token.Type]string{
 	},
 	// Declaration_Statement : let config identifier : identifier = ∙Expression ;
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
 		token.T_13: "integer_literal",
@@ -1268,6 +1316,8 @@ var first = []map[token.Type]string{
 	// Declaration_Statement : let config identifier : identifier = Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1287,6 +1337,8 @@ var first = []map[token.Type]string{
 	// Empty_Statement : ; ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1301,6 +1353,8 @@ var first = []map[token.Type]string{
 	},
 	// Expression : ∙IncDec_Expression
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_12: "identifier",
 	},
 	// Expression : IncDec_Expression ∙
@@ -1330,6 +1384,8 @@ var first = []map[token.Type]string{
 	},
 	// Expression_Statement : ∙Expression ;
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
 		token.T_13: "integer_literal",
@@ -1343,6 +1399,8 @@ var first = []map[token.Type]string{
 	{
 		token.EOF:  "$",
 		token.T_1:  ")",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1363,6 +1421,8 @@ var first = []map[token.Type]string{
 	{
 		token.EOF:  "$",
 		token.T_1:  ")",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1385,6 +1445,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( ∙Simple_Statement Expression_Statement Expression ) Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
@@ -1394,6 +1456,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( Simple_Statement ∙Expression_Statement Expression ) Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
@@ -1402,6 +1466,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( Simple_Statement Expression_Statement ∙Expression ) Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
 		token.T_13: "integer_literal",
@@ -1413,6 +1479,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( Simple_Statement Expression_Statement Expression ) ∙Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1427,6 +1495,8 @@ var first = []map[token.Type]string{
 	// For : for ( Simple_Statement Expression_Statement Expression ) Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1449,6 +1519,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( ∙Simple_Statement Expression_Statement ) Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
@@ -1458,6 +1530,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( Simple_Statement ∙Expression_Statement ) Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
@@ -1470,6 +1544,8 @@ var first = []map[token.Type]string{
 	},
 	// For : for ( Simple_Statement Expression_Statement ) ∙Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1484,6 +1560,8 @@ var first = []map[token.Type]string{
 	// For : for ( Simple_Statement Expression_Statement ) Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1599,6 +1677,8 @@ var first = []map[token.Type]string{
 	},
 	// Function_Statement : func identifier ( Function_Argument_List ) identifier ∙Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1613,6 +1693,8 @@ var first = []map[token.Type]string{
 	// Function_Statement : func identifier ( Function_Argument_List ) identifier Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1647,6 +1729,8 @@ var first = []map[token.Type]string{
 	},
 	// Function_Statement : func identifier ( ) identifier ∙Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1661,6 +1745,8 @@ var first = []map[token.Type]string{
 	// Function_Statement : func identifier ( ) identifier Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1675,6 +1761,8 @@ var first = []map[token.Type]string{
 	},
 	// GoGLL : ∙Statement_List
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1725,6 +1813,32 @@ var first = []map[token.Type]string{
 		token.T_1: ")",
 		token.T_5: ";",
 	},
+	// IncDec_Expression : ∙++ identifier
+	{
+		token.T_2: "++",
+	},
+	// IncDec_Expression : ++ ∙identifier
+	{
+		token.T_12: "identifier",
+	},
+	// IncDec_Expression : ++ identifier ∙
+	{
+		token.T_1: ")",
+		token.T_5: ";",
+	},
+	// IncDec_Expression : ∙-- identifier
+	{
+		token.T_3: "--",
+	},
+	// IncDec_Expression : -- ∙identifier
+	{
+		token.T_12: "identifier",
+	},
+	// IncDec_Expression : -- identifier ∙
+	{
+		token.T_1: ")",
+		token.T_5: ";",
+	},
 	// Literal_Expression : ∙integer_literal
 	{
 		token.T_13: "integer_literal",
@@ -1758,6 +1872,8 @@ var first = []map[token.Type]string{
 	},
 	// Return_Statement : return ∙Expression ;
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
 		token.T_13: "integer_literal",
@@ -1770,6 +1886,8 @@ var first = []map[token.Type]string{
 	// Return_Statement : return Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1789,6 +1907,8 @@ var first = []map[token.Type]string{
 	// Simple_Statement : Declaration_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1808,6 +1928,8 @@ var first = []map[token.Type]string{
 	// Simple_Statement : Assignment_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1822,6 +1944,8 @@ var first = []map[token.Type]string{
 	},
 	// Simple_Statement : ∙Expression_Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
@@ -1831,6 +1955,8 @@ var first = []map[token.Type]string{
 	// Simple_Statement : Expression_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1850,6 +1976,8 @@ var first = []map[token.Type]string{
 	// Simple_Statement : Empty_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1869,6 +1997,8 @@ var first = []map[token.Type]string{
 	// Statement : Empty_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1883,6 +2013,8 @@ var first = []map[token.Type]string{
 	},
 	// Statement : ∙Simple_Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
@@ -1893,6 +2025,8 @@ var first = []map[token.Type]string{
 	// Statement : Simple_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1912,6 +2046,8 @@ var first = []map[token.Type]string{
 	// Statement : Compound_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1931,6 +2067,8 @@ var first = []map[token.Type]string{
 	// Statement : Function_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1950,6 +2088,8 @@ var first = []map[token.Type]string{
 	// Statement : Return_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1969,6 +2109,8 @@ var first = []map[token.Type]string{
 	// Statement : For ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1983,6 +2125,8 @@ var first = []map[token.Type]string{
 	},
 	// Statement_List : ∙Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1997,6 +2141,8 @@ var first = []map[token.Type]string{
 	// Statement_List : Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2011,6 +2157,8 @@ var first = []map[token.Type]string{
 	},
 	// Statement_List : ∙Statement_List Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2024,6 +2172,8 @@ var first = []map[token.Type]string{
 	},
 	// Statement_List : Statement_List ∙Statement
 	{
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2038,6 +2188,8 @@ var first = []map[token.Type]string{
 	// Statement_List : Statement_List Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2056,6 +2208,8 @@ var followSets = []map[token.Type]string{
 	// Assignment_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2071,6 +2225,8 @@ var followSets = []map[token.Type]string{
 	// Compound_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2086,6 +2242,8 @@ var followSets = []map[token.Type]string{
 	// Declaration_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2101,6 +2259,8 @@ var followSets = []map[token.Type]string{
 	// Empty_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2122,6 +2282,8 @@ var followSets = []map[token.Type]string{
 	{
 		token.EOF:  "$",
 		token.T_1:  ")",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2137,6 +2299,8 @@ var followSets = []map[token.Type]string{
 	// For
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2167,6 +2331,8 @@ var followSets = []map[token.Type]string{
 	// Function_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2201,6 +2367,8 @@ var followSets = []map[token.Type]string{
 	// Return_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2216,6 +2384,8 @@ var followSets = []map[token.Type]string{
 	// Simple_Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2231,6 +2401,8 @@ var followSets = []map[token.Type]string{
 	// Statement
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -2246,6 +2418,8 @@ var followSets = []map[token.Type]string{
 	// Statement_List
 	{
 		token.EOF:  "$",
+		token.T_2:  "++",
+		token.T_3:  "--",
 		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",

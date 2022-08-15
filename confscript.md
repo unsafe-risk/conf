@@ -82,7 +82,7 @@ Simple_Statement:
    | Expression_Statement
    | Empty_Statement;
 
-IncDec_Expression: identifier "++" | identifier "--";
+IncDec_Expression: identifier "++" | identifier "--" | "++" identifier | "--" identifier;
 
 Literal_Expression:
    integer_literal

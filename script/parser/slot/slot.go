@@ -112,6 +112,12 @@ const(
 	IncDec_Expression1R0
 	IncDec_Expression1R1
 	IncDec_Expression1R2
+	IncDec_Expression2R0
+	IncDec_Expression2R1
+	IncDec_Expression2R2
+	IncDec_Expression3R0
+	IncDec_Expression3R1
+	IncDec_Expression3R2
 	Literal_Expression0R0
 	Literal_Expression0R1
 	Literal_Expression1R0
@@ -1270,6 +1276,54 @@ var slots = map[Label]*Slot{
 		}, 
 		IncDec_Expression1R2, 
 	},
+	IncDec_Expression2R0: {
+		symbols.NT_IncDec_Expression, 2, 0, 
+		symbols.Symbols{  
+			symbols.T_2, 
+			symbols.T_12,
+		}, 
+		IncDec_Expression2R0, 
+	},
+	IncDec_Expression2R1: {
+		symbols.NT_IncDec_Expression, 2, 1, 
+		symbols.Symbols{  
+			symbols.T_2, 
+			symbols.T_12,
+		}, 
+		IncDec_Expression2R1, 
+	},
+	IncDec_Expression2R2: {
+		symbols.NT_IncDec_Expression, 2, 2, 
+		symbols.Symbols{  
+			symbols.T_2, 
+			symbols.T_12,
+		}, 
+		IncDec_Expression2R2, 
+	},
+	IncDec_Expression3R0: {
+		symbols.NT_IncDec_Expression, 3, 0, 
+		symbols.Symbols{  
+			symbols.T_3, 
+			symbols.T_12,
+		}, 
+		IncDec_Expression3R0, 
+	},
+	IncDec_Expression3R1: {
+		symbols.NT_IncDec_Expression, 3, 1, 
+		symbols.Symbols{  
+			symbols.T_3, 
+			symbols.T_12,
+		}, 
+		IncDec_Expression3R1, 
+	},
+	IncDec_Expression3R2: {
+		symbols.NT_IncDec_Expression, 3, 2, 
+		symbols.Symbols{  
+			symbols.T_3, 
+			symbols.T_12,
+		}, 
+		IncDec_Expression3R2, 
+	},
 	Literal_Expression0R0: {
 		symbols.NT_Literal_Expression, 0, 0, 
 		symbols.Symbols{  
@@ -1629,6 +1683,12 @@ var slotIndex = map[Index]Label {
 	Index{ symbols.NT_IncDec_Expression,1,0 }: IncDec_Expression1R0,
 	Index{ symbols.NT_IncDec_Expression,1,1 }: IncDec_Expression1R1,
 	Index{ symbols.NT_IncDec_Expression,1,2 }: IncDec_Expression1R2,
+	Index{ symbols.NT_IncDec_Expression,2,0 }: IncDec_Expression2R0,
+	Index{ symbols.NT_IncDec_Expression,2,1 }: IncDec_Expression2R1,
+	Index{ symbols.NT_IncDec_Expression,2,2 }: IncDec_Expression2R2,
+	Index{ symbols.NT_IncDec_Expression,3,0 }: IncDec_Expression3R0,
+	Index{ symbols.NT_IncDec_Expression,3,1 }: IncDec_Expression3R1,
+	Index{ symbols.NT_IncDec_Expression,3,2 }: IncDec_Expression3R2,
 	Index{ symbols.NT_Literal_Expression,0,0 }: Literal_Expression0R0,
 	Index{ symbols.NT_Literal_Expression,0,1 }: Literal_Expression0R1,
 	Index{ symbols.NT_Literal_Expression,1,0 }: Literal_Expression1R0,
@@ -1678,7 +1738,7 @@ var alternates = map[symbols.NT][]Label{
 	symbols.NT_Return_Statement:[]Label{ Return_Statement0R0 },
 	symbols.NT_Empty_Statement:[]Label{ Empty_Statement0R0 },
 	symbols.NT_Simple_Statement:[]Label{ Simple_Statement0R0,Simple_Statement1R0,Simple_Statement2R0,Simple_Statement3R0 },
-	symbols.NT_IncDec_Expression:[]Label{ IncDec_Expression0R0,IncDec_Expression1R0 },
+	symbols.NT_IncDec_Expression:[]Label{ IncDec_Expression0R0,IncDec_Expression1R0,IncDec_Expression2R0,IncDec_Expression3R0 },
 	symbols.NT_Literal_Expression:[]Label{ Literal_Expression0R0,Literal_Expression1R0,Literal_Expression2R0 },
 	symbols.NT_Identifier_Expression:[]Label{ Identifier_Expression0R0 },
 	symbols.NT_Expression:[]Label{ Expression0R0,Expression1R0,Expression2R0 },
