@@ -12,6 +12,10 @@ var testdata = `
 func ID(X:U64) U64 {
 	return X;
 }
+
+func ID(X:U64) U64 {
+	return X;
+}
 `
 
 func main() {

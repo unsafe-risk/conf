@@ -1197,14 +1197,14 @@ var slots = map[Label]*Slot{
 	GoGLL0R0: {
 		symbols.NT_GoGLL, 0, 0, 
 		symbols.Symbols{  
-			symbols.NT_Statement,
+			symbols.NT_Statement_List,
 		}, 
 		GoGLL0R0, 
 	},
 	GoGLL0R1: {
 		symbols.NT_GoGLL, 0, 1, 
 		symbols.Symbols{  
-			symbols.NT_Statement,
+			symbols.NT_Statement_List,
 		}, 
 		GoGLL0R1, 
 	},

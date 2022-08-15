@@ -615,10 +615,10 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Function_Statement1R0, p.cI, followSets[symbols.NT_Function_Statement])
 			}
-		case slot.GoGLL0R0: // GoGLL : ∙Statement
+		case slot.GoGLL0R0: // GoGLL : ∙Statement_List
 
 			p.call(slot.GoGLL0R1, cU, p.cI)
-		case slot.GoGLL0R1: // GoGLL : Statement ∙
+		case slot.GoGLL0R1: // GoGLL : Statement_List ∙
 
 			if p.follow(symbols.NT_GoGLL) {
 				p.rtn(symbols.NT_GoGLL, cU, p.cI)
@@ -1673,7 +1673,7 @@ var first = []map[token.Type]string{
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
-	// GoGLL : ∙Statement
+	// GoGLL : ∙Statement_List
 	{
 		token.T_9:  "float_literal",
 		token.T_10: "for",
@@ -1686,7 +1686,7 @@ var first = []map[token.Type]string{
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
-	// GoGLL : Statement ∙
+	// GoGLL : Statement_List ∙
 	{
 		token.EOF: "$",
 	},
@@ -1996,6 +1996,7 @@ var first = []map[token.Type]string{
 	},
 	// Statement_List : Statement ∙
 	{
+		token.EOF:  "$",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
 		token.T_11: "function",
@@ -2036,6 +2037,7 @@ var first = []map[token.Type]string{
 	},
 	// Statement_List : Statement_List Statement ∙
 	{
+		token.EOF:  "$",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
 		token.T_11: "function",
@@ -2243,6 +2245,7 @@ var followSets = []map[token.Type]string{
 	},
 	// Statement_List
 	{
+		token.EOF:  "$",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
 		token.T_11: "function",

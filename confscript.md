@@ -2,7 +2,7 @@
 ```
 package "v8.run/go/conf/script"
 
-GoGLL: Statement;
+GoGLL: Statement_List;
 ```
 
 # Lex specification
