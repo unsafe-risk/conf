@@ -24,6 +24,8 @@ const(
 	NT_Function_Argument 
 	NT_Function_Argument_List 
 	NT_Function_Argument_List_Body 
+	NT_Function_Call_Argument_List 
+	NT_Function_Call_Expression 
 	NT_Function_Statement 
 	NT_GoGLL 
 	NT_Identifier_Expression 
@@ -42,23 +44,24 @@ const(
 	T_0 T = iota // ( 
 	T_1  // ) 
 	T_2  // ++ 
-	T_3  // -- 
-	T_4  // : 
-	T_5  // ; 
-	T_6  // = 
-	T_7  // comment 
-	T_8  // config 
-	T_9  // float_literal 
-	T_10  // for 
-	T_11  // func 
-	T_12  // identifier 
-	T_13  // integer_literal 
-	T_14  // let 
-	T_15  // operator 
-	T_16  // return 
-	T_17  // string_literal 
-	T_18  // { 
-	T_19  // } 
+	T_3  // , 
+	T_4  // -- 
+	T_5  // : 
+	T_6  // ; 
+	T_7  // = 
+	T_8  // comment 
+	T_9  // config 
+	T_10  // float_literal 
+	T_11  // for 
+	T_12  // func 
+	T_13  // identifier 
+	T_14  // integer_literal 
+	T_15  // let 
+	T_16  // operator 
+	T_17  // return 
+	T_18  // string_literal 
+	T_19  // { 
+	T_20  // } 
 )
 
 type Symbols []Symbol
@@ -98,6 +101,8 @@ var ntToString = []string {
 	"Function_Argument", /* NT_Function_Argument */
 	"Function_Argument_List", /* NT_Function_Argument_List */
 	"Function_Argument_List_Body", /* NT_Function_Argument_List_Body */
+	"Function_Call_Argument_List", /* NT_Function_Call_Argument_List */
+	"Function_Call_Expression", /* NT_Function_Call_Expression */
 	"Function_Statement", /* NT_Function_Statement */
 	"GoGLL", /* NT_GoGLL */
 	"Identifier_Expression", /* NT_Identifier_Expression */
@@ -114,23 +119,24 @@ var tToString = []string {
 	"(", /* T_0 */
 	")", /* T_1 */
 	"++", /* T_2 */
-	"--", /* T_3 */
-	":", /* T_4 */
-	";", /* T_5 */
-	"=", /* T_6 */
-	"comment", /* T_7 */
-	"config", /* T_8 */
-	"float_literal", /* T_9 */
-	"for", /* T_10 */
-	"func", /* T_11 */
-	"identifier", /* T_12 */
-	"integer_literal", /* T_13 */
-	"let", /* T_14 */
-	"operator", /* T_15 */
-	"return", /* T_16 */
-	"string_literal", /* T_17 */
-	"{", /* T_18 */
-	"}", /* T_19 */ 
+	",", /* T_3 */
+	"--", /* T_4 */
+	":", /* T_5 */
+	";", /* T_6 */
+	"=", /* T_7 */
+	"comment", /* T_8 */
+	"config", /* T_9 */
+	"float_literal", /* T_10 */
+	"for", /* T_11 */
+	"func", /* T_12 */
+	"identifier", /* T_13 */
+	"integer_literal", /* T_14 */
+	"let", /* T_15 */
+	"operator", /* T_16 */
+	"return", /* T_17 */
+	"string_literal", /* T_18 */
+	"{", /* T_19 */
+	"}", /* T_20 */ 
 }
 
 var stringNT = map[string]NT{ 
@@ -144,6 +150,8 @@ var stringNT = map[string]NT{
 	"Function_Argument":NT_Function_Argument,
 	"Function_Argument_List":NT_Function_Argument_List,
 	"Function_Argument_List_Body":NT_Function_Argument_List_Body,
+	"Function_Call_Argument_List":NT_Function_Call_Argument_List,
+	"Function_Call_Expression":NT_Function_Call_Expression,
 	"Function_Statement":NT_Function_Statement,
 	"GoGLL":NT_GoGLL,
 	"Identifier_Expression":NT_Identifier_Expression,

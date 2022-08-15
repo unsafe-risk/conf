@@ -105,11 +105,19 @@ Identifier_Expression: identifier;
 
 Operator: operator;
 
+Function_Call_Argument_List:
+   Expression
+   | Function_Call_Argument_List "," Expression;
+
+Function_Call_Expression:
+   identifier "(" Function_Call_Argument_List ")" | identifier "(" ")";
+
 Expression:
    "(" Expression ")"
-   | IncDec_Expression
    | Literal_Expression
    | Identifier_Expression
+   | Function_Call_Expression
+   | IncDec_Expression
    | Expression Operator Expression;
 
 For:
