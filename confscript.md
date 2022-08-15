@@ -1,0 +1,112 @@
+# The Conf Script Language
+```
+package "v8.run/go/conf/script"
+
+GoGLL: Statement;
+```
+
+# Lex specification
+```
+string_literal:
+   '"'
+   {
+      (
+         '\\' .
+         | not "\"\\"
+      )
+   }
+   '"';
+
+integer_literal:
+   (
+      [any "-+"] any "0123456789" {any "0123456789_"}
+      | '0' 'x' any "0123456789abcdefABCDEF" {any "0123456789abcdefABCDEF_"}
+      | '0' 'b' any "01" {any "01_"}
+      | '0' 'o' any "01234567" {any "01234567_"}
+   );
+
+float_literal:
+   (
+      [any "-+"] any "0123456789" '.' [any "0123456789"]
+      |'.' <any "0123456789">
+   );
+
+identifier: letter {letter | number | '_'};
+
+whitespace: any " \t\r\n";
+
+function: 'f' 'n';
+let: 'l' 'e' 't';
+for: 'f' 'o' 'r';
+in: 'i' 'n';
+if: 'i' 'f';
+else: 'e' 'l' 's' 'e';
+while: 'w' 'h' 'i' 'l' 'e';
+return: 'r' 'e' 't' 'u' 'r' 'n';
+break: 'b' 'r' 'e' 'a' 'k';
+continue: 'c' 'o' 'n' 't' 'i' 'n' 'u' 'e';
+config: 'c' 'o' 'n' 'f' 'i' 'g';
+
+inc: '+' '+';
+dec: '-' '-';
+
+colon: ':';
+assign: '=';
+semicolon: ';';
+
+lparen: '(';
+rparen: ')';
+
+lbrace: '{';
+rbrace: '}';
+
+!comment: (
+      '/' '/' {not "\n"}
+      | '/' '*' {not "*"| '*' not "/" } '*' '/'
+      | '#' {not "\n"}
+   );
+```
+
+# Syntax
+
+```
+Declaration_Statement:
+   let identifier colon identifier assign Expression semicolon;
+
+Assignment_Statement:
+   identifier assign Expression semicolon;
+
+Expression_Statement:
+   Expression semicolon | semicolon;
+
+Empty_Statement:
+   semicolon;
+
+Simple_Statement:
+   Declaration_Statement
+   | Assignment_Statement
+   | Expression_Statement
+   | Empty_Statement;
+
+IncDec_Expression: identifier inc | identifier dec;
+
+Expression:
+   IncDec_Expression;
+
+For:
+   for lparen Simple_Statement Expression_Statement Expression rparen Statement
+   | for lparen Simple_Statement Expression_Statement rparen Statement;
+
+Statement_List:
+   Statement
+   | Statement_List Statement;
+
+Compound_Statement:
+   lbrace rbrace
+   | lbrace Statement_List rbrace;
+
+Statement:
+   Compound_Statement
+   | Simple_Statement
+   | For;
+```
