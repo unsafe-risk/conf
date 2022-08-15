@@ -26,8 +26,10 @@ const(
 	NT_Function_Argument_List_Body 
 	NT_Function_Statement 
 	NT_GoGLL 
+	NT_Identifier_Expression 
 	NT_IncDec_Expression 
 	NT_Literal_Expression 
+	NT_Return_Statement 
 	NT_Simple_Statement 
 	NT_Statement 
 	NT_Statement_List 
@@ -104,8 +106,10 @@ var ntToString = []string {
 	"Function_Argument_List_Body", /* NT_Function_Argument_List_Body */
 	"Function_Statement", /* NT_Function_Statement */
 	"GoGLL", /* NT_GoGLL */
+	"Identifier_Expression", /* NT_Identifier_Expression */
 	"IncDec_Expression", /* NT_IncDec_Expression */
 	"Literal_Expression", /* NT_Literal_Expression */
+	"Return_Statement", /* NT_Return_Statement */
 	"Simple_Statement", /* NT_Simple_Statement */
 	"Statement", /* NT_Statement */
 	"Statement_List", /* NT_Statement_List */ 
@@ -154,8 +158,10 @@ var stringNT = map[string]NT{
 	"Function_Argument_List_Body":NT_Function_Argument_List_Body,
 	"Function_Statement":NT_Function_Statement,
 	"GoGLL":NT_GoGLL,
+	"Identifier_Expression":NT_Identifier_Expression,
 	"IncDec_Expression":NT_IncDec_Expression,
 	"Literal_Expression":NT_Literal_Expression,
+	"Return_Statement":NT_Return_Statement,
 	"Simple_Statement":NT_Simple_Statement,
 	"Statement":NT_Statement,
 	"Statement_List":NT_Statement_List,

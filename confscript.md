@@ -98,6 +98,9 @@ Function_Statement:
    function identifier lparen Function_Argument_List rparen identifier Statement
    | function identifier lparen rparen identifier Statement;
 
+Return_Statement:
+   return Expression semicolon;
+
 Empty_Statement:
    semicolon;
 
@@ -114,9 +117,12 @@ Literal_Expression:
    | float_literal
    | string_literal;
 
+Identifier_Expression: identifier;
+
 Expression:
    IncDec_Expression
-   | Literal_Expression;
+   | Literal_Expression
+   | Identifier_Expression;
 
 For:
    for lparen Simple_Statement Expression_Statement Expression rparen Statement
@@ -135,5 +141,6 @@ Statement:
    | Simple_Statement
    | Compound_Statement
    | Function_Statement
+   | Return_Statement
    | For;
 ```

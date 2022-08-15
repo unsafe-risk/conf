@@ -9,8 +9,8 @@ import (
 )
 
 var testdata = `
-func AddOne(X:U64, Y:U64) VOID {
-
+func ID(X:U64) U64 {
+	return X;
 }
 `
 

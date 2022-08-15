@@ -276,6 +276,16 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Expression1R0, p.cI, followSets[symbols.NT_Expression])
 			}
+		case slot.Expression2R0: // Expression : ∙Identifier_Expression
+
+			p.call(slot.Expression2R1, cU, p.cI)
+		case slot.Expression2R1: // Expression : Identifier_Expression ∙
+
+			if p.follow(symbols.NT_Expression) {
+				p.rtn(symbols.NT_Expression, cU, p.cI)
+			} else {
+				p.parseError(slot.Expression2R0, p.cI, followSets[symbols.NT_Expression])
+			}
 		case slot.Expression_Statement0R0: // Expression_Statement : ∙Expression semicolon
 
 			p.call(slot.Expression_Statement0R1, cU, p.cI)
@@ -615,6 +625,15 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.GoGLL0R0, p.cI, followSets[symbols.NT_GoGLL])
 			}
+		case slot.Identifier_Expression0R0: // Identifier_Expression : ∙identifier
+
+			p.bsrSet.Add(slot.Identifier_Expression0R1, cU, p.cI, p.cI+1)
+			p.cI++
+			if p.follow(symbols.NT_Identifier_Expression) {
+				p.rtn(symbols.NT_Identifier_Expression, cU, p.cI)
+			} else {
+				p.parseError(slot.Identifier_Expression0R0, p.cI, followSets[symbols.NT_Identifier_Expression])
+			}
 		case slot.IncDec_Expression0R0: // IncDec_Expression : ∙identifier inc
 
 			p.bsrSet.Add(slot.IncDec_Expression0R1, cU, p.cI, p.cI+1)
@@ -673,6 +692,30 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 				p.rtn(symbols.NT_Literal_Expression, cU, p.cI)
 			} else {
 				p.parseError(slot.Literal_Expression2R0, p.cI, followSets[symbols.NT_Literal_Expression])
+			}
+		case slot.Return_Statement0R0: // Return_Statement : ∙return Expression semicolon
+
+			p.bsrSet.Add(slot.Return_Statement0R1, cU, p.cI, p.cI+1)
+			p.cI++
+			if !p.testSelect(slot.Return_Statement0R1) {
+				p.parseError(slot.Return_Statement0R1, p.cI, first[slot.Return_Statement0R1])
+				break
+			}
+
+			p.call(slot.Return_Statement0R2, cU, p.cI)
+		case slot.Return_Statement0R2: // Return_Statement : return Expression ∙semicolon
+
+			if !p.testSelect(slot.Return_Statement0R2) {
+				p.parseError(slot.Return_Statement0R2, p.cI, first[slot.Return_Statement0R2])
+				break
+			}
+
+			p.bsrSet.Add(slot.Return_Statement0R3, cU, p.cI, p.cI+1)
+			p.cI++
+			if p.follow(symbols.NT_Return_Statement) {
+				p.rtn(symbols.NT_Return_Statement, cU, p.cI)
+			} else {
+				p.parseError(slot.Return_Statement0R0, p.cI, followSets[symbols.NT_Return_Statement])
 			}
 		case slot.Simple_Statement0R0: // Simple_Statement : ∙Declaration_Statement
 
@@ -754,15 +797,25 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Statement3R0, p.cI, followSets[symbols.NT_Statement])
 			}
-		case slot.Statement4R0: // Statement : ∙For
+		case slot.Statement4R0: // Statement : ∙Return_Statement
 
 			p.call(slot.Statement4R1, cU, p.cI)
-		case slot.Statement4R1: // Statement : For ∙
+		case slot.Statement4R1: // Statement : Return_Statement ∙
 
 			if p.follow(symbols.NT_Statement) {
 				p.rtn(symbols.NT_Statement, cU, p.cI)
 			} else {
 				p.parseError(slot.Statement4R0, p.cI, followSets[symbols.NT_Statement])
+			}
+		case slot.Statement5R0: // Statement : ∙For
+
+			p.call(slot.Statement5R1, cU, p.cI)
+		case slot.Statement5R1: // Statement : For ∙
+
+			if p.follow(symbols.NT_Statement) {
+				p.rtn(symbols.NT_Statement, cU, p.cI)
+			} else {
+				p.parseError(slot.Statement5R0, p.cI, followSets[symbols.NT_Statement])
 			}
 		case slot.Statement_List0R0: // Statement_List : ∙Statement
 
@@ -1068,6 +1121,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1090,6 +1144,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1106,6 +1161,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1124,6 +1180,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1169,6 +1226,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1218,6 +1276,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1236,6 +1295,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1255,6 +1315,15 @@ var first = []map[token.Type]string{
 		token.T_24: "string_literal",
 	},
 	// Expression : Literal_Expression ∙
+	{
+		token.T_22: "rparen",
+		token.T_23: "semicolon",
+	},
+	// Expression : ∙Identifier_Expression
+	{
+		token.T_12: "identifier",
+	},
+	// Expression : Identifier_Expression ∙
 	{
 		token.T_22: "rparen",
 		token.T_23: "semicolon",
@@ -1281,6 +1350,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_22: "rparen",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
@@ -1300,6 +1370,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_22: "rparen",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
@@ -1349,6 +1420,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1363,6 +1435,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1404,6 +1477,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1418,6 +1492,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1531,6 +1606,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1545,6 +1621,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1577,6 +1654,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1591,6 +1669,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1603,12 +1682,22 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
 	// GoGLL : Statement ∙
 	{
 		token.EOF: "$",
+	},
+	// Identifier_Expression : ∙identifier
+	{
+		token.T_12: "identifier",
+	},
+	// Identifier_Expression : identifier ∙
+	{
+		token.T_22: "rparen",
+		token.T_23: "semicolon",
 	},
 	// IncDec_Expression : ∙identifier inc
 	{
@@ -1663,6 +1752,36 @@ var first = []map[token.Type]string{
 		token.T_22: "rparen",
 		token.T_23: "semicolon",
 	},
+	// Return_Statement : ∙return Expression semicolon
+	{
+		token.T_21: "return",
+	},
+	// Return_Statement : return ∙Expression semicolon
+	{
+		token.T_9:  "float_literal",
+		token.T_12: "identifier",
+		token.T_16: "integer_literal",
+		token.T_24: "string_literal",
+	},
+	// Return_Statement : return Expression ∙semicolon
+	{
+		token.T_23: "semicolon",
+	},
+	// Return_Statement : return Expression semicolon ∙
+	{
+		token.EOF:  "$",
+		token.T_9:  "float_literal",
+		token.T_10: "for",
+		token.T_11: "function",
+		token.T_12: "identifier",
+		token.T_16: "integer_literal",
+		token.T_17: "lbrace",
+		token.T_18: "let",
+		token.T_20: "rbrace",
+		token.T_21: "return",
+		token.T_23: "semicolon",
+		token.T_24: "string_literal",
+	},
 	// Simple_Statement : ∙Declaration_Statement
 	{
 		token.T_18: "let",
@@ -1678,6 +1797,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1696,6 +1816,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1718,6 +1839,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1736,6 +1858,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1754,6 +1877,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1777,6 +1901,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1795,6 +1920,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1813,6 +1939,26 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
+		token.T_23: "semicolon",
+		token.T_24: "string_literal",
+	},
+	// Statement : ∙Return_Statement
+	{
+		token.T_21: "return",
+	},
+	// Statement : Return_Statement ∙
+	{
+		token.EOF:  "$",
+		token.T_9:  "float_literal",
+		token.T_10: "for",
+		token.T_11: "function",
+		token.T_12: "identifier",
+		token.T_16: "integer_literal",
+		token.T_17: "lbrace",
+		token.T_18: "let",
+		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1831,6 +1977,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1843,6 +1990,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1856,6 +2004,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1868,6 +2017,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1880,6 +2030,7 @@ var first = []map[token.Type]string{
 		token.T_16: "integer_literal",
 		token.T_17: "lbrace",
 		token.T_18: "let",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1893,6 +2044,7 @@ var first = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1910,6 +2062,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1924,6 +2077,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1938,6 +2092,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1952,6 +2107,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -1971,6 +2127,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_22: "rparen",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
@@ -1986,6 +2143,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -2015,12 +2173,18 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
 	// GoGLL
 	{
 		token.EOF: "$",
+	},
+	// Identifier_Expression
+	{
+		token.T_22: "rparen",
+		token.T_23: "semicolon",
 	},
 	// IncDec_Expression
 	{
@@ -2031,6 +2195,21 @@ var followSets = []map[token.Type]string{
 	{
 		token.T_22: "rparen",
 		token.T_23: "semicolon",
+	},
+	// Return_Statement
+	{
+		token.EOF:  "$",
+		token.T_9:  "float_literal",
+		token.T_10: "for",
+		token.T_11: "function",
+		token.T_12: "identifier",
+		token.T_16: "integer_literal",
+		token.T_17: "lbrace",
+		token.T_18: "let",
+		token.T_20: "rbrace",
+		token.T_21: "return",
+		token.T_23: "semicolon",
+		token.T_24: "string_literal",
 	},
 	// Simple_Statement
 	{
@@ -2043,6 +2222,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -2057,6 +2237,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
@@ -2070,6 +2251,7 @@ var followSets = []map[token.Type]string{
 		token.T_17: "lbrace",
 		token.T_18: "let",
 		token.T_20: "rbrace",
+		token.T_21: "return",
 		token.T_23: "semicolon",
 		token.T_24: "string_literal",
 	},
