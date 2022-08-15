@@ -504,7 +504,7 @@ lazy_static! {
 
     static ref SLOTS: HashMap<Label, Slot> = {
         let mut m = HashMap::new(); 
-        // Assignment_Statement : ∙identifier assign Expression semicolon 
+        // Assignment_Statement : ∙identifier = Expression ; 
         m.insert(Label::Assignment_Statement0R0, 
             Slot{
                 nt: NT::Assignment_Statement,
@@ -512,13 +512,13 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Assignment_Statement0R0,
             });
-        // Assignment_Statement : identifier ∙assign Expression semicolon 
+        // Assignment_Statement : identifier ∙= Expression ; 
         m.insert(Label::Assignment_Statement0R1, 
             Slot{
                 nt: NT::Assignment_Statement,
@@ -526,13 +526,13 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Assignment_Statement0R1,
             });
-        // Assignment_Statement : identifier assign ∙Expression semicolon 
+        // Assignment_Statement : identifier = ∙Expression ; 
         m.insert(Label::Assignment_Statement0R2, 
             Slot{
                 nt: NT::Assignment_Statement,
@@ -540,13 +540,13 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Assignment_Statement0R2,
             });
-        // Assignment_Statement : identifier assign Expression ∙semicolon 
+        // Assignment_Statement : identifier = Expression ∙; 
         m.insert(Label::Assignment_Statement0R3, 
             Slot{
                 nt: NT::Assignment_Statement,
@@ -554,13 +554,13 @@ lazy_static! {
                 pos: 3,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Assignment_Statement0R3,
             });
-        // Assignment_Statement : identifier assign Expression semicolon ∙
+        // Assignment_Statement : identifier = Expression ; ∙
         m.insert(Label::Assignment_Statement0R4, 
             Slot{
                 nt: NT::Assignment_Statement,
@@ -568,13 +568,13 @@ lazy_static! {
                 pos: 4,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Assignment_Statement0R4,
             });
-        // Compound_Statement : ∙lbrace rbrace 
+        // Compound_Statement : ∙{ } 
         m.insert(Label::Compound_Statement0R0, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -582,11 +582,11 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T17), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement0R0,
             });
-        // Compound_Statement : lbrace ∙rbrace 
+        // Compound_Statement : { ∙} 
         m.insert(Label::Compound_Statement0R1, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -594,11 +594,11 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T17), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement0R1,
             });
-        // Compound_Statement : lbrace rbrace ∙
+        // Compound_Statement : { } ∙
         m.insert(Label::Compound_Statement0R2, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -606,11 +606,11 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T17), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement0R2,
             });
-        // Compound_Statement : ∙lbrace Statement_List rbrace 
+        // Compound_Statement : ∙{ Statement_List } 
         m.insert(Label::Compound_Statement1R0, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -619,11 +619,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T17), 
                     Symbol::NT(NT::Statement_List), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement1R0,
             });
-        // Compound_Statement : lbrace ∙Statement_List rbrace 
+        // Compound_Statement : { ∙Statement_List } 
         m.insert(Label::Compound_Statement1R1, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -632,11 +632,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T17), 
                     Symbol::NT(NT::Statement_List), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement1R1,
             });
-        // Compound_Statement : lbrace Statement_List ∙rbrace 
+        // Compound_Statement : { Statement_List ∙} 
         m.insert(Label::Compound_Statement1R2, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -645,11 +645,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T17), 
                     Symbol::NT(NT::Statement_List), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement1R2,
             });
-        // Compound_Statement : lbrace Statement_List rbrace ∙
+        // Compound_Statement : { Statement_List } ∙
         m.insert(Label::Compound_Statement1R3, 
             Slot{
                 nt: NT::Compound_Statement,
@@ -658,327 +658,327 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T17), 
                     Symbol::NT(NT::Statement_List), 
-                    Symbol::T(T::T20), 
+                    Symbol::T(T::T18), 
                 ],
                 label: Label::Compound_Statement1R3,
             });
-        // Declaration_Statement : ∙let identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : ∙let identifier : identifier = Expression ; 
         m.insert(Label::Declaration_Statement0R0, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R0,
             });
-        // Declaration_Statement : let ∙identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : let ∙identifier : identifier = Expression ; 
         m.insert(Label::Declaration_Statement0R1, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R1,
             });
-        // Declaration_Statement : let identifier ∙colon identifier assign Expression semicolon 
+        // Declaration_Statement : let identifier ∙: identifier = Expression ; 
         m.insert(Label::Declaration_Statement0R2, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 2,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R2,
             });
-        // Declaration_Statement : let identifier colon ∙identifier assign Expression semicolon 
+        // Declaration_Statement : let identifier : ∙identifier = Expression ; 
         m.insert(Label::Declaration_Statement0R3, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 3,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R3,
             });
-        // Declaration_Statement : let identifier colon identifier ∙assign Expression semicolon 
+        // Declaration_Statement : let identifier : identifier ∙= Expression ; 
         m.insert(Label::Declaration_Statement0R4, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 4,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R4,
             });
-        // Declaration_Statement : let identifier colon identifier assign ∙Expression semicolon 
+        // Declaration_Statement : let identifier : identifier = ∙Expression ; 
         m.insert(Label::Declaration_Statement0R5, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 5,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R5,
             });
-        // Declaration_Statement : let identifier colon identifier assign Expression ∙semicolon 
+        // Declaration_Statement : let identifier : identifier = Expression ∙; 
         m.insert(Label::Declaration_Statement0R6, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 6,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R6,
             });
-        // Declaration_Statement : let identifier colon identifier assign Expression semicolon ∙
+        // Declaration_Statement : let identifier : identifier = Expression ; ∙
         m.insert(Label::Declaration_Statement0R7, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 0,
                 pos: 7,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
+                    Symbol::T(T::T14), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement0R7,
             });
-        // Declaration_Statement : ∙let config identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : ∙let config identifier : identifier = Expression ; 
         m.insert(Label::Declaration_Statement1R0, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R0,
             });
-        // Declaration_Statement : let ∙config identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : let ∙config identifier : identifier = Expression ; 
         m.insert(Label::Declaration_Statement1R1, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R1,
             });
-        // Declaration_Statement : let config ∙identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : let config ∙identifier : identifier = Expression ; 
         m.insert(Label::Declaration_Statement1R2, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 2,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R2,
             });
-        // Declaration_Statement : let config identifier ∙colon identifier assign Expression semicolon 
+        // Declaration_Statement : let config identifier ∙: identifier = Expression ; 
         m.insert(Label::Declaration_Statement1R3, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 3,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R3,
             });
-        // Declaration_Statement : let config identifier colon ∙identifier assign Expression semicolon 
+        // Declaration_Statement : let config identifier : ∙identifier = Expression ; 
         m.insert(Label::Declaration_Statement1R4, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 4,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R4,
             });
-        // Declaration_Statement : let config identifier colon identifier ∙assign Expression semicolon 
+        // Declaration_Statement : let config identifier : identifier ∙= Expression ; 
         m.insert(Label::Declaration_Statement1R5, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 5,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R5,
             });
-        // Declaration_Statement : let config identifier colon identifier assign ∙Expression semicolon 
+        // Declaration_Statement : let config identifier : identifier = ∙Expression ; 
         m.insert(Label::Declaration_Statement1R6, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 6,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R6,
             });
-        // Declaration_Statement : let config identifier colon identifier assign Expression ∙semicolon 
+        // Declaration_Statement : let config identifier : identifier = Expression ∙; 
         m.insert(Label::Declaration_Statement1R7, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 7,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R7,
             });
-        // Declaration_Statement : let config identifier colon identifier assign Expression semicolon ∙
+        // Declaration_Statement : let config identifier : identifier = Expression ; ∙
         m.insert(Label::Declaration_Statement1R8, 
             Slot{
                 nt: NT::Declaration_Statement,
                 alt: 1,
                 pos: 8,
                 symbols: vec![ 
-                    Symbol::T(T::T18), 
-                    Symbol::T(T::T5), 
+                    Symbol::T(T::T14), 
+                    Symbol::T(T::T8), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T0), 
+                    Symbol::T(T::T6), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Declaration_Statement1R8,
             });
-        // Empty_Statement : ∙semicolon 
+        // Empty_Statement : ∙; 
         m.insert(Label::Empty_Statement0R0, 
             Slot{
                 nt: NT::Empty_Statement,
                 alt: 0,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Empty_Statement0R0,
             });
-        // Empty_Statement : semicolon ∙
+        // Empty_Statement : ; ∙
         m.insert(Label::Empty_Statement0R1, 
             Slot{
                 nt: NT::Empty_Statement,
                 alt: 0,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Empty_Statement0R1,
             });
@@ -1048,7 +1048,7 @@ lazy_static! {
                 ],
                 label: Label::Expression2R1,
             });
-        // Expression_Statement : ∙Expression semicolon 
+        // Expression_Statement : ∙Expression ; 
         m.insert(Label::Expression_Statement0R0, 
             Slot{
                 nt: NT::Expression_Statement,
@@ -1056,11 +1056,11 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Expression_Statement0R0,
             });
-        // Expression_Statement : Expression ∙semicolon 
+        // Expression_Statement : Expression ∙; 
         m.insert(Label::Expression_Statement0R1, 
             Slot{
                 nt: NT::Expression_Statement,
@@ -1068,11 +1068,11 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Expression_Statement0R1,
             });
-        // Expression_Statement : Expression semicolon ∙
+        // Expression_Statement : Expression ; ∙
         m.insert(Label::Expression_Statement0R2, 
             Slot{
                 nt: NT::Expression_Statement,
@@ -1080,33 +1080,33 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Expression_Statement0R2,
             });
-        // Expression_Statement : ∙semicolon 
+        // Expression_Statement : ∙; 
         m.insert(Label::Expression_Statement1R0, 
             Slot{
                 nt: NT::Expression_Statement,
                 alt: 1,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Expression_Statement1R0,
             });
-        // Expression_Statement : semicolon ∙
+        // Expression_Statement : ; ∙
         m.insert(Label::Expression_Statement1R1, 
             Slot{
                 nt: NT::Expression_Statement,
                 alt: 1,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Expression_Statement1R1,
             });
-        // For : ∙for lparen Simple_Statement Expression_Statement Expression rparen Statement 
+        // For : ∙for ( Simple_Statement Expression_Statement Expression ) Statement 
         m.insert(Label::For0R0, 
             Slot{
                 nt: NT::For,
@@ -1114,16 +1114,16 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R0,
             });
-        // For : for ∙lparen Simple_Statement Expression_Statement Expression rparen Statement 
+        // For : for ∙( Simple_Statement Expression_Statement Expression ) Statement 
         m.insert(Label::For0R1, 
             Slot{
                 nt: NT::For,
@@ -1131,16 +1131,16 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R1,
             });
-        // For : for lparen ∙Simple_Statement Expression_Statement Expression rparen Statement 
+        // For : for ( ∙Simple_Statement Expression_Statement Expression ) Statement 
         m.insert(Label::For0R2, 
             Slot{
                 nt: NT::For,
@@ -1148,16 +1148,16 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R2,
             });
-        // For : for lparen Simple_Statement ∙Expression_Statement Expression rparen Statement 
+        // For : for ( Simple_Statement ∙Expression_Statement Expression ) Statement 
         m.insert(Label::For0R3, 
             Slot{
                 nt: NT::For,
@@ -1165,16 +1165,16 @@ lazy_static! {
                 pos: 3,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R3,
             });
-        // For : for lparen Simple_Statement Expression_Statement ∙Expression rparen Statement 
+        // For : for ( Simple_Statement Expression_Statement ∙Expression ) Statement 
         m.insert(Label::For0R4, 
             Slot{
                 nt: NT::For,
@@ -1182,16 +1182,16 @@ lazy_static! {
                 pos: 4,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R4,
             });
-        // For : for lparen Simple_Statement Expression_Statement Expression ∙rparen Statement 
+        // For : for ( Simple_Statement Expression_Statement Expression ∙) Statement 
         m.insert(Label::For0R5, 
             Slot{
                 nt: NT::For,
@@ -1199,16 +1199,16 @@ lazy_static! {
                 pos: 5,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R5,
             });
-        // For : for lparen Simple_Statement Expression_Statement Expression rparen ∙Statement 
+        // For : for ( Simple_Statement Expression_Statement Expression ) ∙Statement 
         m.insert(Label::For0R6, 
             Slot{
                 nt: NT::For,
@@ -1216,16 +1216,16 @@ lazy_static! {
                 pos: 6,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R6,
             });
-        // For : for lparen Simple_Statement Expression_Statement Expression rparen Statement ∙
+        // For : for ( Simple_Statement Expression_Statement Expression ) Statement ∙
         m.insert(Label::For0R7, 
             Slot{
                 nt: NT::For,
@@ -1233,16 +1233,16 @@ lazy_static! {
                 pos: 7,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For0R7,
             });
-        // For : ∙for lparen Simple_Statement Expression_Statement rparen Statement 
+        // For : ∙for ( Simple_Statement Expression_Statement ) Statement 
         m.insert(Label::For1R0, 
             Slot{
                 nt: NT::For,
@@ -1250,15 +1250,15 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R0,
             });
-        // For : for ∙lparen Simple_Statement Expression_Statement rparen Statement 
+        // For : for ∙( Simple_Statement Expression_Statement ) Statement 
         m.insert(Label::For1R1, 
             Slot{
                 nt: NT::For,
@@ -1266,15 +1266,15 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R1,
             });
-        // For : for lparen ∙Simple_Statement Expression_Statement rparen Statement 
+        // For : for ( ∙Simple_Statement Expression_Statement ) Statement 
         m.insert(Label::For1R2, 
             Slot{
                 nt: NT::For,
@@ -1282,15 +1282,15 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R2,
             });
-        // For : for lparen Simple_Statement ∙Expression_Statement rparen Statement 
+        // For : for ( Simple_Statement ∙Expression_Statement ) Statement 
         m.insert(Label::For1R3, 
             Slot{
                 nt: NT::For,
@@ -1298,15 +1298,15 @@ lazy_static! {
                 pos: 3,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R3,
             });
-        // For : for lparen Simple_Statement Expression_Statement ∙rparen Statement 
+        // For : for ( Simple_Statement Expression_Statement ∙) Statement 
         m.insert(Label::For1R4, 
             Slot{
                 nt: NT::For,
@@ -1314,15 +1314,15 @@ lazy_static! {
                 pos: 4,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R4,
             });
-        // For : for lparen Simple_Statement Expression_Statement rparen ∙Statement 
+        // For : for ( Simple_Statement Expression_Statement ) ∙Statement 
         m.insert(Label::For1R5, 
             Slot{
                 nt: NT::For,
@@ -1330,15 +1330,15 @@ lazy_static! {
                 pos: 5,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R5,
             });
-        // For : for lparen Simple_Statement Expression_Statement rparen Statement ∙
+        // For : for ( Simple_Statement Expression_Statement ) Statement ∙
         m.insert(Label::For1R6, 
             Slot{
                 nt: NT::For,
@@ -1346,15 +1346,15 @@ lazy_static! {
                 pos: 6,
                 symbols: vec![ 
                     Symbol::T(T::T10), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Simple_Statement), 
                     Symbol::NT(NT::Expression_Statement), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::For1R6,
             });
-        // Function_Argument : ∙identifier colon identifier 
+        // Function_Argument : ∙identifier : identifier 
         m.insert(Label::Function_Argument0R0, 
             Slot{
                 nt: NT::Function_Argument,
@@ -1362,12 +1362,12 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
                 ],
                 label: Label::Function_Argument0R0,
             });
-        // Function_Argument : identifier ∙colon identifier 
+        // Function_Argument : identifier ∙: identifier 
         m.insert(Label::Function_Argument0R1, 
             Slot{
                 nt: NT::Function_Argument,
@@ -1375,12 +1375,12 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
                 ],
                 label: Label::Function_Argument0R1,
             });
-        // Function_Argument : identifier colon ∙identifier 
+        // Function_Argument : identifier : ∙identifier 
         m.insert(Label::Function_Argument0R2, 
             Slot{
                 nt: NT::Function_Argument,
@@ -1388,12 +1388,12 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
                 ],
                 label: Label::Function_Argument0R2,
             });
-        // Function_Argument : identifier colon identifier ∙
+        // Function_Argument : identifier : identifier ∙
         m.insert(Label::Function_Argument0R3, 
             Slot{
                 nt: NT::Function_Argument,
@@ -1401,7 +1401,7 @@ lazy_static! {
                 pos: 3,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T2), 
+                    Symbol::T(T::T4), 
                     Symbol::T(T::T12), 
                 ],
                 label: Label::Function_Argument0R3,
@@ -1450,7 +1450,7 @@ lazy_static! {
                 ],
                 label: Label::Function_Argument_List1R1,
             });
-        // Function_Argument_List_Body : ∙Function_Argument comma 
+        // Function_Argument_List_Body : ∙Function_Argument ; 
         m.insert(Label::Function_Argument_List_Body0R0, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1458,11 +1458,11 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body0R0,
             });
-        // Function_Argument_List_Body : Function_Argument ∙comma 
+        // Function_Argument_List_Body : Function_Argument ∙; 
         m.insert(Label::Function_Argument_List_Body0R1, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1470,11 +1470,11 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body0R1,
             });
-        // Function_Argument_List_Body : Function_Argument comma ∙
+        // Function_Argument_List_Body : Function_Argument ; ∙
         m.insert(Label::Function_Argument_List_Body0R2, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1482,7 +1482,7 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body0R2,
             });
@@ -1522,7 +1522,7 @@ lazy_static! {
                 ],
                 label: Label::Function_Argument_List_Body1R2,
             });
-        // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument comma 
+        // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument ; 
         m.insert(Label::Function_Argument_List_Body2R0, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1531,11 +1531,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument_List_Body), 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body2R0,
             });
-        // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument comma 
+        // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument ; 
         m.insert(Label::Function_Argument_List_Body2R1, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1544,11 +1544,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument_List_Body), 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body2R1,
             });
-        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙comma 
+        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙; 
         m.insert(Label::Function_Argument_List_Body2R2, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1557,11 +1557,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument_List_Body), 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body2R2,
             });
-        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument comma ∙
+        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ; ∙
         m.insert(Label::Function_Argument_List_Body2R3, 
             Slot{
                 nt: NT::Function_Argument_List_Body,
@@ -1570,11 +1570,11 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::NT(NT::Function_Argument_List_Body), 
                     Symbol::NT(NT::Function_Argument), 
-                    Symbol::T(T::T3), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Function_Argument_List_Body2R3,
             });
-        // Function_Statement : ∙function identifier lparen Function_Argument_List rparen identifier Statement 
+        // Function_Statement : ∙func identifier ( Function_Argument_List ) identifier Statement 
         m.insert(Label::Function_Statement0R0, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1583,15 +1583,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R0,
             });
-        // Function_Statement : function ∙identifier lparen Function_Argument_List rparen identifier Statement 
+        // Function_Statement : func ∙identifier ( Function_Argument_List ) identifier Statement 
         m.insert(Label::Function_Statement0R1, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1600,15 +1600,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R1,
             });
-        // Function_Statement : function identifier ∙lparen Function_Argument_List rparen identifier Statement 
+        // Function_Statement : func identifier ∙( Function_Argument_List ) identifier Statement 
         m.insert(Label::Function_Statement0R2, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1617,15 +1617,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R2,
             });
-        // Function_Statement : function identifier lparen ∙Function_Argument_List rparen identifier Statement 
+        // Function_Statement : func identifier ( ∙Function_Argument_List ) identifier Statement 
         m.insert(Label::Function_Statement0R3, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1634,15 +1634,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R3,
             });
-        // Function_Statement : function identifier lparen Function_Argument_List ∙rparen identifier Statement 
+        // Function_Statement : func identifier ( Function_Argument_List ∙) identifier Statement 
         m.insert(Label::Function_Statement0R4, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1651,15 +1651,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R4,
             });
-        // Function_Statement : function identifier lparen Function_Argument_List rparen ∙identifier Statement 
+        // Function_Statement : func identifier ( Function_Argument_List ) ∙identifier Statement 
         m.insert(Label::Function_Statement0R5, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1668,15 +1668,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R5,
             });
-        // Function_Statement : function identifier lparen Function_Argument_List rparen identifier ∙Statement 
+        // Function_Statement : func identifier ( Function_Argument_List ) identifier ∙Statement 
         m.insert(Label::Function_Statement0R6, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1685,15 +1685,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R6,
             });
-        // Function_Statement : function identifier lparen Function_Argument_List rparen identifier Statement ∙
+        // Function_Statement : func identifier ( Function_Argument_List ) identifier Statement ∙
         m.insert(Label::Function_Statement0R7, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1702,15 +1702,15 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
+                    Symbol::T(T::T0), 
                     Symbol::NT(NT::Function_Argument_List), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement0R7,
             });
-        // Function_Statement : ∙function identifier lparen rparen identifier Statement 
+        // Function_Statement : ∙func identifier ( ) identifier Statement 
         m.insert(Label::Function_Statement1R0, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1719,14 +1719,14 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement1R0,
             });
-        // Function_Statement : function ∙identifier lparen rparen identifier Statement 
+        // Function_Statement : func ∙identifier ( ) identifier Statement 
         m.insert(Label::Function_Statement1R1, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1735,14 +1735,14 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement1R1,
             });
-        // Function_Statement : function identifier ∙lparen rparen identifier Statement 
+        // Function_Statement : func identifier ∙( ) identifier Statement 
         m.insert(Label::Function_Statement1R2, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1751,14 +1751,14 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement1R2,
             });
-        // Function_Statement : function identifier lparen ∙rparen identifier Statement 
+        // Function_Statement : func identifier ( ∙) identifier Statement 
         m.insert(Label::Function_Statement1R3, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1767,14 +1767,14 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement1R3,
             });
-        // Function_Statement : function identifier lparen rparen ∙identifier Statement 
+        // Function_Statement : func identifier ( ) ∙identifier Statement 
         m.insert(Label::Function_Statement1R4, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1783,14 +1783,14 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement1R4,
             });
-        // Function_Statement : function identifier lparen rparen identifier ∙Statement 
+        // Function_Statement : func identifier ( ) identifier ∙Statement 
         m.insert(Label::Function_Statement1R5, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1799,14 +1799,14 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
                 label: Label::Function_Statement1R5,
             });
-        // Function_Statement : function identifier lparen rparen identifier Statement ∙
+        // Function_Statement : func identifier ( ) identifier Statement ∙
         m.insert(Label::Function_Statement1R6, 
             Slot{
                 nt: NT::Function_Statement,
@@ -1815,8 +1815,8 @@ lazy_static! {
                 symbols: vec![ 
                     Symbol::T(T::T11), 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T19), 
-                    Symbol::T(T::T22), 
+                    Symbol::T(T::T0), 
+                    Symbol::T(T::T1), 
                     Symbol::T(T::T12), 
                     Symbol::NT(NT::Statement), 
                 ],
@@ -1866,7 +1866,7 @@ lazy_static! {
                 ],
                 label: Label::Identifier_Expression0R1,
             });
-        // IncDec_Expression : ∙identifier inc 
+        // IncDec_Expression : ∙identifier ++ 
         m.insert(Label::IncDec_Expression0R0, 
             Slot{
                 nt: NT::IncDec_Expression,
@@ -1874,11 +1874,11 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T15), 
+                    Symbol::T(T::T2), 
                 ],
                 label: Label::IncDec_Expression0R0,
             });
-        // IncDec_Expression : identifier ∙inc 
+        // IncDec_Expression : identifier ∙++ 
         m.insert(Label::IncDec_Expression0R1, 
             Slot{
                 nt: NT::IncDec_Expression,
@@ -1886,11 +1886,11 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T15), 
+                    Symbol::T(T::T2), 
                 ],
                 label: Label::IncDec_Expression0R1,
             });
-        // IncDec_Expression : identifier inc ∙
+        // IncDec_Expression : identifier ++ ∙
         m.insert(Label::IncDec_Expression0R2, 
             Slot{
                 nt: NT::IncDec_Expression,
@@ -1898,11 +1898,11 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T15), 
+                    Symbol::T(T::T2), 
                 ],
                 label: Label::IncDec_Expression0R2,
             });
-        // IncDec_Expression : ∙identifier dec 
+        // IncDec_Expression : ∙identifier -- 
         m.insert(Label::IncDec_Expression1R0, 
             Slot{
                 nt: NT::IncDec_Expression,
@@ -1910,11 +1910,11 @@ lazy_static! {
                 pos: 0,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T7), 
+                    Symbol::T(T::T3), 
                 ],
                 label: Label::IncDec_Expression1R0,
             });
-        // IncDec_Expression : identifier ∙dec 
+        // IncDec_Expression : identifier ∙-- 
         m.insert(Label::IncDec_Expression1R1, 
             Slot{
                 nt: NT::IncDec_Expression,
@@ -1922,11 +1922,11 @@ lazy_static! {
                 pos: 1,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T7), 
+                    Symbol::T(T::T3), 
                 ],
                 label: Label::IncDec_Expression1R1,
             });
-        // IncDec_Expression : identifier dec ∙
+        // IncDec_Expression : identifier -- ∙
         m.insert(Label::IncDec_Expression1R2, 
             Slot{
                 nt: NT::IncDec_Expression,
@@ -1934,7 +1934,7 @@ lazy_static! {
                 pos: 2,
                 symbols: vec![ 
                     Symbol::T(T::T12), 
-                    Symbol::T(T::T7), 
+                    Symbol::T(T::T3), 
                 ],
                 label: Label::IncDec_Expression1R2,
             });
@@ -1945,7 +1945,7 @@ lazy_static! {
                 alt: 0,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T16), 
+                    Symbol::T(T::T13), 
                 ],
                 label: Label::Literal_Expression0R0,
             });
@@ -1956,7 +1956,7 @@ lazy_static! {
                 alt: 0,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T16), 
+                    Symbol::T(T::T13), 
                 ],
                 label: Label::Literal_Expression0R1,
             });
@@ -1989,7 +1989,7 @@ lazy_static! {
                 alt: 2,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T24), 
+                    Symbol::T(T::T16), 
                 ],
                 label: Label::Literal_Expression2R0,
             });
@@ -2000,59 +2000,59 @@ lazy_static! {
                 alt: 2,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T24), 
+                    Symbol::T(T::T16), 
                 ],
                 label: Label::Literal_Expression2R1,
             });
-        // Return_Statement : ∙return Expression semicolon 
+        // Return_Statement : ∙return Expression ; 
         m.insert(Label::Return_Statement0R0, 
             Slot{
                 nt: NT::Return_Statement,
                 alt: 0,
                 pos: 0,
                 symbols: vec![ 
-                    Symbol::T(T::T21), 
+                    Symbol::T(T::T15), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Return_Statement0R0,
             });
-        // Return_Statement : return ∙Expression semicolon 
+        // Return_Statement : return ∙Expression ; 
         m.insert(Label::Return_Statement0R1, 
             Slot{
                 nt: NT::Return_Statement,
                 alt: 0,
                 pos: 1,
                 symbols: vec![ 
-                    Symbol::T(T::T21), 
+                    Symbol::T(T::T15), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Return_Statement0R1,
             });
-        // Return_Statement : return Expression ∙semicolon 
+        // Return_Statement : return Expression ∙; 
         m.insert(Label::Return_Statement0R2, 
             Slot{
                 nt: NT::Return_Statement,
                 alt: 0,
                 pos: 2,
                 symbols: vec![ 
-                    Symbol::T(T::T21), 
+                    Symbol::T(T::T15), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Return_Statement0R2,
             });
-        // Return_Statement : return Expression semicolon ∙
+        // Return_Statement : return Expression ; ∙
         m.insert(Label::Return_Statement0R3, 
             Slot{
                 nt: NT::Return_Statement,
                 alt: 0,
                 pos: 3,
                 symbols: vec![ 
-                    Symbol::T(T::T21), 
+                    Symbol::T(T::T15), 
                     Symbol::NT(NT::Expression), 
-                    Symbol::T(T::T23), 
+                    Symbol::T(T::T5), 
                 ],
                 label: Label::Return_Statement0R3,
             });

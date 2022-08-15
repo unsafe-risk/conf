@@ -190,93 +190,69 @@ fn not(r: char, set: &'static [char]) -> bool {
 	return true
 }
 
-static ACCEPT: [token::Type; 81] = [ 
+static ACCEPT: [token::Type; 57] = [ 
     token::Type::Error, 
     token::Type::Error, 
-    token::Type::T_4, 
-    token::Type::T_19, 
-    token::Type::T_22, 
-    token::Type::Error, 
-    token::Type::T_3, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_16, 
-    token::Type::T_2, 
-    token::Type::T_23, 
-    token::Type::T_0, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_17, 
-    token::Type::T_20, 
-    token::Type::T_26, 
-    token::Type::T_12, 
-    token::Type::Error, 
-    token::Type::T_24, 
-    token::Type::Error, 
-    token::Type::T_15, 
-    token::Type::T_16, 
     token::Type::T_7, 
-    token::Type::T_9, 
-    token::Type::Error, 
-    token::Type::T_4, 
-    token::Type::T_9, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_16, 
-    token::Type::Error, 
+    token::Type::T_0, 
+    token::Type::T_1, 
     token::Type::Error, 
     token::Type::Error, 
     token::Type::Error, 
     token::Type::Error, 
     token::Type::T_13, 
-    token::Type::T_14, 
+    token::Type::T_4, 
+    token::Type::T_5, 
+    token::Type::T_6, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_17, 
+    token::Type::T_18, 
+    token::Type::T_12, 
+    token::Type::Error, 
+    token::Type::T_16, 
+    token::Type::Error, 
+    token::Type::T_2, 
+    token::Type::T_13, 
+    token::Type::T_3, 
+    token::Type::T_9, 
+    token::Type::Error, 
+    token::Type::T_7, 
+    token::Type::T_9, 
     token::Type::Error, 
     token::Type::Error, 
     token::Type::Error, 
+    token::Type::T_13, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_12, 
     token::Type::Error, 
     token::Type::T_9, 
-    token::Type::T_16, 
-    token::Type::T_16, 
-    token::Type::T_16, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
+    token::Type::T_13, 
+    token::Type::T_13, 
+    token::Type::T_13, 
+    token::Type::T_12, 
     token::Type::T_10, 
-    token::Type::Error, 
-    token::Type::T_18, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_4, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_8, 
+    token::Type::T_12, 
+    token::Type::T_14, 
+    token::Type::T_12, 
+    token::Type::T_7, 
+    token::Type::T_12, 
     token::Type::T_11, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_1, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::Error, 
-    token::Type::T_25, 
-    token::Type::T_5, 
-    token::Type::Error, 
-    token::Type::T_21, 
-    token::Type::Error, 
-    token::Type::T_6, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_12, 
+    token::Type::T_8, 
+    token::Type::T_15, 
 ];
 
 pub type NextFun = dyn Fn(char) -> State + Sync;
 
-static NEXT_STATE: &'static [&NextFun; 81] = &[  
+static NEXT_STATE: &'static [&NextFun; 57] = &[  
 	// Set0 
 	&|c| -> State {  
         if c == '"' { return 1 }; 
@@ -284,34 +260,28 @@ static NEXT_STATE: &'static [&NextFun; 81] = &[
         if c == '(' { return 3 }; 
         if c == ')' { return 4 }; 
         if c == '+' { return 5 }; 
-        if c == ',' { return 6 }; 
-        if c == '-' { return 7 }; 
-        if c == '.' { return 8 }; 
-        if c == '/' { return 9 }; 
-        if c == '0' { return 10 }; 
-        if c == ':' { return 11 }; 
-        if c == ';' { return 12 }; 
-        if c == '=' { return 13 }; 
-        if c == 'b' { return 14 }; 
-        if c == 'c' { return 15 }; 
-        if c == 'e' { return 16 }; 
-        if c == 'f' { return 17 }; 
-        if c == 'i' { return 18 }; 
-        if c == 'l' { return 19 }; 
-        if c == 'r' { return 20 }; 
-        if c == 'w' { return 21 }; 
-        if c == '{' { return 22 }; 
-        if c == '}' { return 23 }; 
-        if any(c, &['\t','\n','\r',' ']) { return 24 }; 
-        if c.is_uppercase() { return 25 }; 
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 10 }; 
-        if any(c, &['+','-']) { return 26 }; 
+        if c == '-' { return 6 }; 
+        if c == '.' { return 7 }; 
+        if c == '/' { return 8 }; 
+        if c == '0' { return 9 }; 
+        if c == ':' { return 10 }; 
+        if c == ';' { return 11 }; 
+        if c == '=' { return 12 }; 
+        if c == 'c' { return 13 }; 
+        if c == 'f' { return 14 }; 
+        if c == 'l' { return 15 }; 
+        if c == 'r' { return 16 }; 
+        if c == '{' { return 17 }; 
+        if c == '}' { return 18 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 9 }; 
+        if any(c, &['+','-']) { return 20 }; 
         NULL_STATE
 	}, 
 	// Set1 
 	&|c| -> State {  
-        if c == '"' { return 27 }; 
-        if c == '\\' { return 28 }; 
+        if c == '"' { return 21 }; 
+        if c == '\\' { return 22 }; 
         if not(c, &['"','\\']) { return 1 }; 
         NULL_STATE
 	}, 
@@ -330,38 +300,38 @@ static NEXT_STATE: &'static [&NextFun; 81] = &[
 	}, 
 	// Set5 
 	&|c| -> State {  
-        if c == '+' { return 29 }; 
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 30 }; 
+        if c == '+' { return 23 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 24 }; 
         NULL_STATE
 	}, 
 	// Set6 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '-' { return 25 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 24 }; 
         NULL_STATE
 	}, 
 	// Set7 
 	&|c| -> State {  
-        if c == '-' { return 31 }; 
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 30 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 26 }; 
         NULL_STATE
 	}, 
 	// Set8 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 32 }; 
+        if c == '*' { return 27 }; 
+        if c == '/' { return 28 }; 
         NULL_STATE
 	}, 
 	// Set9 
 	&|c| -> State {  
-        if c == '*' { return 33 }; 
-        if c == '/' { return 34 }; 
+        if c == '.' { return 29 }; 
+        if c == 'b' { return 30 }; 
+        if c == 'o' { return 31 }; 
+        if c == 'x' { return 32 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9','_']) { return 33 }; 
         NULL_STATE
 	}, 
 	// Set10 
-	&|c| -> State {  
-        if c == '.' { return 35 }; 
-        if c == 'b' { return 36 }; 
-        if c == 'o' { return 37 }; 
-        if c == 'x' { return 38 }; 
-        if any(c, &['0','1','2','3','4','5','6','7','8','9','_']) { return 39 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set11 
@@ -373,53 +343,67 @@ static NEXT_STATE: &'static [&NextFun; 81] = &[
         NULL_STATE
 	}, 
 	// Set13 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '_' { return 19 }; 
+        if c == 'o' { return 34 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set14 
 	&|c| -> State {  
-        if c == 'r' { return 40 }; 
+        if c == '_' { return 19 }; 
+        if c == 'o' { return 35 }; 
+        if c == 'u' { return 36 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set15 
 	&|c| -> State {  
-        if c == 'o' { return 41 }; 
+        if c == '_' { return 19 }; 
+        if c == 'e' { return 37 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set16 
 	&|c| -> State {  
-        if c == 'l' { return 42 }; 
+        if c == '_' { return 19 }; 
+        if c == 'e' { return 38 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set17 
-	&|c| -> State {  
-        if c == 'o' { return 43 }; 
-        if c == 'u' { return 44 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set18 
-	&|c| -> State {  
-        if c == 'f' { return 45 }; 
-        if c == 'n' { return 46 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set19 
 	&|c| -> State {  
-        if c == 'e' { return 47 }; 
+        if c == '_' { return 19 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set20 
 	&|c| -> State {  
-        if c == 'e' { return 48 }; 
+        if c == '+' { return 23 }; 
+        if c == '-' { return 25 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 24 }; 
         NULL_STATE
 	}, 
 	// Set21 
-	&|c| -> State {  
-        if c == 'h' { return 49 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set22 
-	&|_| -> State {  
+	&|c| -> State {  
+        if true { return 1 }; 
         NULL_STATE
 	}, 
 	// Set23 
@@ -427,279 +411,214 @@ static NEXT_STATE: &'static [&NextFun; 81] = &[
         NULL_STATE
 	}, 
 	// Set24 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '.' { return 29 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9','_']) { return 33 }; 
         NULL_STATE
 	}, 
 	// Set25 
-	&|c| -> State {  
-        if c == '_' { return 25 }; 
-        if c.is_alphabetic() { return 25 }; 
-        if c.is_numeric() { return 25 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set26 
 	&|c| -> State {  
-        if c == '+' { return 29 }; 
-        if c == '-' { return 31 }; 
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 30 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 26 }; 
         NULL_STATE
 	}, 
 	// Set27 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '*' { return 39 }; 
+        if not(c, &['*']) { return 27 }; 
         NULL_STATE
 	}, 
 	// Set28 
 	&|c| -> State {  
-        if true { return 1 }; 
+        if not(c, &['\n']) { return 28 }; 
         NULL_STATE
 	}, 
 	// Set29 
-	&|_| -> State {  
+	&|c| -> State {  
+        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 40 }; 
         NULL_STATE
 	}, 
 	// Set30 
 	&|c| -> State {  
-        if c == '.' { return 35 }; 
-        if any(c, &['0','1','2','3','4','5','6','7','8','9','_']) { return 39 }; 
+        if any(c, &['0','1']) { return 41 }; 
         NULL_STATE
 	}, 
 	// Set31 
-	&|_| -> State {  
+	&|c| -> State {  
+        if any(c, &['0','1','2','3','4','5','6','7']) { return 42 }; 
         NULL_STATE
 	}, 
 	// Set32 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 32 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','a','b','c','d','e','f']) { return 43 }; 
         NULL_STATE
 	}, 
 	// Set33 
 	&|c| -> State {  
-        if c == '*' { return 50 }; 
-        if not(c, &['*']) { return 33 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9','_']) { return 33 }; 
         NULL_STATE
 	}, 
 	// Set34 
 	&|c| -> State {  
-        if not(c, &['\n']) { return 34 }; 
+        if c == '_' { return 19 }; 
+        if c == 'n' { return 44 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set35 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','8','9']) { return 51 }; 
+        if c == '_' { return 19 }; 
+        if c == 'r' { return 45 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set36 
 	&|c| -> State {  
-        if any(c, &['0','1']) { return 52 }; 
+        if c == '_' { return 19 }; 
+        if c == 'n' { return 46 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set37 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7']) { return 53 }; 
+        if c == '_' { return 19 }; 
+        if c == 't' { return 47 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set38 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','a','b','c','d','e','f']) { return 54 }; 
+        if c == '_' { return 19 }; 
+        if c == 't' { return 48 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set39 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','8','9','_']) { return 39 }; 
+        if c == '/' { return 49 }; 
+        if not(c, &['/']) { return 27 }; 
         NULL_STATE
 	}, 
 	// Set40 
-	&|c| -> State {  
-        if c == 'e' { return 55 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set41 
 	&|c| -> State {  
-        if c == 'n' { return 56 }; 
+        if any(c, &['0','1','_']) { return 41 }; 
         NULL_STATE
 	}, 
 	// Set42 
 	&|c| -> State {  
-        if c == 's' { return 57 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','_']) { return 42 }; 
         NULL_STATE
 	}, 
 	// Set43 
 	&|c| -> State {  
-        if c == 'r' { return 58 }; 
+        if any(c, &['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','_','a','b','c','d','e','f']) { return 43 }; 
         NULL_STATE
 	}, 
 	// Set44 
 	&|c| -> State {  
-        if c == 'n' { return 59 }; 
+        if c == '_' { return 19 }; 
+        if c == 'f' { return 50 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set45 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '_' { return 19 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set46 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '_' { return 19 }; 
+        if c == 'c' { return 51 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set47 
 	&|c| -> State {  
-        if c == 't' { return 60 }; 
+        if c == '_' { return 19 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set48 
 	&|c| -> State {  
-        if c == 't' { return 61 }; 
+        if c == '_' { return 19 }; 
+        if c == 'u' { return 52 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set49 
-	&|c| -> State {  
-        if c == 'i' { return 62 }; 
+	&|_| -> State {  
         NULL_STATE
 	}, 
 	// Set50 
 	&|c| -> State {  
-        if c == '/' { return 63 }; 
-        if not(c, &['/']) { return 33 }; 
+        if c == '_' { return 19 }; 
+        if c == 'i' { return 53 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set51 
-	&|_| -> State {  
+	&|c| -> State {  
+        if c == '_' { return 19 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set52 
 	&|c| -> State {  
-        if any(c, &['0','1','_']) { return 52 }; 
+        if c == '_' { return 19 }; 
+        if c == 'r' { return 54 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set53 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','_']) { return 53 }; 
+        if c == '_' { return 19 }; 
+        if c == 'g' { return 55 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set54 
 	&|c| -> State {  
-        if any(c, &['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','_','a','b','c','d','e','f']) { return 54 }; 
+        if c == '_' { return 19 }; 
+        if c == 'n' { return 56 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set55 
 	&|c| -> State {  
-        if c == 'a' { return 64 }; 
+        if c == '_' { return 19 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 	// Set56 
 	&|c| -> State {  
-        if c == 'f' { return 65 }; 
-        if c == 't' { return 66 }; 
-        NULL_STATE
-	}, 
-	// Set57 
-	&|c| -> State {  
-        if c == 'e' { return 67 }; 
-        NULL_STATE
-	}, 
-	// Set58 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set59 
-	&|c| -> State {  
-        if c == 'c' { return 68 }; 
-        NULL_STATE
-	}, 
-	// Set60 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set61 
-	&|c| -> State {  
-        if c == 'u' { return 69 }; 
-        NULL_STATE
-	}, 
-	// Set62 
-	&|c| -> State {  
-        if c == 'l' { return 70 }; 
-        NULL_STATE
-	}, 
-	// Set63 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set64 
-	&|c| -> State {  
-        if c == 'k' { return 71 }; 
-        NULL_STATE
-	}, 
-	// Set65 
-	&|c| -> State {  
-        if c == 'i' { return 72 }; 
-        NULL_STATE
-	}, 
-	// Set66 
-	&|c| -> State {  
-        if c == 'i' { return 73 }; 
-        NULL_STATE
-	}, 
-	// Set67 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set68 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set69 
-	&|c| -> State {  
-        if c == 'r' { return 74 }; 
-        NULL_STATE
-	}, 
-	// Set70 
-	&|c| -> State {  
-        if c == 'e' { return 75 }; 
-        NULL_STATE
-	}, 
-	// Set71 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set72 
-	&|c| -> State {  
-        if c == 'g' { return 76 }; 
-        NULL_STATE
-	}, 
-	// Set73 
-	&|c| -> State {  
-        if c == 'n' { return 77 }; 
-        NULL_STATE
-	}, 
-	// Set74 
-	&|c| -> State {  
-        if c == 'n' { return 78 }; 
-        NULL_STATE
-	}, 
-	// Set75 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set76 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set77 
-	&|c| -> State {  
-        if c == 'u' { return 79 }; 
-        NULL_STATE
-	}, 
-	// Set78 
-	&|_| -> State {  
-        NULL_STATE
-	}, 
-	// Set79 
-	&|c| -> State {  
-        if c == 'e' { return 80 }; 
-        NULL_STATE
-	}, 
-	// Set80 
-	&|_| -> State {  
+        if c == '_' { return 19 }; 
+        if c.is_alphabetic() { return 19 }; 
+        if c.is_numeric() { return 19 }; 
         NULL_STATE
 	}, 
 ];

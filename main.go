@@ -6,17 +6,21 @@ import (
 
 	"v8.run/go/conf/script/lexer"
 	"v8.run/go/conf/script/parser"
+	"v8.run/go/conf/script/parser/bsr"
 )
 
 var testdata = `
-func ID(X:U64) U64 {
-	return X;
-}
-
-func ID(X:U64) U64 {
-	return X;
-}
+let x:u64 = 0x12345678;
 `
+
+func Walk(b bsr.BSR, fn func(bsr.BSR)) {
+	fn(b)
+	for _, c := range b.GetAllNTChildren() {
+		for _, nt := range c {
+			Walk(nt, fn)
+		}
+	}
+}
 
 func main() {
 	l := lexer.New([]rune(testdata))
@@ -31,7 +35,6 @@ func main() {
 		os.Exit(1)
 		return
 	}
-	for _, stmt := range p.GetRoots() {
-		fmt.Println(stmt)
-	}
+	p.GetRoots()
+	p.Dump()
 }

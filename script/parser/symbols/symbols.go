@@ -38,33 +38,25 @@ const(
 // T is the type of terminals symbols
 type T int
 const( 
-	T_0 T = iota // assign 
-	T_1  // break 
-	T_2  // colon 
-	T_3  // comma 
-	T_4  // comment 
-	T_5  // config 
-	T_6  // continue 
-	T_7  // dec 
-	T_8  // else 
+	T_0 T = iota // ( 
+	T_1  // ) 
+	T_2  // ++ 
+	T_3  // -- 
+	T_4  // : 
+	T_5  // ; 
+	T_6  // = 
+	T_7  // comment 
+	T_8  // config 
 	T_9  // float_literal 
 	T_10  // for 
-	T_11  // function 
+	T_11  // func 
 	T_12  // identifier 
-	T_13  // if 
-	T_14  // in 
-	T_15  // inc 
-	T_16  // integer_literal 
-	T_17  // lbrace 
-	T_18  // let 
-	T_19  // lparen 
-	T_20  // rbrace 
-	T_21  // return 
-	T_22  // rparen 
-	T_23  // semicolon 
-	T_24  // string_literal 
-	T_25  // while 
-	T_26  // whitespace 
+	T_13  // integer_literal 
+	T_14  // let 
+	T_15  // return 
+	T_16  // string_literal 
+	T_17  // { 
+	T_18  // } 
 )
 
 type Symbols []Symbol
@@ -116,33 +108,25 @@ var ntToString = []string {
 }
 
 var tToString = []string { 
-	"assign", /* T_0 */
-	"break", /* T_1 */
-	"colon", /* T_2 */
-	"comma", /* T_3 */
-	"comment", /* T_4 */
-	"config", /* T_5 */
-	"continue", /* T_6 */
-	"dec", /* T_7 */
-	"else", /* T_8 */
+	"(", /* T_0 */
+	")", /* T_1 */
+	"++", /* T_2 */
+	"--", /* T_3 */
+	":", /* T_4 */
+	";", /* T_5 */
+	"=", /* T_6 */
+	"comment", /* T_7 */
+	"config", /* T_8 */
 	"float_literal", /* T_9 */
 	"for", /* T_10 */
-	"function", /* T_11 */
+	"func", /* T_11 */
 	"identifier", /* T_12 */
-	"if", /* T_13 */
-	"in", /* T_14 */
-	"inc", /* T_15 */
-	"integer_literal", /* T_16 */
-	"lbrace", /* T_17 */
-	"let", /* T_18 */
-	"lparen", /* T_19 */
-	"rbrace", /* T_20 */
-	"return", /* T_21 */
-	"rparen", /* T_22 */
-	"semicolon", /* T_23 */
-	"string_literal", /* T_24 */
-	"while", /* T_25 */
-	"whitespace", /* T_26 */ 
+	"integer_literal", /* T_13 */
+	"let", /* T_14 */
+	"return", /* T_15 */
+	"string_literal", /* T_16 */
+	"{", /* T_17 */
+	"}", /* T_18 */ 
 }
 
 var stringNT = map[string]NT{ 

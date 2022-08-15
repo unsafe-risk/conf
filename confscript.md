@@ -32,35 +32,7 @@ float_literal:
    );
 
 
-whitespace: any " \t\r\n";
-
-function: 'f' 'u' 'n' 'c';
-let: 'l' 'e' 't';
-for: 'f' 'o' 'r';
-in: 'i' 'n';
-if: 'i' 'f';
-else: 'e' 'l' 's' 'e';
-while: 'w' 'h' 'i' 'l' 'e';
-return: 'r' 'e' 't' 'u' 'r' 'n';
-break: 'b' 'r' 'e' 'a' 'k';
-continue: 'c' 'o' 'n' 't' 'i' 'n' 'u' 'e';
-config: 'c' 'o' 'n' 'f' 'i' 'g';
-
-inc: '+' '+';
-dec: '-' '-';
-
-colon: ':';
-comma: ',';
-assign: '=';
-semicolon: ';';
-
-lparen: '(';
-rparen: ')';
-
-lbrace: '{';
-rbrace: '}';
-
-identifier: upcase {letter | number | '_'};
+identifier: letter {letter | number | '_'};
 
 !comment: (
       '/' '/' {not "\n"}
@@ -73,36 +45,36 @@ identifier: upcase {letter | number | '_'};
 
 ```
 Assignment_Statement:
-   identifier assign Expression semicolon;
+   identifier "=" Expression ";";
 
 Declaration_Statement:
-   let identifier colon identifier assign Expression semicolon
-   | let config identifier colon identifier assign Expression semicolon;
+   "let" identifier ":" identifier "=" Expression ";"
+   | "let" "config" identifier ":" identifier "=" Expression ";";
 
 Expression_Statement:
-   Expression semicolon | semicolon;
+   Expression ";" | ";";
 
 Function_Argument_List:
    Function_Argument
    | Function_Argument_List_Body;
 
 Function_Argument_List_Body:
-   Function_Argument comma
+   Function_Argument ";"
    | Function_Argument_List_Body Function_Argument
-   | Function_Argument_List_Body Function_Argument comma;
+   | Function_Argument_List_Body Function_Argument ";";
 
 Function_Argument:
-   identifier colon identifier;
+   identifier ":" identifier;
 
 Function_Statement:
-   function identifier lparen Function_Argument_List rparen identifier Statement
-   | function identifier lparen rparen identifier Statement;
+   "func" identifier "(" Function_Argument_List ")" identifier Statement
+   | "func" identifier "(" ")" identifier Statement;
 
 Return_Statement:
-   return Expression semicolon;
+   "return" Expression ";";
 
 Empty_Statement:
-   semicolon;
+   ";";
 
 Simple_Statement:
    Declaration_Statement
@@ -110,7 +82,7 @@ Simple_Statement:
    | Expression_Statement
    | Empty_Statement;
 
-IncDec_Expression: identifier inc | identifier dec;
+IncDec_Expression: identifier "++" | identifier "--";
 
 Literal_Expression:
    integer_literal
@@ -125,16 +97,16 @@ Expression:
    | Identifier_Expression;
 
 For:
-   for lparen Simple_Statement Expression_Statement Expression rparen Statement
-   | for lparen Simple_Statement Expression_Statement rparen Statement;
+   "for" "(" Simple_Statement Expression_Statement Expression ")" Statement
+   | "for" "(" Simple_Statement Expression_Statement ")" Statement;
 
 Statement_List:
    Statement
    | Statement_List Statement;
 
 Compound_Statement:
-   lbrace rbrace
-   | lbrace Statement_List rbrace;
+   "{" "}"
+   | "{" Statement_List "}";
 
 Statement:
    Empty_Statement

@@ -38,33 +38,25 @@ pub enum NT {
 #[allow(dead_code)]
 #[derive(Hash, Eq, PartialEq)]
 pub enum T { 
-    T0, // assign 
-    T1, // break 
-    T2, // colon 
-    T3, // comma 
-    T4, // comment 
-    T5, // config 
-    T6, // continue 
-    T7, // dec 
-    T8, // else 
+    T0, // ( 
+    T1, // ) 
+    T2, // ++ 
+    T3, // -- 
+    T4, // : 
+    T5, // ; 
+    T6, // = 
+    T7, // comment 
+    T8, // config 
     T9, // float_literal 
     T10, // for 
-    T11, // function 
+    T11, // func 
     T12, // identifier 
-    T13, // if 
-    T14, // in 
-    T15, // inc 
-    T16, // integer_literal 
-    T17, // lbrace 
-    T18, // let 
-    T19, // lparen 
-    T20, // rbrace 
-    T21, // return 
-    T22, // rparen 
-    T23, // semicolon 
-    T24, // string_literal 
-    T25, // while 
-    T26, // whitespace 	
+    T13, // integer_literal 
+    T14, // let 
+    T15, // return 
+    T16, // string_literal 
+    T17, // { 
+    T18, // } 	
 }
 
 /// Format a &Vec<Symbol> into a String
@@ -116,33 +108,25 @@ impl fmt::Display for NT {
 impl fmt::Display for T {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {  
-            T::T0 => write!(f, "assign"), 
-            T::T1 => write!(f, "break"), 
-            T::T2 => write!(f, "colon"), 
-            T::T3 => write!(f, "comma"), 
-            T::T4 => write!(f, "comment"), 
-            T::T5 => write!(f, "config"), 
-            T::T6 => write!(f, "continue"), 
-            T::T7 => write!(f, "dec"), 
-            T::T8 => write!(f, "else"), 
+            T::T0 => write!(f, "("), 
+            T::T1 => write!(f, ")"), 
+            T::T2 => write!(f, "++"), 
+            T::T3 => write!(f, "--"), 
+            T::T4 => write!(f, ":"), 
+            T::T5 => write!(f, ";"), 
+            T::T6 => write!(f, "="), 
+            T::T7 => write!(f, "comment"), 
+            T::T8 => write!(f, "config"), 
             T::T9 => write!(f, "float_literal"), 
             T::T10 => write!(f, "for"), 
-            T::T11 => write!(f, "function"), 
+            T::T11 => write!(f, "func"), 
             T::T12 => write!(f, "identifier"), 
-            T::T13 => write!(f, "if"), 
-            T::T14 => write!(f, "in"), 
-            T::T15 => write!(f, "inc"), 
-            T::T16 => write!(f, "integer_literal"), 
-            T::T17 => write!(f, "lbrace"), 
-            T::T18 => write!(f, "let"), 
-            T::T19 => write!(f, "lparen"), 
-            T::T20 => write!(f, "rbrace"), 
-            T::T21 => write!(f, "return"), 
-            T::T22 => write!(f, "rparen"), 
-            T::T23 => write!(f, "semicolon"), 
-            T::T24 => write!(f, "string_literal"), 
-            T::T25 => write!(f, "while"), 
-            T::T26 => write!(f, "whitespace"),
+            T::T13 => write!(f, "integer_literal"), 
+            T::T14 => write!(f, "let"), 
+            T::T15 => write!(f, "return"), 
+            T::T16 => write!(f, "string_literal"), 
+            T::T17 => write!(f, "{{"), 
+            T::T18 => write!(f, "}}"),
         }
     }
 }

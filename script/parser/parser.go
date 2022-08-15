@@ -65,7 +65,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 		// p.DumpDescriptors()
 
 		switch L {
-		case slot.Assignment_Statement0R0: // Assignment_Statement : ∙identifier assign Expression semicolon
+		case slot.Assignment_Statement0R0: // Assignment_Statement : ∙identifier = Expression ;
 
 			p.bsrSet.Add(slot.Assignment_Statement0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -82,7 +82,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Assignment_Statement0R3, cU, p.cI)
-		case slot.Assignment_Statement0R3: // Assignment_Statement : identifier assign Expression ∙semicolon
+		case slot.Assignment_Statement0R3: // Assignment_Statement : identifier = Expression ∙;
 
 			if !p.testSelect(slot.Assignment_Statement0R3) {
 				p.parseError(slot.Assignment_Statement0R3, p.cI, first[slot.Assignment_Statement0R3])
@@ -96,7 +96,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Assignment_Statement0R0, p.cI, followSets[symbols.NT_Assignment_Statement])
 			}
-		case slot.Compound_Statement0R0: // Compound_Statement : ∙lbrace rbrace
+		case slot.Compound_Statement0R0: // Compound_Statement : ∙{ }
 
 			p.bsrSet.Add(slot.Compound_Statement0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -112,7 +112,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Compound_Statement0R0, p.cI, followSets[symbols.NT_Compound_Statement])
 			}
-		case slot.Compound_Statement1R0: // Compound_Statement : ∙lbrace Statement_List rbrace
+		case slot.Compound_Statement1R0: // Compound_Statement : ∙{ Statement_List }
 
 			p.bsrSet.Add(slot.Compound_Statement1R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -122,7 +122,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Compound_Statement1R2, cU, p.cI)
-		case slot.Compound_Statement1R2: // Compound_Statement : lbrace Statement_List ∙rbrace
+		case slot.Compound_Statement1R2: // Compound_Statement : { Statement_List ∙}
 
 			if !p.testSelect(slot.Compound_Statement1R2) {
 				p.parseError(slot.Compound_Statement1R2, p.cI, first[slot.Compound_Statement1R2])
@@ -136,7 +136,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Compound_Statement1R0, p.cI, followSets[symbols.NT_Compound_Statement])
 			}
-		case slot.Declaration_Statement0R0: // Declaration_Statement : ∙let identifier colon identifier assign Expression semicolon
+		case slot.Declaration_Statement0R0: // Declaration_Statement : ∙let identifier : identifier = Expression ;
 
 			p.bsrSet.Add(slot.Declaration_Statement0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -174,7 +174,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Declaration_Statement0R6, cU, p.cI)
-		case slot.Declaration_Statement0R6: // Declaration_Statement : let identifier colon identifier assign Expression ∙semicolon
+		case slot.Declaration_Statement0R6: // Declaration_Statement : let identifier : identifier = Expression ∙;
 
 			if !p.testSelect(slot.Declaration_Statement0R6) {
 				p.parseError(slot.Declaration_Statement0R6, p.cI, first[slot.Declaration_Statement0R6])
@@ -188,7 +188,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Declaration_Statement0R0, p.cI, followSets[symbols.NT_Declaration_Statement])
 			}
-		case slot.Declaration_Statement1R0: // Declaration_Statement : ∙let config identifier colon identifier assign Expression semicolon
+		case slot.Declaration_Statement1R0: // Declaration_Statement : ∙let config identifier : identifier = Expression ;
 
 			p.bsrSet.Add(slot.Declaration_Statement1R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -233,7 +233,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Declaration_Statement1R7, cU, p.cI)
-		case slot.Declaration_Statement1R7: // Declaration_Statement : let config identifier colon identifier assign Expression ∙semicolon
+		case slot.Declaration_Statement1R7: // Declaration_Statement : let config identifier : identifier = Expression ∙;
 
 			if !p.testSelect(slot.Declaration_Statement1R7) {
 				p.parseError(slot.Declaration_Statement1R7, p.cI, first[slot.Declaration_Statement1R7])
@@ -247,7 +247,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Declaration_Statement1R0, p.cI, followSets[symbols.NT_Declaration_Statement])
 			}
-		case slot.Empty_Statement0R0: // Empty_Statement : ∙semicolon
+		case slot.Empty_Statement0R0: // Empty_Statement : ∙;
 
 			p.bsrSet.Add(slot.Empty_Statement0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -286,10 +286,10 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Expression2R0, p.cI, followSets[symbols.NT_Expression])
 			}
-		case slot.Expression_Statement0R0: // Expression_Statement : ∙Expression semicolon
+		case slot.Expression_Statement0R0: // Expression_Statement : ∙Expression ;
 
 			p.call(slot.Expression_Statement0R1, cU, p.cI)
-		case slot.Expression_Statement0R1: // Expression_Statement : Expression ∙semicolon
+		case slot.Expression_Statement0R1: // Expression_Statement : Expression ∙;
 
 			if !p.testSelect(slot.Expression_Statement0R1) {
 				p.parseError(slot.Expression_Statement0R1, p.cI, first[slot.Expression_Statement0R1])
@@ -303,7 +303,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Expression_Statement0R0, p.cI, followSets[symbols.NT_Expression_Statement])
 			}
-		case slot.Expression_Statement1R0: // Expression_Statement : ∙semicolon
+		case slot.Expression_Statement1R0: // Expression_Statement : ∙;
 
 			p.bsrSet.Add(slot.Expression_Statement1R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -312,7 +312,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Expression_Statement1R0, p.cI, followSets[symbols.NT_Expression_Statement])
 			}
-		case slot.For0R0: // For : ∙for lparen Simple_Statement Expression_Statement Expression rparen Statement
+		case slot.For0R0: // For : ∙for ( Simple_Statement Expression_Statement Expression ) Statement
 
 			p.bsrSet.Add(slot.For0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -329,7 +329,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For0R3, cU, p.cI)
-		case slot.For0R3: // For : for lparen Simple_Statement ∙Expression_Statement Expression rparen Statement
+		case slot.For0R3: // For : for ( Simple_Statement ∙Expression_Statement Expression ) Statement
 
 			if !p.testSelect(slot.For0R3) {
 				p.parseError(slot.For0R3, p.cI, first[slot.For0R3])
@@ -337,7 +337,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For0R4, cU, p.cI)
-		case slot.For0R4: // For : for lparen Simple_Statement Expression_Statement ∙Expression rparen Statement
+		case slot.For0R4: // For : for ( Simple_Statement Expression_Statement ∙Expression ) Statement
 
 			if !p.testSelect(slot.For0R4) {
 				p.parseError(slot.For0R4, p.cI, first[slot.For0R4])
@@ -345,7 +345,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For0R5, cU, p.cI)
-		case slot.For0R5: // For : for lparen Simple_Statement Expression_Statement Expression ∙rparen Statement
+		case slot.For0R5: // For : for ( Simple_Statement Expression_Statement Expression ∙) Statement
 
 			if !p.testSelect(slot.For0R5) {
 				p.parseError(slot.For0R5, p.cI, first[slot.For0R5])
@@ -360,14 +360,14 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For0R7, cU, p.cI)
-		case slot.For0R7: // For : for lparen Simple_Statement Expression_Statement Expression rparen Statement ∙
+		case slot.For0R7: // For : for ( Simple_Statement Expression_Statement Expression ) Statement ∙
 
 			if p.follow(symbols.NT_For) {
 				p.rtn(symbols.NT_For, cU, p.cI)
 			} else {
 				p.parseError(slot.For0R0, p.cI, followSets[symbols.NT_For])
 			}
-		case slot.For1R0: // For : ∙for lparen Simple_Statement Expression_Statement rparen Statement
+		case slot.For1R0: // For : ∙for ( Simple_Statement Expression_Statement ) Statement
 
 			p.bsrSet.Add(slot.For1R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -384,7 +384,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For1R3, cU, p.cI)
-		case slot.For1R3: // For : for lparen Simple_Statement ∙Expression_Statement rparen Statement
+		case slot.For1R3: // For : for ( Simple_Statement ∙Expression_Statement ) Statement
 
 			if !p.testSelect(slot.For1R3) {
 				p.parseError(slot.For1R3, p.cI, first[slot.For1R3])
@@ -392,7 +392,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For1R4, cU, p.cI)
-		case slot.For1R4: // For : for lparen Simple_Statement Expression_Statement ∙rparen Statement
+		case slot.For1R4: // For : for ( Simple_Statement Expression_Statement ∙) Statement
 
 			if !p.testSelect(slot.For1R4) {
 				p.parseError(slot.For1R4, p.cI, first[slot.For1R4])
@@ -407,14 +407,14 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.For1R6, cU, p.cI)
-		case slot.For1R6: // For : for lparen Simple_Statement Expression_Statement rparen Statement ∙
+		case slot.For1R6: // For : for ( Simple_Statement Expression_Statement ) Statement ∙
 
 			if p.follow(symbols.NT_For) {
 				p.rtn(symbols.NT_For, cU, p.cI)
 			} else {
 				p.parseError(slot.For1R0, p.cI, followSets[symbols.NT_For])
 			}
-		case slot.Function_Argument0R0: // Function_Argument : ∙identifier colon identifier
+		case slot.Function_Argument0R0: // Function_Argument : ∙identifier : identifier
 
 			p.bsrSet.Add(slot.Function_Argument0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -457,10 +457,10 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Function_Argument_List1R0, p.cI, followSets[symbols.NT_Function_Argument_List])
 			}
-		case slot.Function_Argument_List_Body0R0: // Function_Argument_List_Body : ∙Function_Argument comma
+		case slot.Function_Argument_List_Body0R0: // Function_Argument_List_Body : ∙Function_Argument ;
 
 			p.call(slot.Function_Argument_List_Body0R1, cU, p.cI)
-		case slot.Function_Argument_List_Body0R1: // Function_Argument_List_Body : Function_Argument ∙comma
+		case slot.Function_Argument_List_Body0R1: // Function_Argument_List_Body : Function_Argument ∙;
 
 			if !p.testSelect(slot.Function_Argument_List_Body0R1) {
 				p.parseError(slot.Function_Argument_List_Body0R1, p.cI, first[slot.Function_Argument_List_Body0R1])
@@ -492,10 +492,10 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Function_Argument_List_Body1R0, p.cI, followSets[symbols.NT_Function_Argument_List_Body])
 			}
-		case slot.Function_Argument_List_Body2R0: // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument comma
+		case slot.Function_Argument_List_Body2R0: // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument ;
 
 			p.call(slot.Function_Argument_List_Body2R1, cU, p.cI)
-		case slot.Function_Argument_List_Body2R1: // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument comma
+		case slot.Function_Argument_List_Body2R1: // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument ;
 
 			if !p.testSelect(slot.Function_Argument_List_Body2R1) {
 				p.parseError(slot.Function_Argument_List_Body2R1, p.cI, first[slot.Function_Argument_List_Body2R1])
@@ -503,7 +503,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Function_Argument_List_Body2R2, cU, p.cI)
-		case slot.Function_Argument_List_Body2R2: // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙comma
+		case slot.Function_Argument_List_Body2R2: // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙;
 
 			if !p.testSelect(slot.Function_Argument_List_Body2R2) {
 				p.parseError(slot.Function_Argument_List_Body2R2, p.cI, first[slot.Function_Argument_List_Body2R2])
@@ -517,7 +517,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Function_Argument_List_Body2R0, p.cI, followSets[symbols.NT_Function_Argument_List_Body])
 			}
-		case slot.Function_Statement0R0: // Function_Statement : ∙function identifier lparen Function_Argument_List rparen identifier Statement
+		case slot.Function_Statement0R0: // Function_Statement : ∙func identifier ( Function_Argument_List ) identifier Statement
 
 			p.bsrSet.Add(slot.Function_Statement0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -541,7 +541,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Function_Statement0R4, cU, p.cI)
-		case slot.Function_Statement0R4: // Function_Statement : function identifier lparen Function_Argument_List ∙rparen identifier Statement
+		case slot.Function_Statement0R4: // Function_Statement : func identifier ( Function_Argument_List ∙) identifier Statement
 
 			if !p.testSelect(slot.Function_Statement0R4) {
 				p.parseError(slot.Function_Statement0R4, p.cI, first[slot.Function_Statement0R4])
@@ -563,14 +563,14 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Function_Statement0R7, cU, p.cI)
-		case slot.Function_Statement0R7: // Function_Statement : function identifier lparen Function_Argument_List rparen identifier Statement ∙
+		case slot.Function_Statement0R7: // Function_Statement : func identifier ( Function_Argument_List ) identifier Statement ∙
 
 			if p.follow(symbols.NT_Function_Statement) {
 				p.rtn(symbols.NT_Function_Statement, cU, p.cI)
 			} else {
 				p.parseError(slot.Function_Statement0R0, p.cI, followSets[symbols.NT_Function_Statement])
 			}
-		case slot.Function_Statement1R0: // Function_Statement : ∙function identifier lparen rparen identifier Statement
+		case slot.Function_Statement1R0: // Function_Statement : ∙func identifier ( ) identifier Statement
 
 			p.bsrSet.Add(slot.Function_Statement1R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -608,7 +608,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Function_Statement1R6, cU, p.cI)
-		case slot.Function_Statement1R6: // Function_Statement : function identifier lparen rparen identifier Statement ∙
+		case slot.Function_Statement1R6: // Function_Statement : func identifier ( ) identifier Statement ∙
 
 			if p.follow(symbols.NT_Function_Statement) {
 				p.rtn(symbols.NT_Function_Statement, cU, p.cI)
@@ -634,7 +634,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Identifier_Expression0R0, p.cI, followSets[symbols.NT_Identifier_Expression])
 			}
-		case slot.IncDec_Expression0R0: // IncDec_Expression : ∙identifier inc
+		case slot.IncDec_Expression0R0: // IncDec_Expression : ∙identifier ++
 
 			p.bsrSet.Add(slot.IncDec_Expression0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -650,7 +650,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.IncDec_Expression0R0, p.cI, followSets[symbols.NT_IncDec_Expression])
 			}
-		case slot.IncDec_Expression1R0: // IncDec_Expression : ∙identifier dec
+		case slot.IncDec_Expression1R0: // IncDec_Expression : ∙identifier --
 
 			p.bsrSet.Add(slot.IncDec_Expression1R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -693,7 +693,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			} else {
 				p.parseError(slot.Literal_Expression2R0, p.cI, followSets[symbols.NT_Literal_Expression])
 			}
-		case slot.Return_Statement0R0: // Return_Statement : ∙return Expression semicolon
+		case slot.Return_Statement0R0: // Return_Statement : ∙return Expression ;
 
 			p.bsrSet.Add(slot.Return_Statement0R1, cU, p.cI, p.cI+1)
 			p.cI++
@@ -703,7 +703,7 @@ func (p *parser) parse() (*bsr.Set, []*Error) {
 			}
 
 			p.call(slot.Return_Statement0R2, cU, p.cI)
-		case slot.Return_Statement0R2: // Return_Statement : return Expression ∙semicolon
+		case slot.Return_Statement0R2: // Return_Statement : return Expression ∙;
 
 			if !p.testSelect(slot.Return_Statement0R2) {
 				p.parseError(slot.Return_Statement0R2, p.cI, first[slot.Return_Statement0R2])
@@ -1091,213 +1091,213 @@ func (p *parser) testSelect(l slot.Label) bool {
 }
 
 var first = []map[token.Type]string{
-	// Assignment_Statement : ∙identifier assign Expression semicolon
+	// Assignment_Statement : ∙identifier = Expression ;
 	{
 		token.T_12: "identifier",
 	},
-	// Assignment_Statement : identifier ∙assign Expression semicolon
+	// Assignment_Statement : identifier ∙= Expression ;
 	{
-		token.T_0: "assign",
+		token.T_6: "=",
 	},
-	// Assignment_Statement : identifier assign ∙Expression semicolon
+	// Assignment_Statement : identifier = ∙Expression ;
 	{
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// Assignment_Statement : identifier assign Expression ∙semicolon
+	// Assignment_Statement : identifier = Expression ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Assignment_Statement : identifier assign Expression semicolon ∙
+	// Assignment_Statement : identifier = Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Compound_Statement : ∙lbrace rbrace
+	// Compound_Statement : ∙{ }
 	{
-		token.T_17: "lbrace",
+		token.T_17: "{",
 	},
-	// Compound_Statement : lbrace ∙rbrace
+	// Compound_Statement : { ∙}
 	{
-		token.T_20: "rbrace",
+		token.T_18: "}",
 	},
-	// Compound_Statement : lbrace rbrace ∙
+	// Compound_Statement : { } ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Compound_Statement : ∙lbrace Statement_List rbrace
+	// Compound_Statement : ∙{ Statement_List }
 	{
-		token.T_17: "lbrace",
+		token.T_17: "{",
 	},
-	// Compound_Statement : lbrace ∙Statement_List rbrace
+	// Compound_Statement : { ∙Statement_List }
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
-	// Compound_Statement : lbrace Statement_List ∙rbrace
+	// Compound_Statement : { Statement_List ∙}
 	{
-		token.T_20: "rbrace",
+		token.T_18: "}",
 	},
-	// Compound_Statement : lbrace Statement_List rbrace ∙
+	// Compound_Statement : { Statement_List } ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Declaration_Statement : ∙let identifier colon identifier assign Expression semicolon
+	// Declaration_Statement : ∙let identifier : identifier = Expression ;
 	{
-		token.T_18: "let",
+		token.T_14: "let",
 	},
-	// Declaration_Statement : let ∙identifier colon identifier assign Expression semicolon
-	{
-		token.T_12: "identifier",
-	},
-	// Declaration_Statement : let identifier ∙colon identifier assign Expression semicolon
-	{
-		token.T_2: "colon",
-	},
-	// Declaration_Statement : let identifier colon ∙identifier assign Expression semicolon
+	// Declaration_Statement : let ∙identifier : identifier = Expression ;
 	{
 		token.T_12: "identifier",
 	},
-	// Declaration_Statement : let identifier colon identifier ∙assign Expression semicolon
+	// Declaration_Statement : let identifier ∙: identifier = Expression ;
 	{
-		token.T_0: "assign",
+		token.T_4: ":",
 	},
-	// Declaration_Statement : let identifier colon identifier assign ∙Expression semicolon
+	// Declaration_Statement : let identifier : ∙identifier = Expression ;
+	{
+		token.T_12: "identifier",
+	},
+	// Declaration_Statement : let identifier : identifier ∙= Expression ;
+	{
+		token.T_6: "=",
+	},
+	// Declaration_Statement : let identifier : identifier = ∙Expression ;
 	{
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// Declaration_Statement : let identifier colon identifier assign Expression ∙semicolon
+	// Declaration_Statement : let identifier : identifier = Expression ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Declaration_Statement : let identifier colon identifier assign Expression semicolon ∙
+	// Declaration_Statement : let identifier : identifier = Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Declaration_Statement : ∙let config identifier colon identifier assign Expression semicolon
+	// Declaration_Statement : ∙let config identifier : identifier = Expression ;
 	{
-		token.T_18: "let",
+		token.T_14: "let",
 	},
-	// Declaration_Statement : let ∙config identifier colon identifier assign Expression semicolon
+	// Declaration_Statement : let ∙config identifier : identifier = Expression ;
 	{
-		token.T_5: "config",
+		token.T_8: "config",
 	},
-	// Declaration_Statement : let config ∙identifier colon identifier assign Expression semicolon
-	{
-		token.T_12: "identifier",
-	},
-	// Declaration_Statement : let config identifier ∙colon identifier assign Expression semicolon
-	{
-		token.T_2: "colon",
-	},
-	// Declaration_Statement : let config identifier colon ∙identifier assign Expression semicolon
+	// Declaration_Statement : let config ∙identifier : identifier = Expression ;
 	{
 		token.T_12: "identifier",
 	},
-	// Declaration_Statement : let config identifier colon identifier ∙assign Expression semicolon
+	// Declaration_Statement : let config identifier ∙: identifier = Expression ;
 	{
-		token.T_0: "assign",
+		token.T_4: ":",
 	},
-	// Declaration_Statement : let config identifier colon identifier assign ∙Expression semicolon
+	// Declaration_Statement : let config identifier : ∙identifier = Expression ;
+	{
+		token.T_12: "identifier",
+	},
+	// Declaration_Statement : let config identifier : identifier ∙= Expression ;
+	{
+		token.T_6: "=",
+	},
+	// Declaration_Statement : let config identifier : identifier = ∙Expression ;
 	{
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// Declaration_Statement : let config identifier colon identifier assign Expression ∙semicolon
+	// Declaration_Statement : let config identifier : identifier = Expression ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Declaration_Statement : let config identifier colon identifier assign Expression semicolon ∙
+	// Declaration_Statement : let config identifier : identifier = Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Empty_Statement : ∙semicolon
+	// Empty_Statement : ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Empty_Statement : semicolon ∙
+	// Empty_Statement : ; ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Expression : ∙IncDec_Expression
 	{
@@ -1305,19 +1305,19 @@ var first = []map[token.Type]string{
 	},
 	// Expression : IncDec_Expression ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Expression : ∙Literal_Expression
 	{
 		token.T_9:  "float_literal",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
 	// Expression : Literal_Expression ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Expression : ∙Identifier_Expression
 	{
@@ -1325,194 +1325,194 @@ var first = []map[token.Type]string{
 	},
 	// Expression : Identifier_Expression ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
-	// Expression_Statement : ∙Expression semicolon
+	// Expression_Statement : ∙Expression ;
 	{
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// Expression_Statement : Expression ∙semicolon
+	// Expression_Statement : Expression ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Expression_Statement : Expression semicolon ∙
+	// Expression_Statement : Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_1:  ")",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Expression_Statement : ∙semicolon
+	// Expression_Statement : ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Expression_Statement : semicolon ∙
+	// Expression_Statement : ; ∙
 	{
 		token.EOF:  "$",
+		token.T_1:  ")",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// For : ∙for lparen Simple_Statement Expression_Statement Expression rparen Statement
+	// For : ∙for ( Simple_Statement Expression_Statement Expression ) Statement
 	{
 		token.T_10: "for",
 	},
-	// For : for ∙lparen Simple_Statement Expression_Statement Expression rparen Statement
+	// For : for ∙( Simple_Statement Expression_Statement Expression ) Statement
 	{
-		token.T_19: "lparen",
+		token.T_0: "(",
 	},
-	// For : for lparen ∙Simple_Statement Expression_Statement Expression rparen Statement
+	// For : for ( ∙Simple_Statement Expression_Statement Expression ) Statement
+	{
+		token.T_5:  ";",
+		token.T_9:  "float_literal",
+		token.T_12: "identifier",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_16: "string_literal",
+	},
+	// For : for ( Simple_Statement ∙Expression_Statement Expression ) Statement
+	{
+		token.T_5:  ";",
+		token.T_9:  "float_literal",
+		token.T_12: "identifier",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
+	},
+	// For : for ( Simple_Statement Expression_Statement ∙Expression ) Statement
 	{
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_18: "let",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// For : for lparen Simple_Statement ∙Expression_Statement Expression rparen Statement
+	// For : for ( Simple_Statement Expression_Statement Expression ∙) Statement
 	{
-		token.T_9:  "float_literal",
-		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_1: ")",
 	},
-	// For : for lparen Simple_Statement Expression_Statement ∙Expression rparen Statement
+	// For : for ( Simple_Statement Expression_Statement Expression ) ∙Statement
 	{
-		token.T_9:  "float_literal",
-		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
-	},
-	// For : for lparen Simple_Statement Expression_Statement Expression ∙rparen Statement
-	{
-		token.T_22: "rparen",
-	},
-	// For : for lparen Simple_Statement Expression_Statement Expression rparen ∙Statement
-	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
-	// For : for lparen Simple_Statement Expression_Statement Expression rparen Statement ∙
+	// For : for ( Simple_Statement Expression_Statement Expression ) Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// For : ∙for lparen Simple_Statement Expression_Statement rparen Statement
+	// For : ∙for ( Simple_Statement Expression_Statement ) Statement
 	{
 		token.T_10: "for",
 	},
-	// For : for ∙lparen Simple_Statement Expression_Statement rparen Statement
+	// For : for ∙( Simple_Statement Expression_Statement ) Statement
 	{
-		token.T_19: "lparen",
+		token.T_0: "(",
 	},
-	// For : for lparen ∙Simple_Statement Expression_Statement rparen Statement
+	// For : for ( ∙Simple_Statement Expression_Statement ) Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_18: "let",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_16: "string_literal",
 	},
-	// For : for lparen Simple_Statement ∙Expression_Statement rparen Statement
+	// For : for ( Simple_Statement ∙Expression_Statement ) Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// For : for lparen Simple_Statement Expression_Statement ∙rparen Statement
+	// For : for ( Simple_Statement Expression_Statement ∙) Statement
 	{
-		token.T_22: "rparen",
+		token.T_1: ")",
 	},
-	// For : for lparen Simple_Statement Expression_Statement rparen ∙Statement
+	// For : for ( Simple_Statement Expression_Statement ) ∙Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
-	// For : for lparen Simple_Statement Expression_Statement rparen Statement ∙
+	// For : for ( Simple_Statement Expression_Statement ) Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Function_Argument : ∙identifier colon identifier
+	// Function_Argument : ∙identifier : identifier
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Argument : identifier ∙colon identifier
+	// Function_Argument : identifier ∙: identifier
 	{
-		token.T_2: "colon",
+		token.T_4: ":",
 	},
-	// Function_Argument : identifier colon ∙identifier
+	// Function_Argument : identifier : ∙identifier
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Argument : identifier colon identifier ∙
+	// Function_Argument : identifier : identifier ∙
 	{
-		token.T_3:  "comma",
+		token.T_1:  ")",
+		token.T_5:  ";",
 		token.T_12: "identifier",
-		token.T_22: "rparen",
 	},
 	// Function_Argument_List : ∙Function_Argument
 	{
@@ -1520,7 +1520,7 @@ var first = []map[token.Type]string{
 	},
 	// Function_Argument_List : Function_Argument ∙
 	{
-		token.T_22: "rparen",
+		token.T_1: ")",
 	},
 	// Function_Argument_List : ∙Function_Argument_List_Body
 	{
@@ -1528,20 +1528,20 @@ var first = []map[token.Type]string{
 	},
 	// Function_Argument_List : Function_Argument_List_Body ∙
 	{
-		token.T_22: "rparen",
+		token.T_1: ")",
 	},
-	// Function_Argument_List_Body : ∙Function_Argument comma
+	// Function_Argument_List_Body : ∙Function_Argument ;
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Argument_List_Body : Function_Argument ∙comma
+	// Function_Argument_List_Body : Function_Argument ∙;
 	{
-		token.T_3: "comma",
+		token.T_5: ";",
 	},
-	// Function_Argument_List_Body : Function_Argument comma ∙
+	// Function_Argument_List_Body : Function_Argument ; ∙
 	{
+		token.T_1:  ")",
 		token.T_12: "identifier",
-		token.T_22: "rparen",
 	},
 	// Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument
 	{
@@ -1553,138 +1553,138 @@ var first = []map[token.Type]string{
 	},
 	// Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙
 	{
-		token.T_12: "identifier",
-		token.T_22: "rparen",
-	},
-	// Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument comma
-	{
+		token.T_1:  ")",
 		token.T_12: "identifier",
 	},
-	// Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument comma
+	// Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument ;
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙comma
-	{
-		token.T_3: "comma",
-	},
-	// Function_Argument_List_Body : Function_Argument_List_Body Function_Argument comma ∙
-	{
-		token.T_12: "identifier",
-		token.T_22: "rparen",
-	},
-	// Function_Statement : ∙function identifier lparen Function_Argument_List rparen identifier Statement
-	{
-		token.T_11: "function",
-	},
-	// Function_Statement : function ∙identifier lparen Function_Argument_List rparen identifier Statement
+	// Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument ;
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Statement : function identifier ∙lparen Function_Argument_List rparen identifier Statement
+	// Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙;
 	{
-		token.T_19: "lparen",
+		token.T_5: ";",
 	},
-	// Function_Statement : function identifier lparen ∙Function_Argument_List rparen identifier Statement
+	// Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ; ∙
+	{
+		token.T_1:  ")",
+		token.T_12: "identifier",
+	},
+	// Function_Statement : ∙func identifier ( Function_Argument_List ) identifier Statement
+	{
+		token.T_11: "func",
+	},
+	// Function_Statement : func ∙identifier ( Function_Argument_List ) identifier Statement
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Statement : function identifier lparen Function_Argument_List ∙rparen identifier Statement
+	// Function_Statement : func identifier ∙( Function_Argument_List ) identifier Statement
 	{
-		token.T_22: "rparen",
+		token.T_0: "(",
 	},
-	// Function_Statement : function identifier lparen Function_Argument_List rparen ∙identifier Statement
+	// Function_Statement : func identifier ( ∙Function_Argument_List ) identifier Statement
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Statement : function identifier lparen Function_Argument_List rparen identifier ∙Statement
+	// Function_Statement : func identifier ( Function_Argument_List ∙) identifier Statement
 	{
+		token.T_1: ")",
+	},
+	// Function_Statement : func identifier ( Function_Argument_List ) ∙identifier Statement
+	{
+		token.T_12: "identifier",
+	},
+	// Function_Statement : func identifier ( Function_Argument_List ) identifier ∙Statement
+	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
-	// Function_Statement : function identifier lparen Function_Argument_List rparen identifier Statement ∙
+	// Function_Statement : func identifier ( Function_Argument_List ) identifier Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
-	// Function_Statement : ∙function identifier lparen rparen identifier Statement
+	// Function_Statement : ∙func identifier ( ) identifier Statement
 	{
-		token.T_11: "function",
+		token.T_11: "func",
 	},
-	// Function_Statement : function ∙identifier lparen rparen identifier Statement
-	{
-		token.T_12: "identifier",
-	},
-	// Function_Statement : function identifier ∙lparen rparen identifier Statement
-	{
-		token.T_19: "lparen",
-	},
-	// Function_Statement : function identifier lparen ∙rparen identifier Statement
-	{
-		token.T_22: "rparen",
-	},
-	// Function_Statement : function identifier lparen rparen ∙identifier Statement
+	// Function_Statement : func ∙identifier ( ) identifier Statement
 	{
 		token.T_12: "identifier",
 	},
-	// Function_Statement : function identifier lparen rparen identifier ∙Statement
+	// Function_Statement : func identifier ∙( ) identifier Statement
 	{
+		token.T_0: "(",
+	},
+	// Function_Statement : func identifier ( ∙) identifier Statement
+	{
+		token.T_1: ")",
+	},
+	// Function_Statement : func identifier ( ) ∙identifier Statement
+	{
+		token.T_12: "identifier",
+	},
+	// Function_Statement : func identifier ( ) identifier ∙Statement
+	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
-	// Function_Statement : function identifier lparen rparen identifier Statement ∙
+	// Function_Statement : func identifier ( ) identifier Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// GoGLL : ∙Statement_List
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
 	// GoGLL : Statement_List ∙
 	{
@@ -1696,43 +1696,43 @@ var first = []map[token.Type]string{
 	},
 	// Identifier_Expression : identifier ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
-	// IncDec_Expression : ∙identifier inc
+	// IncDec_Expression : ∙identifier ++
 	{
 		token.T_12: "identifier",
 	},
-	// IncDec_Expression : identifier ∙inc
+	// IncDec_Expression : identifier ∙++
 	{
-		token.T_15: "inc",
+		token.T_2: "++",
 	},
-	// IncDec_Expression : identifier inc ∙
+	// IncDec_Expression : identifier ++ ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
-	// IncDec_Expression : ∙identifier dec
+	// IncDec_Expression : ∙identifier --
 	{
 		token.T_12: "identifier",
 	},
-	// IncDec_Expression : identifier ∙dec
+	// IncDec_Expression : identifier ∙--
 	{
-		token.T_7: "dec",
+		token.T_3: "--",
 	},
-	// IncDec_Expression : identifier dec ∙
+	// IncDec_Expression : identifier -- ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Literal_Expression : ∙integer_literal
 	{
-		token.T_16: "integer_literal",
+		token.T_13: "integer_literal",
 	},
 	// Literal_Expression : integer_literal ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Literal_Expression : ∙float_literal
 	{
@@ -1740,66 +1740,66 @@ var first = []map[token.Type]string{
 	},
 	// Literal_Expression : float_literal ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Literal_Expression : ∙string_literal
 	{
-		token.T_24: "string_literal",
+		token.T_16: "string_literal",
 	},
 	// Literal_Expression : string_literal ∙
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
-	// Return_Statement : ∙return Expression semicolon
+	// Return_Statement : ∙return Expression ;
 	{
-		token.T_21: "return",
+		token.T_15: "return",
 	},
-	// Return_Statement : return ∙Expression semicolon
+	// Return_Statement : return ∙Expression ;
 	{
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
-	// Return_Statement : return Expression ∙semicolon
+	// Return_Statement : return Expression ∙;
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
-	// Return_Statement : return Expression semicolon ∙
+	// Return_Statement : return Expression ; ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Simple_Statement : ∙Declaration_Statement
 	{
-		token.T_18: "let",
+		token.T_14: "let",
 	},
 	// Simple_Statement : Declaration_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Simple_Statement : ∙Assignment_Statement
 	{
@@ -1808,159 +1808,159 @@ var first = []map[token.Type]string{
 	// Simple_Statement : Assignment_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Simple_Statement : ∙Expression_Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_16: "string_literal",
 	},
 	// Simple_Statement : Expression_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Simple_Statement : ∙Empty_Statement
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
 	// Simple_Statement : Empty_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement : ∙Empty_Statement
 	{
-		token.T_23: "semicolon",
+		token.T_5: ";",
 	},
 	// Statement : Empty_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement : ∙Simple_Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_18: "let",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_16: "string_literal",
 	},
 	// Statement : Simple_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement : ∙Compound_Statement
 	{
-		token.T_17: "lbrace",
+		token.T_17: "{",
 	},
 	// Statement : Compound_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement : ∙Function_Statement
 	{
-		token.T_11: "function",
+		token.T_11: "func",
 	},
 	// Statement : Function_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement : ∙Return_Statement
 	{
-		token.T_21: "return",
+		token.T_15: "return",
 	},
 	// Statement : Return_Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement : ∙For
 	{
@@ -1969,86 +1969,86 @@ var first = []map[token.Type]string{
 	// Statement : For ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement_List : ∙Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
 	// Statement_List : Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement_List : ∙Statement_List Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
 	// Statement_List : Statement_List ∙Statement
 	{
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
 	},
 	// Statement_List : Statement_List Statement ∙
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 }
 
@@ -2056,128 +2056,128 @@ var followSets = []map[token.Type]string{
 	// Assignment_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Compound_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Declaration_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Empty_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Expression
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Expression_Statement
 	{
 		token.EOF:  "$",
+		token.T_1:  ")",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// For
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Function_Argument
 	{
-		token.T_3:  "comma",
+		token.T_1:  ")",
+		token.T_5:  ";",
 		token.T_12: "identifier",
-		token.T_22: "rparen",
 	},
 	// Function_Argument_List
 	{
-		token.T_22: "rparen",
+		token.T_1: ")",
 	},
 	// Function_Argument_List_Body
 	{
+		token.T_1:  ")",
 		token.T_12: "identifier",
-		token.T_22: "rparen",
 	},
 	// Function_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// GoGLL
 	{
@@ -2185,78 +2185,78 @@ var followSets = []map[token.Type]string{
 	},
 	// Identifier_Expression
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// IncDec_Expression
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Literal_Expression
 	{
-		token.T_22: "rparen",
-		token.T_23: "semicolon",
+		token.T_1: ")",
+		token.T_5: ";",
 	},
 	// Return_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Simple_Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 	// Statement_List
 	{
 		token.EOF:  "$",
+		token.T_5:  ";",
 		token.T_9:  "float_literal",
 		token.T_10: "for",
-		token.T_11: "function",
+		token.T_11: "func",
 		token.T_12: "identifier",
-		token.T_16: "integer_literal",
-		token.T_17: "lbrace",
-		token.T_18: "let",
-		token.T_20: "rbrace",
-		token.T_21: "return",
-		token.T_23: "semicolon",
-		token.T_24: "string_literal",
+		token.T_13: "integer_literal",
+		token.T_14: "let",
+		token.T_15: "return",
+		token.T_16: "string_literal",
+		token.T_17: "{",
+		token.T_18: "}",
 	},
 }
 

@@ -154,7 +154,7 @@ impl Parser {
 
             (|| {
                 match l { 
-                    // Assignment_Statement : ∙identifier assign Expression semicolon 
+                    // Assignment_Statement : ∙identifier = Expression ; 
                     Label::Assignment_Statement0R0 => { 
                         self.bsr_set.add(Label::Assignment_Statement0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -170,7 +170,7 @@ impl Parser {
                         }
                         self.call(Label::Assignment_Statement0R3, c_u, self.c_i);
                     },
-                    // Assignment_Statement : identifier assign Expression ∙semicolon 
+                    // Assignment_Statement : identifier = Expression ∙; 
                     Label::Assignment_Statement0R3 => {
                         if !self.test_select(Label::Assignment_Statement0R3){ 
                             self.error_first(Label::Assignment_Statement0R3, self.c_i);
@@ -184,7 +184,7 @@ impl Parser {
                             self.error_follow(Label::Assignment_Statement0R0, self.c_i, NT::Assignment_Statement)
                         }
                     }, 
-                    // Compound_Statement : ∙lbrace rbrace 
+                    // Compound_Statement : ∙{ } 
                     Label::Compound_Statement0R0 => { 
                         self.bsr_set.add(Label::Compound_Statement0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -200,7 +200,7 @@ impl Parser {
                             self.error_follow(Label::Compound_Statement0R0, self.c_i, NT::Compound_Statement)
                         }
                     }, 
-                    // Compound_Statement : ∙lbrace Statement_List rbrace 
+                    // Compound_Statement : ∙{ Statement_List } 
                     Label::Compound_Statement1R0 => { 
                         self.bsr_set.add(Label::Compound_Statement1R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -210,7 +210,7 @@ impl Parser {
                         }
                         self.call(Label::Compound_Statement1R2, c_u, self.c_i);
                     },
-                    // Compound_Statement : lbrace Statement_List ∙rbrace 
+                    // Compound_Statement : { Statement_List ∙} 
                     Label::Compound_Statement1R2 => {
                         if !self.test_select(Label::Compound_Statement1R2){ 
                             self.error_first(Label::Compound_Statement1R2, self.c_i);
@@ -224,7 +224,7 @@ impl Parser {
                             self.error_follow(Label::Compound_Statement1R0, self.c_i, NT::Compound_Statement)
                         }
                     }, 
-                    // Declaration_Statement : ∙let identifier colon identifier assign Expression semicolon 
+                    // Declaration_Statement : ∙let identifier : identifier = Expression ; 
                     Label::Declaration_Statement0R0 => { 
                         self.bsr_set.add(Label::Declaration_Statement0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -258,7 +258,7 @@ impl Parser {
                         }
                         self.call(Label::Declaration_Statement0R6, c_u, self.c_i);
                     },
-                    // Declaration_Statement : let identifier colon identifier assign Expression ∙semicolon 
+                    // Declaration_Statement : let identifier : identifier = Expression ∙; 
                     Label::Declaration_Statement0R6 => {
                         if !self.test_select(Label::Declaration_Statement0R6){ 
                             self.error_first(Label::Declaration_Statement0R6, self.c_i);
@@ -272,7 +272,7 @@ impl Parser {
                             self.error_follow(Label::Declaration_Statement0R0, self.c_i, NT::Declaration_Statement)
                         }
                     }, 
-                    // Declaration_Statement : ∙let config identifier colon identifier assign Expression semicolon 
+                    // Declaration_Statement : ∙let config identifier : identifier = Expression ; 
                     Label::Declaration_Statement1R0 => { 
                         self.bsr_set.add(Label::Declaration_Statement1R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -312,7 +312,7 @@ impl Parser {
                         }
                         self.call(Label::Declaration_Statement1R7, c_u, self.c_i);
                     },
-                    // Declaration_Statement : let config identifier colon identifier assign Expression ∙semicolon 
+                    // Declaration_Statement : let config identifier : identifier = Expression ∙; 
                     Label::Declaration_Statement1R7 => {
                         if !self.test_select(Label::Declaration_Statement1R7){ 
                             self.error_first(Label::Declaration_Statement1R7, self.c_i);
@@ -326,7 +326,7 @@ impl Parser {
                             self.error_follow(Label::Declaration_Statement1R0, self.c_i, NT::Declaration_Statement)
                         }
                     }, 
-                    // Empty_Statement : ∙semicolon 
+                    // Empty_Statement : ∙; 
                     Label::Empty_Statement0R0 => { 
                         self.bsr_set.add(Label::Empty_Statement0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -372,11 +372,11 @@ impl Parser {
                             self.error_follow(Label::Expression2R0, self.c_i, NT::Expression)
                         }
                     }, 
-                    // Expression_Statement : ∙Expression semicolon 
+                    // Expression_Statement : ∙Expression ; 
                     Label::Expression_Statement0R0 => { 
                         self.call(Label::Expression_Statement0R1, c_u, self.c_i);
                     },
-                    // Expression_Statement : Expression ∙semicolon 
+                    // Expression_Statement : Expression ∙; 
                     Label::Expression_Statement0R1 => {
                         if !self.test_select(Label::Expression_Statement0R1){ 
                             self.error_first(Label::Expression_Statement0R1, self.c_i);
@@ -390,7 +390,7 @@ impl Parser {
                             self.error_follow(Label::Expression_Statement0R0, self.c_i, NT::Expression_Statement)
                         }
                     }, 
-                    // Expression_Statement : ∙semicolon 
+                    // Expression_Statement : ∙; 
                     Label::Expression_Statement1R0 => { 
                         self.bsr_set.add(Label::Expression_Statement1R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -400,7 +400,7 @@ impl Parser {
                             self.error_follow(Label::Expression_Statement1R0, self.c_i, NT::Expression_Statement)
                         }
                     }, 
-                    // For : ∙for lparen Simple_Statement Expression_Statement Expression rparen Statement 
+                    // For : ∙for ( Simple_Statement Expression_Statement Expression ) Statement 
                     Label::For0R0 => { 
                         self.bsr_set.add(Label::For0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -416,7 +416,7 @@ impl Parser {
                         }
                         self.call(Label::For0R3, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement ∙Expression_Statement Expression rparen Statement 
+                    // For : for ( Simple_Statement ∙Expression_Statement Expression ) Statement 
                     Label::For0R3 => {
                         if !self.test_select(Label::For0R3){ 
                             self.error_first(Label::For0R3, self.c_i);
@@ -424,7 +424,7 @@ impl Parser {
                         }
                         self.call(Label::For0R4, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement Expression_Statement ∙Expression rparen Statement 
+                    // For : for ( Simple_Statement Expression_Statement ∙Expression ) Statement 
                     Label::For0R4 => {
                         if !self.test_select(Label::For0R4){ 
                             self.error_first(Label::For0R4, self.c_i);
@@ -432,7 +432,7 @@ impl Parser {
                         }
                         self.call(Label::For0R5, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement Expression_Statement Expression ∙rparen Statement 
+                    // For : for ( Simple_Statement Expression_Statement Expression ∙) Statement 
                     Label::For0R5 => {
                         if !self.test_select(Label::For0R5){ 
                             self.error_first(Label::For0R5, self.c_i);
@@ -446,7 +446,7 @@ impl Parser {
                         }
                         self.call(Label::For0R7, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement Expression_Statement Expression rparen Statement ∙
+                    // For : for ( Simple_Statement Expression_Statement Expression ) Statement ∙
                     Label::For0R7 => {
                         if self.follow(NT::For) {
                             self.rtn(NT::For, c_u, self.c_i)
@@ -454,7 +454,7 @@ impl Parser {
                             self.error_follow(Label::For0R0, self.c_i, NT::For)
                         }
                     }, 
-                    // For : ∙for lparen Simple_Statement Expression_Statement rparen Statement 
+                    // For : ∙for ( Simple_Statement Expression_Statement ) Statement 
                     Label::For1R0 => { 
                         self.bsr_set.add(Label::For1R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -470,7 +470,7 @@ impl Parser {
                         }
                         self.call(Label::For1R3, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement ∙Expression_Statement rparen Statement 
+                    // For : for ( Simple_Statement ∙Expression_Statement ) Statement 
                     Label::For1R3 => {
                         if !self.test_select(Label::For1R3){ 
                             self.error_first(Label::For1R3, self.c_i);
@@ -478,7 +478,7 @@ impl Parser {
                         }
                         self.call(Label::For1R4, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement Expression_Statement ∙rparen Statement 
+                    // For : for ( Simple_Statement Expression_Statement ∙) Statement 
                     Label::For1R4 => {
                         if !self.test_select(Label::For1R4){ 
                             self.error_first(Label::For1R4, self.c_i);
@@ -492,7 +492,7 @@ impl Parser {
                         }
                         self.call(Label::For1R6, c_u, self.c_i);
                     },
-                    // For : for lparen Simple_Statement Expression_Statement rparen Statement ∙
+                    // For : for ( Simple_Statement Expression_Statement ) Statement ∙
                     Label::For1R6 => {
                         if self.follow(NT::For) {
                             self.rtn(NT::For, c_u, self.c_i)
@@ -500,7 +500,7 @@ impl Parser {
                             self.error_follow(Label::For1R0, self.c_i, NT::For)
                         }
                     }, 
-                    // Function_Argument : ∙identifier colon identifier 
+                    // Function_Argument : ∙identifier : identifier 
                     Label::Function_Argument0R0 => { 
                         self.bsr_set.add(Label::Function_Argument0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -546,11 +546,11 @@ impl Parser {
                             self.error_follow(Label::Function_Argument_List1R0, self.c_i, NT::Function_Argument_List)
                         }
                     }, 
-                    // Function_Argument_List_Body : ∙Function_Argument comma 
+                    // Function_Argument_List_Body : ∙Function_Argument ; 
                     Label::Function_Argument_List_Body0R0 => { 
                         self.call(Label::Function_Argument_List_Body0R1, c_u, self.c_i);
                     },
-                    // Function_Argument_List_Body : Function_Argument ∙comma 
+                    // Function_Argument_List_Body : Function_Argument ∙; 
                     Label::Function_Argument_List_Body0R1 => {
                         if !self.test_select(Label::Function_Argument_List_Body0R1){ 
                             self.error_first(Label::Function_Argument_List_Body0R1, self.c_i);
@@ -584,11 +584,11 @@ impl Parser {
                             self.error_follow(Label::Function_Argument_List_Body1R0, self.c_i, NT::Function_Argument_List_Body)
                         }
                     }, 
-                    // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument comma 
+                    // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument ; 
                     Label::Function_Argument_List_Body2R0 => { 
                         self.call(Label::Function_Argument_List_Body2R1, c_u, self.c_i);
                     },
-                    // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument comma 
+                    // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument ; 
                     Label::Function_Argument_List_Body2R1 => {
                         if !self.test_select(Label::Function_Argument_List_Body2R1){ 
                             self.error_first(Label::Function_Argument_List_Body2R1, self.c_i);
@@ -596,7 +596,7 @@ impl Parser {
                         }
                         self.call(Label::Function_Argument_List_Body2R2, c_u, self.c_i);
                     },
-                    // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙comma 
+                    // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙; 
                     Label::Function_Argument_List_Body2R2 => {
                         if !self.test_select(Label::Function_Argument_List_Body2R2){ 
                             self.error_first(Label::Function_Argument_List_Body2R2, self.c_i);
@@ -610,7 +610,7 @@ impl Parser {
                             self.error_follow(Label::Function_Argument_List_Body2R0, self.c_i, NT::Function_Argument_List_Body)
                         }
                     }, 
-                    // Function_Statement : ∙function identifier lparen Function_Argument_List rparen identifier Statement 
+                    // Function_Statement : ∙func identifier ( Function_Argument_List ) identifier Statement 
                     Label::Function_Statement0R0 => { 
                         self.bsr_set.add(Label::Function_Statement0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -632,7 +632,7 @@ impl Parser {
                         }
                         self.call(Label::Function_Statement0R4, c_u, self.c_i);
                     },
-                    // Function_Statement : function identifier lparen Function_Argument_List ∙rparen identifier Statement 
+                    // Function_Statement : func identifier ( Function_Argument_List ∙) identifier Statement 
                     Label::Function_Statement0R4 => {
                         if !self.test_select(Label::Function_Statement0R4){ 
                             self.error_first(Label::Function_Statement0R4, self.c_i);
@@ -652,7 +652,7 @@ impl Parser {
                         }
                         self.call(Label::Function_Statement0R7, c_u, self.c_i);
                     },
-                    // Function_Statement : function identifier lparen Function_Argument_List rparen identifier Statement ∙
+                    // Function_Statement : func identifier ( Function_Argument_List ) identifier Statement ∙
                     Label::Function_Statement0R7 => {
                         if self.follow(NT::Function_Statement) {
                             self.rtn(NT::Function_Statement, c_u, self.c_i)
@@ -660,7 +660,7 @@ impl Parser {
                             self.error_follow(Label::Function_Statement0R0, self.c_i, NT::Function_Statement)
                         }
                     }, 
-                    // Function_Statement : ∙function identifier lparen rparen identifier Statement 
+                    // Function_Statement : ∙func identifier ( ) identifier Statement 
                     Label::Function_Statement1R0 => { 
                         self.bsr_set.add(Label::Function_Statement1R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -694,7 +694,7 @@ impl Parser {
                         }
                         self.call(Label::Function_Statement1R6, c_u, self.c_i);
                     },
-                    // Function_Statement : function identifier lparen rparen identifier Statement ∙
+                    // Function_Statement : func identifier ( ) identifier Statement ∙
                     Label::Function_Statement1R6 => {
                         if self.follow(NT::Function_Statement) {
                             self.rtn(NT::Function_Statement, c_u, self.c_i)
@@ -724,7 +724,7 @@ impl Parser {
                             self.error_follow(Label::Identifier_Expression0R0, self.c_i, NT::Identifier_Expression)
                         }
                     }, 
-                    // IncDec_Expression : ∙identifier inc 
+                    // IncDec_Expression : ∙identifier ++ 
                     Label::IncDec_Expression0R0 => { 
                         self.bsr_set.add(Label::IncDec_Expression0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -740,7 +740,7 @@ impl Parser {
                             self.error_follow(Label::IncDec_Expression0R0, self.c_i, NT::IncDec_Expression)
                         }
                     }, 
-                    // IncDec_Expression : ∙identifier dec 
+                    // IncDec_Expression : ∙identifier -- 
                     Label::IncDec_Expression1R0 => { 
                         self.bsr_set.add(Label::IncDec_Expression1R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -786,7 +786,7 @@ impl Parser {
                             self.error_follow(Label::Literal_Expression2R0, self.c_i, NT::Literal_Expression)
                         }
                     }, 
-                    // Return_Statement : ∙return Expression semicolon 
+                    // Return_Statement : ∙return Expression ; 
                     Label::Return_Statement0R0 => { 
                         self.bsr_set.add(Label::Return_Statement0R1, c_u, self.c_i, self.c_i+1);
                         self.c_i += 1; 
@@ -796,7 +796,7 @@ impl Parser {
                         }
                         self.call(Label::Return_Statement0R2, c_u, self.c_i);
                     },
-                    // Return_Statement : return Expression ∙semicolon 
+                    // Return_Statement : return Expression ∙; 
                     Label::Return_Statement0R2 => {
                         if !self.test_select(Label::Return_Statement0R2){ 
                             self.error_first(Label::Return_Statement0R2, self.c_i);
@@ -1189,213 +1189,213 @@ impl fmt::Display for Error {
     lazy_static! {
     static ref FIRST: HashMap<Label, Box<HashSet<token::Type>>> = {
         let mut fmap = HashMap::new(); 
-        // Assignment_Statement : ∙identifier assign Expression semicolon 
+        // Assignment_Statement : ∙identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Assignment_Statement0R0, hset);
-        // Assignment_Statement : identifier ∙assign Expression semicolon 
+        // Assignment_Statement : identifier ∙= Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_0); // assign 
+            hset.insert(token::Type::T_6); // = 
             fmap.insert(Label::Assignment_Statement0R1, hset);
-        // Assignment_Statement : identifier assign ∙Expression semicolon 
+        // Assignment_Statement : identifier = ∙Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Assignment_Statement0R2, hset);
-        // Assignment_Statement : identifier assign Expression ∙semicolon 
+        // Assignment_Statement : identifier = Expression ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Assignment_Statement0R3, hset);
-        // Assignment_Statement : identifier assign Expression semicolon ∙
+        // Assignment_Statement : identifier = Expression ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Assignment_Statement0R4, hset);
-        // Compound_Statement : ∙lbrace rbrace 
+        // Compound_Statement : ∙{ } 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_17); // lbrace 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Compound_Statement0R0, hset);
-        // Compound_Statement : lbrace ∙rbrace 
+        // Compound_Statement : { ∙} 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_20); // rbrace 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Compound_Statement0R1, hset);
-        // Compound_Statement : lbrace rbrace ∙
+        // Compound_Statement : { } ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Compound_Statement0R2, hset);
-        // Compound_Statement : ∙lbrace Statement_List rbrace 
+        // Compound_Statement : ∙{ Statement_List } 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_17); // lbrace 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Compound_Statement1R0, hset);
-        // Compound_Statement : lbrace ∙Statement_List rbrace 
+        // Compound_Statement : { ∙Statement_List } 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Compound_Statement1R1, hset);
-        // Compound_Statement : lbrace Statement_List ∙rbrace 
+        // Compound_Statement : { Statement_List ∙} 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_20); // rbrace 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Compound_Statement1R2, hset);
-        // Compound_Statement : lbrace Statement_List rbrace ∙
+        // Compound_Statement : { Statement_List } ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Compound_Statement1R3, hset);
-        // Declaration_Statement : ∙let identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : ∙let identifier : identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_18); // let 
+            hset.insert(token::Type::T_14); // let 
             fmap.insert(Label::Declaration_Statement0R0, hset);
-        // Declaration_Statement : let ∙identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : let ∙identifier : identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Declaration_Statement0R1, hset);
-        // Declaration_Statement : let identifier ∙colon identifier assign Expression semicolon 
+        // Declaration_Statement : let identifier ∙: identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_2); // colon 
+            hset.insert(token::Type::T_4); // : 
             fmap.insert(Label::Declaration_Statement0R2, hset);
-        // Declaration_Statement : let identifier colon ∙identifier assign Expression semicolon 
+        // Declaration_Statement : let identifier : ∙identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Declaration_Statement0R3, hset);
-        // Declaration_Statement : let identifier colon identifier ∙assign Expression semicolon 
+        // Declaration_Statement : let identifier : identifier ∙= Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_0); // assign 
+            hset.insert(token::Type::T_6); // = 
             fmap.insert(Label::Declaration_Statement0R4, hset);
-        // Declaration_Statement : let identifier colon identifier assign ∙Expression semicolon 
+        // Declaration_Statement : let identifier : identifier = ∙Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Declaration_Statement0R5, hset);
-        // Declaration_Statement : let identifier colon identifier assign Expression ∙semicolon 
+        // Declaration_Statement : let identifier : identifier = Expression ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Declaration_Statement0R6, hset);
-        // Declaration_Statement : let identifier colon identifier assign Expression semicolon ∙
+        // Declaration_Statement : let identifier : identifier = Expression ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Declaration_Statement0R7, hset);
-        // Declaration_Statement : ∙let config identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : ∙let config identifier : identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_18); // let 
+            hset.insert(token::Type::T_14); // let 
             fmap.insert(Label::Declaration_Statement1R0, hset);
-        // Declaration_Statement : let ∙config identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : let ∙config identifier : identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_5); // config 
+            hset.insert(token::Type::T_8); // config 
             fmap.insert(Label::Declaration_Statement1R1, hset);
-        // Declaration_Statement : let config ∙identifier colon identifier assign Expression semicolon 
+        // Declaration_Statement : let config ∙identifier : identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Declaration_Statement1R2, hset);
-        // Declaration_Statement : let config identifier ∙colon identifier assign Expression semicolon 
+        // Declaration_Statement : let config identifier ∙: identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_2); // colon 
+            hset.insert(token::Type::T_4); // : 
             fmap.insert(Label::Declaration_Statement1R3, hset);
-        // Declaration_Statement : let config identifier colon ∙identifier assign Expression semicolon 
+        // Declaration_Statement : let config identifier : ∙identifier = Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Declaration_Statement1R4, hset);
-        // Declaration_Statement : let config identifier colon identifier ∙assign Expression semicolon 
+        // Declaration_Statement : let config identifier : identifier ∙= Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_0); // assign 
+            hset.insert(token::Type::T_6); // = 
             fmap.insert(Label::Declaration_Statement1R5, hset);
-        // Declaration_Statement : let config identifier colon identifier assign ∙Expression semicolon 
+        // Declaration_Statement : let config identifier : identifier = ∙Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Declaration_Statement1R6, hset);
-        // Declaration_Statement : let config identifier colon identifier assign Expression ∙semicolon 
+        // Declaration_Statement : let config identifier : identifier = Expression ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Declaration_Statement1R7, hset);
-        // Declaration_Statement : let config identifier colon identifier assign Expression semicolon ∙
+        // Declaration_Statement : let config identifier : identifier = Expression ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Declaration_Statement1R8, hset);
-        // Empty_Statement : ∙semicolon 
+        // Empty_Statement : ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Empty_Statement0R0, hset);
-        // Empty_Statement : semicolon ∙
+        // Empty_Statement : ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Empty_Statement0R1, hset);
         // Expression : ∙IncDec_Expression 
             let mut hset = Box::new(HashSet::new()); 
@@ -1403,19 +1403,19 @@ impl fmt::Display for Error {
             fmap.insert(Label::Expression0R0, hset);
         // Expression : IncDec_Expression ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Expression0R1, hset);
         // Expression : ∙Literal_Expression 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Expression1R0, hset);
         // Expression : Literal_Expression ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Expression1R1, hset);
         // Expression : ∙Identifier_Expression 
             let mut hset = Box::new(HashSet::new()); 
@@ -1423,194 +1423,194 @@ impl fmt::Display for Error {
             fmap.insert(Label::Expression2R0, hset);
         // Expression : Identifier_Expression ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Expression2R1, hset);
-        // Expression_Statement : ∙Expression semicolon 
+        // Expression_Statement : ∙Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Expression_Statement0R0, hset);
-        // Expression_Statement : Expression ∙semicolon 
+        // Expression_Statement : Expression ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Expression_Statement0R1, hset);
-        // Expression_Statement : Expression semicolon ∙
+        // Expression_Statement : Expression ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Expression_Statement0R2, hset);
-        // Expression_Statement : ∙semicolon 
+        // Expression_Statement : ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Expression_Statement1R0, hset);
-        // Expression_Statement : semicolon ∙
+        // Expression_Statement : ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Expression_Statement1R1, hset);
-        // For : ∙for lparen Simple_Statement Expression_Statement Expression rparen Statement 
+        // For : ∙for ( Simple_Statement Expression_Statement Expression ) Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_10); // for 
             fmap.insert(Label::For0R0, hset);
-        // For : for ∙lparen Simple_Statement Expression_Statement Expression rparen Statement 
+        // For : for ∙( Simple_Statement Expression_Statement Expression ) Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_19); // lparen 
+            hset.insert(token::Type::T_0); // ( 
             fmap.insert(Label::For0R1, hset);
-        // For : for lparen ∙Simple_Statement Expression_Statement Expression rparen Statement 
+        // For : for ( ∙Simple_Statement Expression_Statement Expression ) Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::For0R2, hset);
-        // For : for lparen Simple_Statement ∙Expression_Statement Expression rparen Statement 
+        // For : for ( Simple_Statement ∙Expression_Statement Expression ) Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::For0R3, hset);
-        // For : for lparen Simple_Statement Expression_Statement ∙Expression rparen Statement 
+        // For : for ( Simple_Statement Expression_Statement ∙Expression ) Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::For0R4, hset);
-        // For : for lparen Simple_Statement Expression_Statement Expression ∙rparen Statement 
+        // For : for ( Simple_Statement Expression_Statement Expression ∙) Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(Label::For0R5, hset);
-        // For : for lparen Simple_Statement Expression_Statement Expression rparen ∙Statement 
+        // For : for ( Simple_Statement Expression_Statement Expression ) ∙Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::For0R6, hset);
-        // For : for lparen Simple_Statement Expression_Statement Expression rparen Statement ∙
+        // For : for ( Simple_Statement Expression_Statement Expression ) Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::For0R7, hset);
-        // For : ∙for lparen Simple_Statement Expression_Statement rparen Statement 
+        // For : ∙for ( Simple_Statement Expression_Statement ) Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_10); // for 
             fmap.insert(Label::For1R0, hset);
-        // For : for ∙lparen Simple_Statement Expression_Statement rparen Statement 
+        // For : for ∙( Simple_Statement Expression_Statement ) Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_19); // lparen 
+            hset.insert(token::Type::T_0); // ( 
             fmap.insert(Label::For1R1, hset);
-        // For : for lparen ∙Simple_Statement Expression_Statement rparen Statement 
+        // For : for ( ∙Simple_Statement Expression_Statement ) Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::For1R2, hset);
-        // For : for lparen Simple_Statement ∙Expression_Statement rparen Statement 
+        // For : for ( Simple_Statement ∙Expression_Statement ) Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::For1R3, hset);
-        // For : for lparen Simple_Statement Expression_Statement ∙rparen Statement 
+        // For : for ( Simple_Statement Expression_Statement ∙) Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(Label::For1R4, hset);
-        // For : for lparen Simple_Statement Expression_Statement rparen ∙Statement 
+        // For : for ( Simple_Statement Expression_Statement ) ∙Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::For1R5, hset);
-        // For : for lparen Simple_Statement Expression_Statement rparen Statement ∙
+        // For : for ( Simple_Statement Expression_Statement ) Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::For1R6, hset);
-        // Function_Argument : ∙identifier colon identifier 
+        // Function_Argument : ∙identifier : identifier 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Argument0R0, hset);
-        // Function_Argument : identifier ∙colon identifier 
+        // Function_Argument : identifier ∙: identifier 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_2); // colon 
+            hset.insert(token::Type::T_4); // : 
             fmap.insert(Label::Function_Argument0R1, hset);
-        // Function_Argument : identifier colon ∙identifier 
+        // Function_Argument : identifier : ∙identifier 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Argument0R2, hset);
-        // Function_Argument : identifier colon identifier ∙
+        // Function_Argument : identifier : identifier ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_3); // comma 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_22); // rparen 
             fmap.insert(Label::Function_Argument0R3, hset);
         // Function_Argument_List : ∙Function_Argument 
             let mut hset = Box::new(HashSet::new()); 
@@ -1618,7 +1618,7 @@ impl fmt::Display for Error {
             fmap.insert(Label::Function_Argument_List0R0, hset);
         // Function_Argument_List : Function_Argument ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(Label::Function_Argument_List0R1, hset);
         // Function_Argument_List : ∙Function_Argument_List_Body 
             let mut hset = Box::new(HashSet::new()); 
@@ -1626,20 +1626,20 @@ impl fmt::Display for Error {
             fmap.insert(Label::Function_Argument_List1R0, hset);
         // Function_Argument_List : Function_Argument_List_Body ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(Label::Function_Argument_List1R1, hset);
-        // Function_Argument_List_Body : ∙Function_Argument comma 
+        // Function_Argument_List_Body : ∙Function_Argument ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Argument_List_Body0R0, hset);
-        // Function_Argument_List_Body : Function_Argument ∙comma 
+        // Function_Argument_List_Body : Function_Argument ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_3); // comma 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Function_Argument_List_Body0R1, hset);
-        // Function_Argument_List_Body : Function_Argument comma ∙
+        // Function_Argument_List_Body : Function_Argument ; ∙
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_1); // ) 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_22); // rparen 
             fmap.insert(Label::Function_Argument_List_Body0R2, hset);
         // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument 
             let mut hset = Box::new(HashSet::new()); 
@@ -1651,138 +1651,138 @@ impl fmt::Display for Error {
             fmap.insert(Label::Function_Argument_List_Body1R1, hset);
         // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_1); // ) 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_22); // rparen 
             fmap.insert(Label::Function_Argument_List_Body1R2, hset);
-        // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument comma 
+        // Function_Argument_List_Body : ∙Function_Argument_List_Body Function_Argument ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Argument_List_Body2R0, hset);
-        // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument comma 
+        // Function_Argument_List_Body : Function_Argument_List_Body ∙Function_Argument ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Argument_List_Body2R1, hset);
-        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙comma 
+        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_3); // comma 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Function_Argument_List_Body2R2, hset);
-        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument comma ∙
+        // Function_Argument_List_Body : Function_Argument_List_Body Function_Argument ; ∙
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_1); // ) 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_22); // rparen 
             fmap.insert(Label::Function_Argument_List_Body2R3, hset);
-        // Function_Statement : ∙function identifier lparen Function_Argument_List rparen identifier Statement 
+        // Function_Statement : ∙func identifier ( Function_Argument_List ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             fmap.insert(Label::Function_Statement0R0, hset);
-        // Function_Statement : function ∙identifier lparen Function_Argument_List rparen identifier Statement 
+        // Function_Statement : func ∙identifier ( Function_Argument_List ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Statement0R1, hset);
-        // Function_Statement : function identifier ∙lparen Function_Argument_List rparen identifier Statement 
+        // Function_Statement : func identifier ∙( Function_Argument_List ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_19); // lparen 
+            hset.insert(token::Type::T_0); // ( 
             fmap.insert(Label::Function_Statement0R2, hset);
-        // Function_Statement : function identifier lparen ∙Function_Argument_List rparen identifier Statement 
+        // Function_Statement : func identifier ( ∙Function_Argument_List ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Statement0R3, hset);
-        // Function_Statement : function identifier lparen Function_Argument_List ∙rparen identifier Statement 
+        // Function_Statement : func identifier ( Function_Argument_List ∙) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(Label::Function_Statement0R4, hset);
-        // Function_Statement : function identifier lparen Function_Argument_List rparen ∙identifier Statement 
+        // Function_Statement : func identifier ( Function_Argument_List ) ∙identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Statement0R5, hset);
-        // Function_Statement : function identifier lparen Function_Argument_List rparen identifier ∙Statement 
+        // Function_Statement : func identifier ( Function_Argument_List ) identifier ∙Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Function_Statement0R6, hset);
-        // Function_Statement : function identifier lparen Function_Argument_List rparen identifier Statement ∙
+        // Function_Statement : func identifier ( Function_Argument_List ) identifier Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Function_Statement0R7, hset);
-        // Function_Statement : ∙function identifier lparen rparen identifier Statement 
+        // Function_Statement : ∙func identifier ( ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             fmap.insert(Label::Function_Statement1R0, hset);
-        // Function_Statement : function ∙identifier lparen rparen identifier Statement 
+        // Function_Statement : func ∙identifier ( ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Statement1R1, hset);
-        // Function_Statement : function identifier ∙lparen rparen identifier Statement 
+        // Function_Statement : func identifier ∙( ) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_19); // lparen 
+            hset.insert(token::Type::T_0); // ( 
             fmap.insert(Label::Function_Statement1R2, hset);
-        // Function_Statement : function identifier lparen ∙rparen identifier Statement 
+        // Function_Statement : func identifier ( ∙) identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(Label::Function_Statement1R3, hset);
-        // Function_Statement : function identifier lparen rparen ∙identifier Statement 
+        // Function_Statement : func identifier ( ) ∙identifier Statement 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::Function_Statement1R4, hset);
-        // Function_Statement : function identifier lparen rparen identifier ∙Statement 
+        // Function_Statement : func identifier ( ) identifier ∙Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Function_Statement1R5, hset);
-        // Function_Statement : function identifier lparen rparen identifier Statement ∙
+        // Function_Statement : func identifier ( ) identifier Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Function_Statement1R6, hset);
         // GoGLL : ∙Statement_List 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::GoGLL0R0, hset);
         // GoGLL : Statement_List ∙
             let mut hset = Box::new(HashSet::new()); 
@@ -1794,43 +1794,43 @@ impl fmt::Display for Error {
             fmap.insert(Label::Identifier_Expression0R0, hset);
         // Identifier_Expression : identifier ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Identifier_Expression0R1, hset);
-        // IncDec_Expression : ∙identifier inc 
+        // IncDec_Expression : ∙identifier ++ 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::IncDec_Expression0R0, hset);
-        // IncDec_Expression : identifier ∙inc 
+        // IncDec_Expression : identifier ∙++ 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_15); // inc 
+            hset.insert(token::Type::T_2); // ++ 
             fmap.insert(Label::IncDec_Expression0R1, hset);
-        // IncDec_Expression : identifier inc ∙
+        // IncDec_Expression : identifier ++ ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::IncDec_Expression0R2, hset);
-        // IncDec_Expression : ∙identifier dec 
+        // IncDec_Expression : ∙identifier -- 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_12); // identifier 
             fmap.insert(Label::IncDec_Expression1R0, hset);
-        // IncDec_Expression : identifier ∙dec 
+        // IncDec_Expression : identifier ∙-- 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_7); // dec 
+            hset.insert(token::Type::T_3); // -- 
             fmap.insert(Label::IncDec_Expression1R1, hset);
-        // IncDec_Expression : identifier dec ∙
+        // IncDec_Expression : identifier -- ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::IncDec_Expression1R2, hset);
         // Literal_Expression : ∙integer_literal 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_16); // integer_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
             fmap.insert(Label::Literal_Expression0R0, hset);
         // Literal_Expression : integer_literal ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Literal_Expression0R1, hset);
         // Literal_Expression : ∙float_literal 
             let mut hset = Box::new(HashSet::new()); 
@@ -1838,66 +1838,66 @@ impl fmt::Display for Error {
             fmap.insert(Label::Literal_Expression1R0, hset);
         // Literal_Expression : float_literal ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Literal_Expression1R1, hset);
         // Literal_Expression : ∙string_literal 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Literal_Expression2R0, hset);
         // Literal_Expression : string_literal ∙
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Literal_Expression2R1, hset);
-        // Return_Statement : ∙return Expression semicolon 
+        // Return_Statement : ∙return Expression ; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_21); // return 
+            hset.insert(token::Type::T_15); // return 
             fmap.insert(Label::Return_Statement0R0, hset);
-        // Return_Statement : return ∙Expression semicolon 
+        // Return_Statement : return ∙Expression ; 
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Return_Statement0R1, hset);
-        // Return_Statement : return Expression ∙semicolon 
+        // Return_Statement : return Expression ∙; 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Return_Statement0R2, hset);
-        // Return_Statement : return Expression semicolon ∙
+        // Return_Statement : return Expression ; ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Return_Statement0R3, hset);
         // Simple_Statement : ∙Declaration_Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_18); // let 
+            hset.insert(token::Type::T_14); // let 
             fmap.insert(Label::Simple_Statement0R0, hset);
         // Simple_Statement : Declaration_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Simple_Statement0R1, hset);
         // Simple_Statement : ∙Assignment_Statement 
             let mut hset = Box::new(HashSet::new()); 
@@ -1906,159 +1906,159 @@ impl fmt::Display for Error {
         // Simple_Statement : Assignment_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Simple_Statement1R1, hset);
         // Simple_Statement : ∙Expression_Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Simple_Statement2R0, hset);
         // Simple_Statement : Expression_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Simple_Statement2R1, hset);
         // Simple_Statement : ∙Empty_Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Simple_Statement3R0, hset);
         // Simple_Statement : Empty_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Simple_Statement3R1, hset);
         // Statement : ∙Empty_Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(Label::Statement0R0, hset);
         // Statement : Empty_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement0R1, hset);
         // Statement : ∙Simple_Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_16); // string_literal 
             fmap.insert(Label::Statement1R0, hset);
         // Statement : Simple_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement1R1, hset);
         // Statement : ∙Compound_Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_17); // lbrace 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Statement2R0, hset);
         // Statement : Compound_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement2R1, hset);
         // Statement : ∙Function_Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             fmap.insert(Label::Statement3R0, hset);
         // Statement : Function_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement3R1, hset);
         // Statement : ∙Return_Statement 
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_21); // return 
+            hset.insert(token::Type::T_15); // return 
             fmap.insert(Label::Statement4R0, hset);
         // Statement : Return_Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement4R1, hset);
         // Statement : ∙For 
             let mut hset = Box::new(HashSet::new()); 
@@ -2067,86 +2067,86 @@ impl fmt::Display for Error {
         // Statement : For ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement5R1, hset);
         // Statement_List : ∙Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Statement_List0R0, hset);
         // Statement_List : Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement_List0R1, hset);
         // Statement_List : ∙Statement_List Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Statement_List1R0, hset);
         // Statement_List : Statement_List ∙Statement 
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
             fmap.insert(Label::Statement_List1R1, hset);
         // Statement_List : Statement_List Statement ∙
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(Label::Statement_List1R2, hset);
         fmap
     };
@@ -2156,128 +2156,128 @@ impl fmt::Display for Error {
         // Assignment_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Assignment_Statement, hset);
         // Compound_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Compound_Statement, hset);
         // Declaration_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Declaration_Statement, hset);
         // Empty_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Empty_Statement, hset);
         // Expression
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(NT::Expression, hset);
         // Expression_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Expression_Statement, hset);
         // For
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::For, hset);
         // Function_Argument
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_3); // comma 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_22); // rparen 
             fmap.insert(NT::Function_Argument, hset);
         // Function_Argument_List
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
+            hset.insert(token::Type::T_1); // ) 
             fmap.insert(NT::Function_Argument_List, hset);
         // Function_Argument_List_Body
             let mut hset = Box::new(HashSet::new()); 
+            hset.insert(token::Type::T_1); // ) 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_22); // rparen 
             fmap.insert(NT::Function_Argument_List_Body, hset);
         // Function_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Function_Statement, hset);
         // GoGLL
             let mut hset = Box::new(HashSet::new()); 
@@ -2285,78 +2285,78 @@ impl fmt::Display for Error {
             fmap.insert(NT::GoGLL, hset);
         // Identifier_Expression
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(NT::Identifier_Expression, hset);
         // IncDec_Expression
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(NT::IncDec_Expression, hset);
         // Literal_Expression
             let mut hset = Box::new(HashSet::new()); 
-            hset.insert(token::Type::T_22); // rparen 
-            hset.insert(token::Type::T_23); // semicolon 
+            hset.insert(token::Type::T_1); // ) 
+            hset.insert(token::Type::T_5); // ; 
             fmap.insert(NT::Literal_Expression, hset);
         // Return_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Return_Statement, hset);
         // Simple_Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Simple_Statement, hset);
         // Statement
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Statement, hset);
         // Statement_List
             let mut hset = Box::new(HashSet::new()); 
             hset.insert(token::Type::EOF); // $ 
+            hset.insert(token::Type::T_5); // ; 
             hset.insert(token::Type::T_9); // float_literal 
             hset.insert(token::Type::T_10); // for 
-            hset.insert(token::Type::T_11); // function 
+            hset.insert(token::Type::T_11); // func 
             hset.insert(token::Type::T_12); // identifier 
-            hset.insert(token::Type::T_16); // integer_literal 
-            hset.insert(token::Type::T_17); // lbrace 
-            hset.insert(token::Type::T_18); // let 
-            hset.insert(token::Type::T_20); // rbrace 
-            hset.insert(token::Type::T_21); // return 
-            hset.insert(token::Type::T_23); // semicolon 
-            hset.insert(token::Type::T_24); // string_literal 
+            hset.insert(token::Type::T_13); // integer_literal 
+            hset.insert(token::Type::T_14); // let 
+            hset.insert(token::Type::T_15); // return 
+            hset.insert(token::Type::T_16); // string_literal 
+            hset.insert(token::Type::T_17); // { 
+            hset.insert(token::Type::T_18); // } 
             fmap.insert(NT::Statement_List, hset);
         fmap
     };

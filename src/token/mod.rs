@@ -21,33 +21,25 @@ pub struct Token {
 pub enum Type {	
 	Error, // "Error"
 	EOF, // "$"
-	T_0, // "assign"
-	T_1, // "break"
-	T_2, // "colon"
-	T_3, // "comma"
-	T_4, // "comment"
-	T_5, // "config"
-	T_6, // "continue"
-	T_7, // "dec"
-	T_8, // "else"
+	T_0, // "("
+	T_1, // ")"
+	T_2, // "++"
+	T_3, // "--"
+	T_4, // ":"
+	T_5, // ";"
+	T_6, // "="
+	T_7, // "comment"
+	T_8, // "config"
 	T_9, // "float_literal"
 	T_10, // "for"
-	T_11, // "function"
+	T_11, // "func"
 	T_12, // "identifier"
-	T_13, // "if"
-	T_14, // "in"
-	T_15, // "inc"
-	T_16, // "integer_literal"
-	T_17, // "lbrace"
-	T_18, // "let"
-	T_19, // "lparen"
-	T_20, // "rbrace"
-	T_21, // "return"
-	T_22, // "rparen"
-	T_23, // "semicolon"
-	T_24, // "string_literal"
-	T_25, // "while"
-	T_26, // "whitespace"
+	T_13, // "integer_literal"
+	T_14, // "let"
+	T_15, // "return"
+	T_16, // "string_literal"
+	T_17, // "{"
+	T_18, // "}"
 }
 
 /**
@@ -139,33 +131,25 @@ lazy_static! {
         let mut m = HashMap::new(); 
 		m.insert(Type::Error, "Error");
 		m.insert(Type::EOF, "$");
-		m.insert(Type::T_0, "assign");
-		m.insert(Type::T_1, "break");
-		m.insert(Type::T_2, "colon");
-		m.insert(Type::T_3, "comma");
-		m.insert(Type::T_4, "comment");
-		m.insert(Type::T_5, "config");
-		m.insert(Type::T_6, "continue");
-		m.insert(Type::T_7, "dec");
-		m.insert(Type::T_8, "else");
+		m.insert(Type::T_0, "(");
+		m.insert(Type::T_1, ")");
+		m.insert(Type::T_2, "++");
+		m.insert(Type::T_3, "--");
+		m.insert(Type::T_4, ":");
+		m.insert(Type::T_5, ";");
+		m.insert(Type::T_6, "=");
+		m.insert(Type::T_7, "comment");
+		m.insert(Type::T_8, "config");
 		m.insert(Type::T_9, "float_literal");
 		m.insert(Type::T_10, "for");
-		m.insert(Type::T_11, "function");
+		m.insert(Type::T_11, "func");
 		m.insert(Type::T_12, "identifier");
-		m.insert(Type::T_13, "if");
-		m.insert(Type::T_14, "in");
-		m.insert(Type::T_15, "inc");
-		m.insert(Type::T_16, "integer_literal");
-		m.insert(Type::T_17, "lbrace");
-		m.insert(Type::T_18, "let");
-		m.insert(Type::T_19, "lparen");
-		m.insert(Type::T_20, "rbrace");
-		m.insert(Type::T_21, "return");
-		m.insert(Type::T_22, "rparen");
-		m.insert(Type::T_23, "semicolon");
-		m.insert(Type::T_24, "string_literal");
-		m.insert(Type::T_25, "while");
-		m.insert(Type::T_26, "whitespace");
+		m.insert(Type::T_13, "integer_literal");
+		m.insert(Type::T_14, "let");
+		m.insert(Type::T_15, "return");
+		m.insert(Type::T_16, "string_literal");
+		m.insert(Type::T_17, "{");
+		m.insert(Type::T_18, "}");
         m
     };
 }
@@ -175,33 +159,25 @@ lazy_static! {
 		let mut m = HashMap::new(); 
 		m.insert("Error", Type::Error); 
 		m.insert("$", Type::EOF); 
-		m.insert("assign", Type::T_0); 
-		m.insert("break", Type::T_1); 
-		m.insert("colon", Type::T_2); 
-		m.insert("comma", Type::T_3); 
-		m.insert("comment", Type::T_4); 
-		m.insert("config", Type::T_5); 
-		m.insert("continue", Type::T_6); 
-		m.insert("dec", Type::T_7); 
-		m.insert("else", Type::T_8); 
+		m.insert("(", Type::T_0); 
+		m.insert(")", Type::T_1); 
+		m.insert("++", Type::T_2); 
+		m.insert("--", Type::T_3); 
+		m.insert(":", Type::T_4); 
+		m.insert(";", Type::T_5); 
+		m.insert("=", Type::T_6); 
+		m.insert("comment", Type::T_7); 
+		m.insert("config", Type::T_8); 
 		m.insert("float_literal", Type::T_9); 
 		m.insert("for", Type::T_10); 
-		m.insert("function", Type::T_11); 
+		m.insert("func", Type::T_11); 
 		m.insert("identifier", Type::T_12); 
-		m.insert("if", Type::T_13); 
-		m.insert("in", Type::T_14); 
-		m.insert("inc", Type::T_15); 
-		m.insert("integer_literal", Type::T_16); 
-		m.insert("lbrace", Type::T_17); 
-		m.insert("let", Type::T_18); 
-		m.insert("lparen", Type::T_19); 
-		m.insert("rbrace", Type::T_20); 
-		m.insert("return", Type::T_21); 
-		m.insert("rparen", Type::T_22); 
-		m.insert("semicolon", Type::T_23); 
-		m.insert("string_literal", Type::T_24); 
-		m.insert("while", Type::T_25); 
-		m.insert("whitespace", Type::T_26); 
+		m.insert("integer_literal", Type::T_13); 
+		m.insert("let", Type::T_14); 
+		m.insert("return", Type::T_15); 
+		m.insert("string_literal", Type::T_16); 
+		m.insert("{", Type::T_17); 
+		m.insert("}", Type::T_18); 
 		m
 	};
 }
@@ -230,14 +206,6 @@ lazy_static! {
 		m.insert("T_16", Type::T_16); 
 		m.insert("T_17", Type::T_17); 
 		m.insert("T_18", Type::T_18); 
-		m.insert("T_19", Type::T_19); 
-		m.insert("T_20", Type::T_20); 
-		m.insert("T_21", Type::T_21); 
-		m.insert("T_22", Type::T_22); 
-		m.insert("T_23", Type::T_23); 
-		m.insert("T_24", Type::T_24); 
-		m.insert("T_25", Type::T_25); 
-		m.insert("T_26", Type::T_26); 
 		m
 	};
 }
@@ -251,10 +219,10 @@ lazy_static! {
 		m.insert(Type::T_1, false);
 		m.insert(Type::T_2, false);
 		m.insert(Type::T_3, false);
-		m.insert(Type::T_4, true);
+		m.insert(Type::T_4, false);
 		m.insert(Type::T_5, false);
 		m.insert(Type::T_6, false);
-		m.insert(Type::T_7, false);
+		m.insert(Type::T_7, true);
 		m.insert(Type::T_8, false);
 		m.insert(Type::T_9, false);
 		m.insert(Type::T_10, false);
@@ -266,14 +234,6 @@ lazy_static! {
 		m.insert(Type::T_16, false);
 		m.insert(Type::T_17, false);
 		m.insert(Type::T_18, false);
-		m.insert(Type::T_19, false);
-		m.insert(Type::T_20, false);
-		m.insert(Type::T_21, false);
-		m.insert(Type::T_22, false);
-		m.insert(Type::T_23, false);
-		m.insert(Type::T_24, false);
-		m.insert(Type::T_25, false);
-		m.insert(Type::T_26, false);
         m
     };
 }
