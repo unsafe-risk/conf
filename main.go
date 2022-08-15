@@ -10,7 +10,9 @@ import (
 )
 
 var testdata = `
-let x:u64 = 0x12345678;
+func AddOne(x:u64) u64 {
+	return x + 1;
+}
 `
 
 func Walk(b bsr.BSR, fn func(bsr.BSR)) {
@@ -35,6 +37,10 @@ func main() {
 		os.Exit(1)
 		return
 	}
-	p.GetRoots()
-	p.Dump()
+
+	if p.IsAmbiguous() {
+		fmt.Println("ambiguous")
+	} else {
+		fmt.Println("not ambiguous")
+	}
 }

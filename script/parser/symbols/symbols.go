@@ -29,6 +29,7 @@ const(
 	NT_Identifier_Expression 
 	NT_IncDec_Expression 
 	NT_Literal_Expression 
+	NT_Operator 
 	NT_Return_Statement 
 	NT_Simple_Statement 
 	NT_Statement 
@@ -53,10 +54,11 @@ const(
 	T_12  // identifier 
 	T_13  // integer_literal 
 	T_14  // let 
-	T_15  // return 
-	T_16  // string_literal 
-	T_17  // { 
-	T_18  // } 
+	T_15  // operator 
+	T_16  // return 
+	T_17  // string_literal 
+	T_18  // { 
+	T_19  // } 
 )
 
 type Symbols []Symbol
@@ -101,6 +103,7 @@ var ntToString = []string {
 	"Identifier_Expression", /* NT_Identifier_Expression */
 	"IncDec_Expression", /* NT_IncDec_Expression */
 	"Literal_Expression", /* NT_Literal_Expression */
+	"Operator", /* NT_Operator */
 	"Return_Statement", /* NT_Return_Statement */
 	"Simple_Statement", /* NT_Simple_Statement */
 	"Statement", /* NT_Statement */
@@ -123,10 +126,11 @@ var tToString = []string {
 	"identifier", /* T_12 */
 	"integer_literal", /* T_13 */
 	"let", /* T_14 */
-	"return", /* T_15 */
-	"string_literal", /* T_16 */
-	"{", /* T_17 */
-	"}", /* T_18 */ 
+	"operator", /* T_15 */
+	"return", /* T_16 */
+	"string_literal", /* T_17 */
+	"{", /* T_18 */
+	"}", /* T_19 */ 
 }
 
 var stringNT = map[string]NT{ 
@@ -145,6 +149,7 @@ var stringNT = map[string]NT{
 	"Identifier_Expression":NT_Identifier_Expression,
 	"IncDec_Expression":NT_IncDec_Expression,
 	"Literal_Expression":NT_Literal_Expression,
+	"Operator":NT_Operator,
 	"Return_Statement":NT_Return_Statement,
 	"Simple_Statement":NT_Simple_Statement,
 	"Statement":NT_Statement,

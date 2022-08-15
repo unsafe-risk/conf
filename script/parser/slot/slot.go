@@ -45,10 +45,18 @@ const(
 	Empty_Statement0R1
 	Expression0R0
 	Expression0R1
+	Expression0R2
+	Expression0R3
 	Expression1R0
 	Expression1R1
 	Expression2R0
 	Expression2R1
+	Expression3R0
+	Expression3R1
+	Expression4R0
+	Expression4R1
+	Expression4R2
+	Expression4R3
 	Expression_Statement0R0
 	Expression_Statement0R1
 	Expression_Statement0R2
@@ -124,6 +132,8 @@ const(
 	Literal_Expression1R1
 	Literal_Expression2R0
 	Literal_Expression2R1
+	Operator0R0
+	Operator0R1
 	Return_Statement0R0
 	Return_Statement0R1
 	Return_Statement0R2
@@ -295,60 +305,60 @@ var slots = map[Label]*Slot{
 	Compound_Statement0R0: {
 		symbols.NT_Compound_Statement, 0, 0, 
 		symbols.Symbols{  
-			symbols.T_17, 
-			symbols.T_18,
+			symbols.T_18, 
+			symbols.T_19,
 		}, 
 		Compound_Statement0R0, 
 	},
 	Compound_Statement0R1: {
 		symbols.NT_Compound_Statement, 0, 1, 
 		symbols.Symbols{  
-			symbols.T_17, 
-			symbols.T_18,
+			symbols.T_18, 
+			symbols.T_19,
 		}, 
 		Compound_Statement0R1, 
 	},
 	Compound_Statement0R2: {
 		symbols.NT_Compound_Statement, 0, 2, 
 		symbols.Symbols{  
-			symbols.T_17, 
-			symbols.T_18,
+			symbols.T_18, 
+			symbols.T_19,
 		}, 
 		Compound_Statement0R2, 
 	},
 	Compound_Statement1R0: {
 		symbols.NT_Compound_Statement, 1, 0, 
 		symbols.Symbols{  
-			symbols.T_17, 
+			symbols.T_18, 
 			symbols.NT_Statement_List, 
-			symbols.T_18,
+			symbols.T_19,
 		}, 
 		Compound_Statement1R0, 
 	},
 	Compound_Statement1R1: {
 		symbols.NT_Compound_Statement, 1, 1, 
 		symbols.Symbols{  
-			symbols.T_17, 
+			symbols.T_18, 
 			symbols.NT_Statement_List, 
-			symbols.T_18,
+			symbols.T_19,
 		}, 
 		Compound_Statement1R1, 
 	},
 	Compound_Statement1R2: {
 		symbols.NT_Compound_Statement, 1, 2, 
 		symbols.Symbols{  
-			symbols.T_17, 
+			symbols.T_18, 
 			symbols.NT_Statement_List, 
-			symbols.T_18,
+			symbols.T_19,
 		}, 
 		Compound_Statement1R2, 
 	},
 	Compound_Statement1R3: {
 		symbols.NT_Compound_Statement, 1, 3, 
 		symbols.Symbols{  
-			symbols.T_17, 
+			symbols.T_18, 
 			symbols.NT_Statement_List, 
-			symbols.T_18,
+			symbols.T_19,
 		}, 
 		Compound_Statement1R3, 
 	},
@@ -599,44 +609,116 @@ var slots = map[Label]*Slot{
 	Expression0R0: {
 		symbols.NT_Expression, 0, 0, 
 		symbols.Symbols{  
-			symbols.NT_IncDec_Expression,
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_1,
 		}, 
 		Expression0R0, 
 	},
 	Expression0R1: {
 		symbols.NT_Expression, 0, 1, 
 		symbols.Symbols{  
-			symbols.NT_IncDec_Expression,
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_1,
 		}, 
 		Expression0R1, 
+	},
+	Expression0R2: {
+		symbols.NT_Expression, 0, 2, 
+		symbols.Symbols{  
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_1,
+		}, 
+		Expression0R2, 
+	},
+	Expression0R3: {
+		symbols.NT_Expression, 0, 3, 
+		symbols.Symbols{  
+			symbols.T_0, 
+			symbols.NT_Expression, 
+			symbols.T_1,
+		}, 
+		Expression0R3, 
 	},
 	Expression1R0: {
 		symbols.NT_Expression, 1, 0, 
 		symbols.Symbols{  
-			symbols.NT_Literal_Expression,
+			symbols.NT_IncDec_Expression,
 		}, 
 		Expression1R0, 
 	},
 	Expression1R1: {
 		symbols.NT_Expression, 1, 1, 
 		symbols.Symbols{  
-			symbols.NT_Literal_Expression,
+			symbols.NT_IncDec_Expression,
 		}, 
 		Expression1R1, 
 	},
 	Expression2R0: {
 		symbols.NT_Expression, 2, 0, 
 		symbols.Symbols{  
-			symbols.NT_Identifier_Expression,
+			symbols.NT_Literal_Expression,
 		}, 
 		Expression2R0, 
 	},
 	Expression2R1: {
 		symbols.NT_Expression, 2, 1, 
 		symbols.Symbols{  
-			symbols.NT_Identifier_Expression,
+			symbols.NT_Literal_Expression,
 		}, 
 		Expression2R1, 
+	},
+	Expression3R0: {
+		symbols.NT_Expression, 3, 0, 
+		symbols.Symbols{  
+			symbols.NT_Identifier_Expression,
+		}, 
+		Expression3R0, 
+	},
+	Expression3R1: {
+		symbols.NT_Expression, 3, 1, 
+		symbols.Symbols{  
+			symbols.NT_Identifier_Expression,
+		}, 
+		Expression3R1, 
+	},
+	Expression4R0: {
+		symbols.NT_Expression, 4, 0, 
+		symbols.Symbols{  
+			symbols.NT_Expression, 
+			symbols.NT_Operator, 
+			symbols.NT_Expression,
+		}, 
+		Expression4R0, 
+	},
+	Expression4R1: {
+		symbols.NT_Expression, 4, 1, 
+		symbols.Symbols{  
+			symbols.NT_Expression, 
+			symbols.NT_Operator, 
+			symbols.NT_Expression,
+		}, 
+		Expression4R1, 
+	},
+	Expression4R2: {
+		symbols.NT_Expression, 4, 2, 
+		symbols.Symbols{  
+			symbols.NT_Expression, 
+			symbols.NT_Operator, 
+			symbols.NT_Expression,
+		}, 
+		Expression4R2, 
+	},
+	Expression4R3: {
+		symbols.NT_Expression, 4, 3, 
+		symbols.Symbols{  
+			symbols.NT_Expression, 
+			symbols.NT_Operator, 
+			symbols.NT_Expression,
+		}, 
+		Expression4R3, 
 	},
 	Expression_Statement0R0: {
 		symbols.NT_Expression_Statement, 0, 0, 
@@ -1355,21 +1437,35 @@ var slots = map[Label]*Slot{
 	Literal_Expression2R0: {
 		symbols.NT_Literal_Expression, 2, 0, 
 		symbols.Symbols{  
-			symbols.T_16,
+			symbols.T_17,
 		}, 
 		Literal_Expression2R0, 
 	},
 	Literal_Expression2R1: {
 		symbols.NT_Literal_Expression, 2, 1, 
 		symbols.Symbols{  
-			symbols.T_16,
+			symbols.T_17,
 		}, 
 		Literal_Expression2R1, 
+	},
+	Operator0R0: {
+		symbols.NT_Operator, 0, 0, 
+		symbols.Symbols{  
+			symbols.T_15,
+		}, 
+		Operator0R0, 
+	},
+	Operator0R1: {
+		symbols.NT_Operator, 0, 1, 
+		symbols.Symbols{  
+			symbols.T_15,
+		}, 
+		Operator0R1, 
 	},
 	Return_Statement0R0: {
 		symbols.NT_Return_Statement, 0, 0, 
 		symbols.Symbols{  
-			symbols.T_15, 
+			symbols.T_16, 
 			symbols.NT_Expression, 
 			symbols.T_5,
 		}, 
@@ -1378,7 +1474,7 @@ var slots = map[Label]*Slot{
 	Return_Statement0R1: {
 		symbols.NT_Return_Statement, 0, 1, 
 		symbols.Symbols{  
-			symbols.T_15, 
+			symbols.T_16, 
 			symbols.NT_Expression, 
 			symbols.T_5,
 		}, 
@@ -1387,7 +1483,7 @@ var slots = map[Label]*Slot{
 	Return_Statement0R2: {
 		symbols.NT_Return_Statement, 0, 2, 
 		symbols.Symbols{  
-			symbols.T_15, 
+			symbols.T_16, 
 			symbols.NT_Expression, 
 			symbols.T_5,
 		}, 
@@ -1396,7 +1492,7 @@ var slots = map[Label]*Slot{
 	Return_Statement0R3: {
 		symbols.NT_Return_Statement, 0, 3, 
 		symbols.Symbols{  
-			symbols.T_15, 
+			symbols.T_16, 
 			symbols.NT_Expression, 
 			symbols.T_5,
 		}, 
@@ -1616,10 +1712,18 @@ var slotIndex = map[Index]Label {
 	Index{ symbols.NT_Empty_Statement,0,1 }: Empty_Statement0R1,
 	Index{ symbols.NT_Expression,0,0 }: Expression0R0,
 	Index{ symbols.NT_Expression,0,1 }: Expression0R1,
+	Index{ symbols.NT_Expression,0,2 }: Expression0R2,
+	Index{ symbols.NT_Expression,0,3 }: Expression0R3,
 	Index{ symbols.NT_Expression,1,0 }: Expression1R0,
 	Index{ symbols.NT_Expression,1,1 }: Expression1R1,
 	Index{ symbols.NT_Expression,2,0 }: Expression2R0,
 	Index{ symbols.NT_Expression,2,1 }: Expression2R1,
+	Index{ symbols.NT_Expression,3,0 }: Expression3R0,
+	Index{ symbols.NT_Expression,3,1 }: Expression3R1,
+	Index{ symbols.NT_Expression,4,0 }: Expression4R0,
+	Index{ symbols.NT_Expression,4,1 }: Expression4R1,
+	Index{ symbols.NT_Expression,4,2 }: Expression4R2,
+	Index{ symbols.NT_Expression,4,3 }: Expression4R3,
 	Index{ symbols.NT_Expression_Statement,0,0 }: Expression_Statement0R0,
 	Index{ symbols.NT_Expression_Statement,0,1 }: Expression_Statement0R1,
 	Index{ symbols.NT_Expression_Statement,0,2 }: Expression_Statement0R2,
@@ -1695,6 +1799,8 @@ var slotIndex = map[Index]Label {
 	Index{ symbols.NT_Literal_Expression,1,1 }: Literal_Expression1R1,
 	Index{ symbols.NT_Literal_Expression,2,0 }: Literal_Expression2R0,
 	Index{ symbols.NT_Literal_Expression,2,1 }: Literal_Expression2R1,
+	Index{ symbols.NT_Operator,0,0 }: Operator0R0,
+	Index{ symbols.NT_Operator,0,1 }: Operator0R1,
 	Index{ symbols.NT_Return_Statement,0,0 }: Return_Statement0R0,
 	Index{ symbols.NT_Return_Statement,0,1 }: Return_Statement0R1,
 	Index{ symbols.NT_Return_Statement,0,2 }: Return_Statement0R2,
@@ -1741,7 +1847,8 @@ var alternates = map[symbols.NT][]Label{
 	symbols.NT_IncDec_Expression:[]Label{ IncDec_Expression0R0,IncDec_Expression1R0,IncDec_Expression2R0,IncDec_Expression3R0 },
 	symbols.NT_Literal_Expression:[]Label{ Literal_Expression0R0,Literal_Expression1R0,Literal_Expression2R0 },
 	symbols.NT_Identifier_Expression:[]Label{ Identifier_Expression0R0 },
-	symbols.NT_Expression:[]Label{ Expression0R0,Expression1R0,Expression2R0 },
+	symbols.NT_Operator:[]Label{ Operator0R0 },
+	symbols.NT_Expression:[]Label{ Expression0R0,Expression1R0,Expression2R0,Expression3R0,Expression4R0 },
 	symbols.NT_For:[]Label{ For0R0,For1R0 },
 	symbols.NT_Statement_List:[]Label{ Statement_List0R0,Statement_List1R0 },
 	symbols.NT_Compound_Statement:[]Label{ Compound_Statement0R0,Compound_Statement1R0 },

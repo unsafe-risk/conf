@@ -31,6 +31,18 @@ float_literal:
       |'.' <any "0123456789">
    );
 
+operator: (
+   ('*' | '/' | '%')
+   | ('+' | '-')
+   | ('<' '<' | '>' '>')
+   | ('<' | '>' | '<' '=' | '>' '=')
+   | ('=' '=' | '!' '=')
+   | '&'
+   | '^'
+   | '|'
+   | '&' '&'
+   | '|' '|'
+);
 
 identifier: letter {letter | number | '_'};
 
@@ -91,10 +103,14 @@ Literal_Expression:
 
 Identifier_Expression: identifier;
 
+Operator: operator;
+
 Expression:
-   IncDec_Expression
+   "(" Expression ")"
+   | IncDec_Expression
    | Literal_Expression
-   | Identifier_Expression;
+   | Identifier_Expression
+   | Expression Operator Expression;
 
 For:
    "for" "(" Simple_Statement Expression_Statement Expression ")" Statement

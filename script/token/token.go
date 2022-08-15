@@ -150,10 +150,11 @@ const(
     T_12  // identifier 
     T_13  // integer_literal 
     T_14  // let 
-    T_15  // return 
-    T_16  // string_literal 
-    T_17  // { 
-    T_18  // } 
+    T_15  // operator 
+    T_16  // return 
+    T_17  // string_literal 
+    T_18  // { 
+    T_19  // } 
 )
 
 var TypeToString = []string{ 
@@ -178,6 +179,7 @@ var TypeToString = []string{
     "T_16",
     "T_17",
     "T_18",
+    "T_19",
 }
 
 var StringToType = map[string] Type { 
@@ -202,6 +204,7 @@ var StringToType = map[string] Type {
     "T_16" : T_16, 
     "T_17" : T_17, 
     "T_18" : T_18, 
+    "T_19" : T_19, 
 }
 
 var TypeToID = []string { 
@@ -222,6 +225,7 @@ var TypeToID = []string {
     "identifier", 
     "integer_literal", 
     "let", 
+    "operator", 
     "return", 
     "string_literal", 
     "{", 
@@ -239,6 +243,7 @@ var Suppress = []bool {
     false, 
     false, 
     true, 
+    false, 
     false, 
     false, 
     false, 
