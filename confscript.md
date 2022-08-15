@@ -82,6 +82,10 @@ Function_Statement:
    "func" identifier "(" Function_Argument_List ")" identifier Statement
    | "func" identifier "(" ")" identifier Statement;
 
+IF_Statement
+   : "if" "(" Expression ")" Statement
+   | "if" "(" Expression ")" Statement "else" Statement;
+
 Return_Statement:
    "return" Expression ";";
 
@@ -137,6 +141,7 @@ Statement:
    | Simple_Statement
    | Compound_Statement
    | Function_Statement
+   | IF_Statement
    | Return_Statement
    | For;
 ```

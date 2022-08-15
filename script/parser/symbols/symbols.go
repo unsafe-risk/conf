@@ -28,6 +28,7 @@ const(
 	NT_Function_Call_Expression 
 	NT_Function_Statement 
 	NT_GoGLL 
+	NT_IF_Statement 
 	NT_Identifier_Expression 
 	NT_IncDec_Expression 
 	NT_Literal_Expression 
@@ -51,17 +52,19 @@ const(
 	T_7  // = 
 	T_8  // comment 
 	T_9  // config 
-	T_10  // float_literal 
-	T_11  // for 
-	T_12  // func 
-	T_13  // identifier 
-	T_14  // integer_literal 
-	T_15  // let 
-	T_16  // operator 
-	T_17  // return 
-	T_18  // string_literal 
-	T_19  // { 
-	T_20  // } 
+	T_10  // else 
+	T_11  // float_literal 
+	T_12  // for 
+	T_13  // func 
+	T_14  // identifier 
+	T_15  // if 
+	T_16  // integer_literal 
+	T_17  // let 
+	T_18  // operator 
+	T_19  // return 
+	T_20  // string_literal 
+	T_21  // { 
+	T_22  // } 
 )
 
 type Symbols []Symbol
@@ -105,6 +108,7 @@ var ntToString = []string {
 	"Function_Call_Expression", /* NT_Function_Call_Expression */
 	"Function_Statement", /* NT_Function_Statement */
 	"GoGLL", /* NT_GoGLL */
+	"IF_Statement", /* NT_IF_Statement */
 	"Identifier_Expression", /* NT_Identifier_Expression */
 	"IncDec_Expression", /* NT_IncDec_Expression */
 	"Literal_Expression", /* NT_Literal_Expression */
@@ -126,17 +130,19 @@ var tToString = []string {
 	"=", /* T_7 */
 	"comment", /* T_8 */
 	"config", /* T_9 */
-	"float_literal", /* T_10 */
-	"for", /* T_11 */
-	"func", /* T_12 */
-	"identifier", /* T_13 */
-	"integer_literal", /* T_14 */
-	"let", /* T_15 */
-	"operator", /* T_16 */
-	"return", /* T_17 */
-	"string_literal", /* T_18 */
-	"{", /* T_19 */
-	"}", /* T_20 */ 
+	"else", /* T_10 */
+	"float_literal", /* T_11 */
+	"for", /* T_12 */
+	"func", /* T_13 */
+	"identifier", /* T_14 */
+	"if", /* T_15 */
+	"integer_literal", /* T_16 */
+	"let", /* T_17 */
+	"operator", /* T_18 */
+	"return", /* T_19 */
+	"string_literal", /* T_20 */
+	"{", /* T_21 */
+	"}", /* T_22 */ 
 }
 
 var stringNT = map[string]NT{ 
@@ -154,6 +160,7 @@ var stringNT = map[string]NT{
 	"Function_Call_Expression":NT_Function_Call_Expression,
 	"Function_Statement":NT_Function_Statement,
 	"GoGLL":NT_GoGLL,
+	"IF_Statement":NT_IF_Statement,
 	"Identifier_Expression":NT_Identifier_Expression,
 	"IncDec_Expression":NT_IncDec_Expression,
 	"Literal_Expression":NT_Literal_Expression,

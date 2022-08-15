@@ -13,7 +13,16 @@ var testdata = `
 func AddOne(x:u64) u64 {
 	return x + 1;
 }
-print(AddOne(1));
+
+let x:u64 = AddOne(1);
+if (x == 1) {
+	print("AddOne(1) == 1");
+} else if (x == 2) {
+	print("AddOne(1) == 2");
+} else {
+	print("AddOne(1) == something else");
+}
+
 `
 
 func Walk(b bsr.BSR, fn func(bsr.BSR)) {

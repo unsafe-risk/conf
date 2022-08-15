@@ -145,17 +145,19 @@ const(
     T_7  // = 
     T_8  // comment 
     T_9  // config 
-    T_10  // float_literal 
-    T_11  // for 
-    T_12  // func 
-    T_13  // identifier 
-    T_14  // integer_literal 
-    T_15  // let 
-    T_16  // operator 
-    T_17  // return 
-    T_18  // string_literal 
-    T_19  // { 
-    T_20  // } 
+    T_10  // else 
+    T_11  // float_literal 
+    T_12  // for 
+    T_13  // func 
+    T_14  // identifier 
+    T_15  // if 
+    T_16  // integer_literal 
+    T_17  // let 
+    T_18  // operator 
+    T_19  // return 
+    T_20  // string_literal 
+    T_21  // { 
+    T_22  // } 
 )
 
 var TypeToString = []string{ 
@@ -182,6 +184,8 @@ var TypeToString = []string{
     "T_18",
     "T_19",
     "T_20",
+    "T_21",
+    "T_22",
 }
 
 var StringToType = map[string] Type { 
@@ -208,6 +212,8 @@ var StringToType = map[string] Type {
     "T_18" : T_18, 
     "T_19" : T_19, 
     "T_20" : T_20, 
+    "T_21" : T_21, 
+    "T_22" : T_22, 
 }
 
 var TypeToID = []string { 
@@ -223,10 +229,12 @@ var TypeToID = []string {
     "=", 
     "comment", 
     "config", 
+    "else", 
     "float_literal", 
     "for", 
     "func", 
     "identifier", 
+    "if", 
     "integer_literal", 
     "let", 
     "operator", 
@@ -248,6 +256,8 @@ var Suppress = []bool {
     false, 
     false, 
     true, 
+    false, 
+    false, 
     false, 
     false, 
     false, 
